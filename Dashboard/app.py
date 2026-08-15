@@ -131,23 +131,51 @@ if quote_delta is not None and bestand_delta is not None and round(quote_delta, 
 
 st.divider()
 
-# --- Zeitreihen-Charts ---------------------------------------------------------
-st.subheader("Entwicklung der Arbeitslosigkeit")
+# --- Übersicht: Kennzahlen im Vergleich (kombinierter Chart) -------------------
+st.subheader("Übersicht: Kennzahlen im Vergleich")
+st.caption(
+    "Bedarfsgemeinschaften-, Arbeitslosen- und Langzeitarbeitslosen-Balken überlappend vor der "
+    "Fläche aller Personen in Bedarfsgemeinschaften im Hintergrund — die Fläche ist immer die "
+    "größte Menge, die Balken werden von außen nach innen kleiner (BG → Arbeitslose → "
+    "Langzeitarbeitslose). Maus über einen Monat bewegen zeigt alle vier Werte gleichzeitig als "
+    "Tooltip an."
+)
 
-fig = px.line(view, y="Arbeitslose (Bestand)", markers=True)
+fig = go.Figure()
+fig.add_trace(go.Scatter(
+    x=view.index, y=view["Personen in BG"], name="Personen in BG (gesamt)",
+    mode="lines+markers", fill="tozeroy",
+    line=dict(color="#1d4ed8", width=1), fillcolor="rgba(147,197,253,0.3)", marker=dict(size=4),
+))
+fig.add_trace(go.Bar(x=view.index, y=view["Bedarfsgemeinschaften"], marker_color="rgba(245,158,11,0.6)", hoverinfo="skip", showlegend=False))
+fig.add_trace(go.Scatter(
+    x=view.index, y=view["Bedarfsgemeinschaften"], name="Bedarfsgemeinschaften",
+    mode="lines+markers", line=dict(color="#b45309", width=1), marker=dict(size=4),
+))
+fig.add_trace(go.Bar(x=view.index, y=view["Arbeitslose (Bestand)"], marker_color="#2563eb", hoverinfo="skip", showlegend=False))
+fig.add_trace(go.Scatter(
+    x=view.index, y=view["Arbeitslose (Bestand)"], name="Arbeitslose (Bestand)",
+    mode="lines+markers", line=dict(color="#1e3a8a", width=1), marker=dict(size=4),
+))
+fig.add_trace(go.Bar(x=view.index, y=view["Langzeitarbeitslose"], marker_color="#7c3aed", hoverinfo="skip", showlegend=False))
+fig.add_trace(go.Scatter(
+    x=view.index, y=view["Langzeitarbeitslose"], name="Langzeitarbeitslose",
+    mode="lines+markers", line=dict(color="#4c1d95", width=1), marker=dict(size=4),
+))
 fig.update_layout(
-    title="Arbeitslose im Rechtskreis SGB II – Bestand",
-    yaxis_title="Personen",
+    title="Arbeitslose, Langzeitarbeitslose und Bedarfsgemeinschaften im Verhältnis zu allen Personen in BG, Jobcenter Regensburg",
+    yaxis_title="Personen / Bedarfsgemeinschaften",
     xaxis_title="Monat",
-    showlegend=False,
-    height=420,
+    barmode="overlay",
+    hovermode="x unified",
+    height=500,
 )
 st.plotly_chart(fig, width="stretch")
-st.caption(
-    "Monatlicher Bestand an Arbeitslosen im Rechtskreis **SGB II** — das sind Bürgergeld-"
-    "Empfänger:innen, betreut vom **Jobcenter**. Nicht zu verwechseln mit Arbeitslosengeld I "
-    "(SGB III), das die Agentur für Arbeit zahlt und hier nicht erfasst ist."
-)
+
+st.divider()
+
+# --- Weitere Zeitreihen-Charts --------------------------------------------------
+st.subheader("Arbeitslosen- und Unterbeschäftigungsquote")
 
 fig = go.Figure()
 fig.add_trace(go.Scatter(x=view.index, y=view["Arbeitslosenquote (%)"], mode="lines+markers", name="Arbeitslosenquote"))
@@ -168,20 +196,6 @@ st.caption(
 
 st.subheader("Langzeitarbeitslosigkeit")
 
-fig = px.line(view, y="Langzeitarbeitslose", markers=True)
-fig.update_layout(
-    title="Langzeitarbeitslose (SGB II) – absolut",
-    yaxis_title="Personen",
-    xaxis_title="Monat",
-    showlegend=False,
-    height=420,
-)
-st.plotly_chart(fig, width="stretch")
-st.caption(
-    "Langzeitarbeitslose sind Personen, die seit mindestens einem Jahr ununterbrochen als "
-    "arbeitslos gemeldet sind."
-)
-
 anteil = (view["Langzeitarbeitslose"] / view["Arbeitslose (Bestand)"] * 100).round(1)
 fig = px.line(x=view.index, y=anteil, markers=True)
 fig.update_layout(
@@ -194,26 +208,8 @@ fig.update_layout(
 st.plotly_chart(fig, width="stretch")
 st.caption(
     "Anteil der Langzeitarbeitslosen am gesamten Arbeitslosenbestand — ein steigender Anteil "
-    "deutet darauf hin, dass sich Arbeitslosigkeit stärker verfestigt."
-)
-
-st.subheader("Grundsicherung: Bedarfsgemeinschaften und Personen im Leistungsbezug")
-fig = go.Figure()
-fig.add_trace(go.Scatter(x=view.index, y=view["Bedarfsgemeinschaften"], name="Bedarfsgemeinschaften", yaxis="y1"))
-fig.add_trace(go.Scatter(x=view.index, y=view["Personen in BG"], name="Personen in BG", yaxis="y2"))
-fig.update_layout(
-    title="Bedarfsgemeinschaften und Personen im Leistungsbezug (SGB II)",
-    xaxis_title="Monat",
-    yaxis=dict(title="Bedarfsgemeinschaften"),
-    yaxis2=dict(title="Personen in BG", overlaying="y", side="right"),
-    legend=dict(orientation="h", y=1.1),
-    height=420,
-)
-st.plotly_chart(fig, width="stretch")
-st.caption(
-    "Bedarfsgemeinschaften: Haushalte, die gemeinsam SGB-II-Leistungen beziehen. "
-    "Personen in BG: alle darin lebenden Personen, auch nicht erwerbsfähige (z. B. Kinder) — "
-    "daher immer größer als die Zahl der Bedarfsgemeinschaften."
+    "deutet darauf hin, dass sich Arbeitslosigkeit stärker verfestigt. Die absolute Entwicklung "
+    "ist bereits in der Übersicht oben enthalten."
 )
 
 st.subheader("Kennzahlen im Vergleich (indexiert)")

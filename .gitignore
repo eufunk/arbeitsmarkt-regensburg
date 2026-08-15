@@ -217,5 +217,6 @@ __marimo__/
 # Streamlit
 .streamlit/secrets.toml
 
-# Data
-Data/
+# Data (Rohdaten bleiben privat; aufbereitete CSVs werden fürs Dashboard-Deployment getrackt)
+Data/*
+!Data/processed/

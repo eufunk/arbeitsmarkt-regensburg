@@ -1,0 +1,466 @@
+period,kategorie,merkmal,insgesamt,sgb2,jahr,monat,label
+2025-04,Arbeitslose,15 bis unter 25 Jahre,355.0,160.0,2025,4,Arbeitslose | 15 bis unter 25 Jahre
+2025-04,Arbeitslose,25 bis unter 50 Jahre,1833.0,854.0,2025,4,Arbeitslose | 25 bis unter 50 Jahre
+2025-04,Arbeitslose,50 Jahre und älter,1306.0,443.0,2025,4,Arbeitslose | 50 Jahre und älter
+2025-04,Arbeitslose,55 Jahre und älter,1008.0,302.0,2025,4,Arbeitslose | 55 Jahre und älter
+2025-04,Arbeitslose,Abgang (12-Monatssumme),9024.0,3348.0,2025,4,Arbeitslose | Abgang (12-Monatssumme)
+2025-04,Arbeitslose,Abgang (im Monat),864.0,250.0,2025,4,Arbeitslose | Abgang (im Monat)
+2025-04,Arbeitslose,Arbeitslosenquote,3.0,1.3,2025,4,Arbeitslose | Arbeitslosenquote
+2025-04,Arbeitslose,Ausländer,1216.0,735.0,2025,4,Arbeitslose | Ausländer
+2025-04,Arbeitslose,Bestand,3494.0,1457.0,2025,4,Arbeitslose | Bestand
+2025-04,Arbeitslose,Frauen,1507.0,667.0,2025,4,Arbeitslose | Frauen
+2025-04,Arbeitslose,Langzeitarbeitslose,693.0,526.0,2025,4,Arbeitslose | Langzeitarbeitslose
+2025-04,Arbeitslose,Männer,1987.0,790.0,2025,4,Arbeitslose | Männer
+2025-04,Arbeitslose,Zugang (12-Monatssumme),9533.0,3229.0,2025,4,Arbeitslose | Zugang (12-Monatssumme)
+2025-04,Arbeitslose,Zugang (im Monat),773.0,275.0,2025,4,Arbeitslose | Zugang (im Monat)
+2025-04,Arbeitslose,schwerbehinderte Menschen,305.0,117.0,2025,4,Arbeitslose | schwerbehinderte Menschen
+2025-04,Arbeitsuchende,Bestand,5847.0,2779.0,2025,4,Arbeitsuchende | Bestand
+2025-04,Grundsicherung für Arbeitsuchende,Bedarfsgemeinschaften (BG),,2766.95906861,2025,4,Grundsicherung für Arbeitsuchende | Bedarfsgemeinschaften (BG)
+2025-04,Grundsicherung für Arbeitsuchende,Personen in Bedarfsgemeinschaften (PERS),,5421.14883362,2025,4,Grundsicherung für Arbeitsuchende | Personen in Bedarfsgemeinschaften (PERS)
+2025-04,Grundsicherung für Arbeitsuchende,dar. Regelleistungsberechtigte (RLB),,5122.42456285,2025,4,Grundsicherung für Arbeitsuchende | dar. Regelleistungsberechtigte (RLB)
+2025-04,Grundsicherung für Arbeitsuchende,dav. erwerbsfähige Leistungsberechtigte (ELB),,3701.23967002,2025,4,Grundsicherung für Arbeitsuchende | dav. erwerbsfähige Leistungsberechtigte (ELB)
+2025-04,Grundsicherung für Arbeitsuchende,nicht erwerbsfähige Leistungsberechtigte (NEF),,1421.18489283,2025,4,Grundsicherung für Arbeitsuchende | nicht erwerbsfähige Leistungsberechtigte (NEF)
+2025-04,Unterbeschäftigung,Arbeitslosigkeit im weiteren Sinne,3736.0,1671.0,2025,4,Unterbeschäftigung | Arbeitslosigkeit im weiteren Sinne
+2025-04,Unterbeschäftigung,Unterbeschäftigung (ohne Kurzarbeit),4384.0,2163.0,2025,4,Unterbeschäftigung | Unterbeschäftigung (ohne Kurzarbeit)
+2025-04,Unterbeschäftigung,Unterbeschäftigung im engeren Sinne,4355.0,2161.0,2025,4,Unterbeschäftigung | Unterbeschäftigung im engeren Sinne
+2025-04,Unterbeschäftigung,Unterbeschäftigungsquote,3.7,1.8,2025,4,Unterbeschäftigung | Unterbeschäftigungsquote
+2025-04,gemeldete Arbeitsstellen,Bestand,1415.0,,2025,4,gemeldete Arbeitsstellen | Bestand
+2025-04,gemeldete Arbeitsstellen,Zugang (12-Monatssumme),3168.0,,2025,4,gemeldete Arbeitsstellen | Zugang (12-Monatssumme)
+2025-04,gemeldete Arbeitsstellen,Zugang (im Monat),207.0,,2025,4,gemeldete Arbeitsstellen | Zugang (im Monat)
+2025-04,gemeldete Arbeitsstellen,sozialversicherungspflichtig,203.0,,2025,4,gemeldete Arbeitsstellen | sozialversicherungspflichtig
+2025-04,gemeldete Arbeitsstellen,sozialversicherungspflichtig,3116.0,,2025,4,gemeldete Arbeitsstellen | sozialversicherungspflichtig
+2025-04,gemeldete Arbeitsstellen,sozialversicherungspflichtig,1400.0,,2025,4,gemeldete Arbeitsstellen | sozialversicherungspflichtig
+2025-05,Arbeitslose,15 bis unter 25 Jahre,347.0,147.0,2025,5,Arbeitslose | 15 bis unter 25 Jahre
+2025-05,Arbeitslose,25 bis unter 50 Jahre,1796.0,836.0,2025,5,Arbeitslose | 25 bis unter 50 Jahre
+2025-05,Arbeitslose,50 Jahre und älter,1310.0,455.0,2025,5,Arbeitslose | 50 Jahre und älter
+2025-05,Arbeitslose,55 Jahre und älter,1002.0,307.0,2025,5,Arbeitslose | 55 Jahre und älter
+2025-05,Arbeitslose,Abgang (12-Monatssumme),9073.0,3356.0,2025,5,Arbeitslose | Abgang (12-Monatssumme)
+2025-05,Arbeitslose,Abgang (im Monat),786.0,304.0,2025,5,Arbeitslose | Abgang (im Monat)
+2025-05,Arbeitslose,Arbeitslosenquote,2.9,1.2,2025,5,Arbeitslose | Arbeitslosenquote
+2025-05,Arbeitslose,Ausländer,1173.0,705.0,2025,5,Arbeitslose | Ausländer
+2025-05,Arbeitslose,Bestand,3453.0,1438.0,2025,5,Arbeitslose | Bestand
+2025-05,Arbeitslose,Frauen,1542.0,659.0,2025,5,Arbeitslose | Frauen
+2025-05,Arbeitslose,Langzeitarbeitslose,737.0,558.0,2025,5,Arbeitslose | Langzeitarbeitslose
+2025-05,Arbeitslose,Männer,1911.0,779.0,2025,5,Arbeitslose | Männer
+2025-05,Arbeitslose,Zugang (12-Monatssumme),9625.0,3258.0,2025,5,Arbeitslose | Zugang (12-Monatssumme)
+2025-05,Arbeitslose,Zugang (im Monat),749.0,262.0,2025,5,Arbeitslose | Zugang (im Monat)
+2025-05,Arbeitslose,schwerbehinderte Menschen,310.0,104.0,2025,5,Arbeitslose | schwerbehinderte Menschen
+2025-05,Arbeitsuchende,Bestand,5826.0,2733.0,2025,5,Arbeitsuchende | Bestand
+2025-05,Grundsicherung für Arbeitsuchende,Bedarfsgemeinschaften (BG),,2707.55618214,2025,5,Grundsicherung für Arbeitsuchende | Bedarfsgemeinschaften (BG)
+2025-05,Grundsicherung für Arbeitsuchende,Personen in Bedarfsgemeinschaften (PERS),,5295.62926504,2025,5,Grundsicherung für Arbeitsuchende | Personen in Bedarfsgemeinschaften (PERS)
+2025-05,Grundsicherung für Arbeitsuchende,dar. Regelleistungsberechtigte (RLB),,4989.62926504,2025,5,Grundsicherung für Arbeitsuchende | dar. Regelleistungsberechtigte (RLB)
+2025-05,Grundsicherung für Arbeitsuchende,dav. erwerbsfähige Leistungsberechtigte (ELB),,3612.41887246,2025,5,Grundsicherung für Arbeitsuchende | dav. erwerbsfähige Leistungsberechtigte (ELB)
+2025-05,Grundsicherung für Arbeitsuchende,nicht erwerbsfähige Leistungsberechtigte (NEF),,1377.21039258,2025,5,Grundsicherung für Arbeitsuchende | nicht erwerbsfähige Leistungsberechtigte (NEF)
+2025-05,Unterbeschäftigung,Arbeitslosigkeit im weiteren Sinne,3674.0,1630.0,2025,5,Unterbeschäftigung | Arbeitslosigkeit im weiteren Sinne
+2025-05,Unterbeschäftigung,Unterbeschäftigung (ohne Kurzarbeit),4328.0,2100.0,2025,5,Unterbeschäftigung | Unterbeschäftigung (ohne Kurzarbeit)
+2025-05,Unterbeschäftigung,Unterbeschäftigung im engeren Sinne,4293.0,2097.0,2025,5,Unterbeschäftigung | Unterbeschäftigung im engeren Sinne
+2025-05,Unterbeschäftigung,Unterbeschäftigungsquote,3.7,1.8,2025,5,Unterbeschäftigung | Unterbeschäftigungsquote
+2025-05,gemeldete Arbeitsstellen,Bestand,1332.0,,2025,5,gemeldete Arbeitsstellen | Bestand
+2025-05,gemeldete Arbeitsstellen,Zugang (12-Monatssumme),3086.0,,2025,5,gemeldete Arbeitsstellen | Zugang (12-Monatssumme)
+2025-05,gemeldete Arbeitsstellen,Zugang (im Monat),180.0,,2025,5,gemeldete Arbeitsstellen | Zugang (im Monat)
+2025-05,gemeldete Arbeitsstellen,sozialversicherungspflichtig,176.0,,2025,5,gemeldete Arbeitsstellen | sozialversicherungspflichtig
+2025-05,gemeldete Arbeitsstellen,sozialversicherungspflichtig,3039.0,,2025,5,gemeldete Arbeitsstellen | sozialversicherungspflichtig
+2025-05,gemeldete Arbeitsstellen,sozialversicherungspflichtig,1320.0,,2025,5,gemeldete Arbeitsstellen | sozialversicherungspflichtig
+2025-06,Arbeitslose,15 bis unter 25 Jahre,381.0,176.0,2025,6,Arbeitslose | 15 bis unter 25 Jahre
+2025-06,Arbeitslose,25 bis unter 50 Jahre,1820.0,848.0,2025,6,Arbeitslose | 25 bis unter 50 Jahre
+2025-06,Arbeitslose,50 Jahre und älter,1374.0,485.0,2025,6,Arbeitslose | 50 Jahre und älter
+2025-06,Arbeitslose,55 Jahre und älter,1064.0,336.0,2025,6,Arbeitslose | 55 Jahre und älter
+2025-06,Arbeitslose,Abgang (12-Monatssumme),9123.0,3378.0,2025,6,Arbeitslose | Abgang (12-Monatssumme)
+2025-06,Arbeitslose,Abgang (im Monat),688.0,286.0,2025,6,Arbeitslose | Abgang (im Monat)
+2025-06,Arbeitslose,Arbeitslosenquote,3.0,1.3,2025,6,Arbeitslose | Arbeitslosenquote
+2025-06,Arbeitslose,Ausländer,1183.0,732.0,2025,6,Arbeitslose | Ausländer
+2025-06,Arbeitslose,Bestand,3575.0,1509.0,2025,6,Arbeitslose | Bestand
+2025-06,Arbeitslose,Frauen,1622.0,704.0,2025,6,Arbeitslose | Frauen
+2025-06,Arbeitslose,Langzeitarbeitslose,755.0,551.0,2025,6,Arbeitslose | Langzeitarbeitslose
+2025-06,Arbeitslose,Männer,1953.0,805.0,2025,6,Arbeitslose | Männer
+2025-06,Arbeitslose,Zugang (12-Monatssumme),9788.0,3368.0,2025,6,Arbeitslose | Zugang (12-Monatssumme)
+2025-06,Arbeitslose,Zugang (im Monat),803.0,338.0,2025,6,Arbeitslose | Zugang (im Monat)
+2025-06,Arbeitslose,schwerbehinderte Menschen,338.0,121.0,2025,6,Arbeitslose | schwerbehinderte Menschen
+2025-06,Arbeitsuchende,Bestand,5900.0,2730.0,2025,6,Arbeitsuchende | Bestand
+2025-06,Grundsicherung für Arbeitsuchende,Bedarfsgemeinschaften (BG),,2696.60575877,2025,6,Grundsicherung für Arbeitsuchende | Bedarfsgemeinschaften (BG)
+2025-06,Grundsicherung für Arbeitsuchende,Personen in Bedarfsgemeinschaften (PERS),,5275.53953574,2025,6,Grundsicherung für Arbeitsuchende | Personen in Bedarfsgemeinschaften (PERS)
+2025-06,Grundsicherung für Arbeitsuchende,dar. Regelleistungsberechtigte (RLB),,4960.10209818,2025,6,Grundsicherung für Arbeitsuchende | dar. Regelleistungsberechtigte (RLB)
+2025-06,Grundsicherung für Arbeitsuchende,dav. erwerbsfähige Leistungsberechtigte (ELB),,3584.21772455,2025,6,Grundsicherung für Arbeitsuchende | dav. erwerbsfähige Leistungsberechtigte (ELB)
+2025-06,Grundsicherung für Arbeitsuchende,nicht erwerbsfähige Leistungsberechtigte (NEF),,1375.88437363,2025,6,Grundsicherung für Arbeitsuchende | nicht erwerbsfähige Leistungsberechtigte (NEF)
+2025-06,Unterbeschäftigung,Arbeitslosigkeit im weiteren Sinne,3795.0,1708.0,2025,6,Unterbeschäftigung | Arbeitslosigkeit im weiteren Sinne
+2025-06,Unterbeschäftigung,Unterbeschäftigung (ohne Kurzarbeit),4397.0,2143.0,2025,6,Unterbeschäftigung | Unterbeschäftigung (ohne Kurzarbeit)
+2025-06,Unterbeschäftigung,Unterbeschäftigung im engeren Sinne,4362.0,2139.0,2025,6,Unterbeschäftigung | Unterbeschäftigung im engeren Sinne
+2025-06,Unterbeschäftigung,Unterbeschäftigungsquote,3.7,1.8,2025,6,Unterbeschäftigung | Unterbeschäftigungsquote
+2025-06,gemeldete Arbeitsstellen,Bestand,1396.0,,2025,6,gemeldete Arbeitsstellen | Bestand
+2025-06,gemeldete Arbeitsstellen,Zugang (12-Monatssumme),3144.0,,2025,6,gemeldete Arbeitsstellen | Zugang (12-Monatssumme)
+2025-06,gemeldete Arbeitsstellen,Zugang (im Monat),360.0,,2025,6,gemeldete Arbeitsstellen | Zugang (im Monat)
+2025-06,gemeldete Arbeitsstellen,sozialversicherungspflichtig,357.0,,2025,6,gemeldete Arbeitsstellen | sozialversicherungspflichtig
+2025-06,gemeldete Arbeitsstellen,sozialversicherungspflichtig,3098.0,,2025,6,gemeldete Arbeitsstellen | sozialversicherungspflichtig
+2025-06,gemeldete Arbeitsstellen,sozialversicherungspflichtig,1387.0,,2025,6,gemeldete Arbeitsstellen | sozialversicherungspflichtig
+2025-07,Arbeitslose,15 bis unter 25 Jahre,415.0,168.0,2025,7,Arbeitslose | 15 bis unter 25 Jahre
+2025-07,Arbeitslose,25 bis unter 50 Jahre,1846.0,830.0,2025,7,Arbeitslose | 25 bis unter 50 Jahre
+2025-07,Arbeitslose,50 Jahre und älter,1385.0,477.0,2025,7,Arbeitslose | 50 Jahre und älter
+2025-07,Arbeitslose,55 Jahre und älter,1070.0,329.0,2025,7,Arbeitslose | 55 Jahre und älter
+2025-07,Arbeitslose,Abgang (12-Monatssumme),9165.0,3432.0,2025,7,Arbeitslose | Abgang (12-Monatssumme)
+2025-07,Arbeitslose,Abgang (im Monat),706.0,306.0,2025,7,Arbeitslose | Abgang (im Monat)
+2025-07,Arbeitslose,Arbeitslosenquote,3.1,1.3,2025,7,Arbeitslose | Arbeitslosenquote
+2025-07,Arbeitslose,Ausländer,1203.0,725.0,2025,7,Arbeitslose | Ausländer
+2025-07,Arbeitslose,Bestand,3646.0,1475.0,2025,7,Arbeitslose | Bestand
+2025-07,Arbeitslose,Frauen,1658.0,693.0,2025,7,Arbeitslose | Frauen
+2025-07,Arbeitslose,Langzeitarbeitslose,780.0,561.0,2025,7,Arbeitslose | Langzeitarbeitslose
+2025-07,Arbeitslose,Männer,1988.0,782.0,2025,7,Arbeitslose | Männer
+2025-07,Arbeitslose,Zugang (12-Monatssumme),9751.0,3317.0,2025,7,Arbeitslose | Zugang (12-Monatssumme)
+2025-07,Arbeitslose,Zugang (im Monat),775.0,242.0,2025,7,Arbeitslose | Zugang (im Monat)
+2025-07,Arbeitslose,schwerbehinderte Menschen,353.0,115.0,2025,7,Arbeitslose | schwerbehinderte Menschen
+2025-07,Arbeitsuchende,Bestand,5969.0,2684.0,2025,7,Arbeitsuchende | Bestand
+2025-07,Grundsicherung für Arbeitsuchende,Bedarfsgemeinschaften (BG),,2616.92005382,2025,7,Grundsicherung für Arbeitsuchende | Bedarfsgemeinschaften (BG)
+2025-07,Grundsicherung für Arbeitsuchende,Personen in Bedarfsgemeinschaften (PERS),,5092.80859759,2025,7,Grundsicherung für Arbeitsuchende | Personen in Bedarfsgemeinschaften (PERS)
+2025-07,Grundsicherung für Arbeitsuchende,dar. Regelleistungsberechtigte (RLB),,4788.46150855,2025,7,Grundsicherung für Arbeitsuchende | dar. Regelleistungsberechtigte (RLB)
+2025-07,Grundsicherung für Arbeitsuchende,dav. erwerbsfähige Leistungsberechtigte (ELB),,3477.79810661,2025,7,Grundsicherung für Arbeitsuchende | dav. erwerbsfähige Leistungsberechtigte (ELB)
+2025-07,Grundsicherung für Arbeitsuchende,nicht erwerbsfähige Leistungsberechtigte (NEF),,1310.66340194,2025,7,Grundsicherung für Arbeitsuchende | nicht erwerbsfähige Leistungsberechtigte (NEF)
+2025-07,Unterbeschäftigung,Arbeitslosigkeit im weiteren Sinne,3877.0,1683.0,2025,7,Unterbeschäftigung | Arbeitslosigkeit im weiteren Sinne
+2025-07,Unterbeschäftigung,Unterbeschäftigung (ohne Kurzarbeit),4415.0,2079.0,2025,7,Unterbeschäftigung | Unterbeschäftigung (ohne Kurzarbeit)
+2025-07,Unterbeschäftigung,Unterbeschäftigung im engeren Sinne,4388.0,2077.0,2025,7,Unterbeschäftigung | Unterbeschäftigung im engeren Sinne
+2025-07,Unterbeschäftigung,Unterbeschäftigungsquote,3.7,1.8,2025,7,Unterbeschäftigung | Unterbeschäftigungsquote
+2025-07,gemeldete Arbeitsstellen,Bestand,1399.0,,2025,7,gemeldete Arbeitsstellen | Bestand
+2025-07,gemeldete Arbeitsstellen,Zugang (12-Monatssumme),3245.0,,2025,7,gemeldete Arbeitsstellen | Zugang (12-Monatssumme)
+2025-07,gemeldete Arbeitsstellen,Zugang (im Monat),390.0,,2025,7,gemeldete Arbeitsstellen | Zugang (im Monat)
+2025-07,gemeldete Arbeitsstellen,sozialversicherungspflichtig,386.0,,2025,7,gemeldete Arbeitsstellen | sozialversicherungspflichtig
+2025-07,gemeldete Arbeitsstellen,sozialversicherungspflichtig,3197.0,,2025,7,gemeldete Arbeitsstellen | sozialversicherungspflichtig
+2025-07,gemeldete Arbeitsstellen,sozialversicherungspflichtig,1387.0,,2025,7,gemeldete Arbeitsstellen | sozialversicherungspflichtig
+2025-08,Arbeitslose,15 bis unter 25 Jahre,513.0,222.0,2025,8,Arbeitslose | 15 bis unter 25 Jahre
+2025-08,Arbeitslose,25 bis unter 50 Jahre,1975.0,874.0,2025,8,Arbeitslose | 25 bis unter 50 Jahre
+2025-08,Arbeitslose,50 Jahre und älter,1404.0,491.0,2025,8,Arbeitslose | 50 Jahre und älter
+2025-08,Arbeitslose,55 Jahre und älter,1064.0,335.0,2025,8,Arbeitslose | 55 Jahre und älter
+2025-08,Arbeitslose,Abgang (12-Monatssumme),9219.0,3431.0,2025,8,Arbeitslose | Abgang (12-Monatssumme)
+2025-08,Arbeitslose,Abgang (im Monat),676.0,237.0,2025,8,Arbeitslose | Abgang (im Monat)
+2025-08,Arbeitslose,Arbeitslosenquote,3.3,1.4,2025,8,Arbeitslose | Arbeitslosenquote
+2025-08,Arbeitslose,Ausländer,1318.0,819.0,2025,8,Arbeitslose | Ausländer
+2025-08,Arbeitslose,Bestand,3892.0,1587.0,2025,8,Arbeitslose | Bestand
+2025-08,Arbeitslose,Frauen,1784.0,753.0,2025,8,Arbeitslose | Frauen
+2025-08,Arbeitslose,Langzeitarbeitslose,794.0,585.0,2025,8,Arbeitslose | Langzeitarbeitslose
+2025-08,Arbeitslose,Männer,2108.0,834.0,2025,8,Arbeitslose | Männer
+2025-08,Arbeitslose,Zugang (12-Monatssumme),9739.0,3283.0,2025,8,Arbeitslose | Zugang (12-Monatssumme)
+2025-08,Arbeitslose,Zugang (im Monat),919.0,326.0,2025,8,Arbeitslose | Zugang (im Monat)
+2025-08,Arbeitslose,schwerbehinderte Menschen,343.0,111.0,2025,8,Arbeitslose | schwerbehinderte Menschen
+2025-08,Arbeitsuchende,Bestand,6188.0,2768.0,2025,8,Arbeitsuchende | Bestand
+2025-08,Grundsicherung für Arbeitsuchende,Bedarfsgemeinschaften (BG),,2688.06065855,2025,8,Grundsicherung für Arbeitsuchende | Bedarfsgemeinschaften (BG)
+2025-08,Grundsicherung für Arbeitsuchende,Personen in Bedarfsgemeinschaften (PERS),,5267.86781157,2025,8,Grundsicherung für Arbeitsuchende | Personen in Bedarfsgemeinschaften (PERS)
+2025-08,Grundsicherung für Arbeitsuchende,dar. Regelleistungsberechtigte (RLB),,4961.92912245,2025,8,Grundsicherung für Arbeitsuchende | dar. Regelleistungsberechtigte (RLB)
+2025-08,Grundsicherung für Arbeitsuchende,dav. erwerbsfähige Leistungsberechtigte (ELB),,3593.65524463,2025,8,Grundsicherung für Arbeitsuchende | dav. erwerbsfähige Leistungsberechtigte (ELB)
+2025-08,Grundsicherung für Arbeitsuchende,nicht erwerbsfähige Leistungsberechtigte (NEF),,1368.27387782,2025,8,Grundsicherung für Arbeitsuchende | nicht erwerbsfähige Leistungsberechtigte (NEF)
+2025-08,Unterbeschäftigung,Arbeitslosigkeit im weiteren Sinne,4077.0,1750.0,2025,8,Unterbeschäftigung | Arbeitslosigkeit im weiteren Sinne
+2025-08,Unterbeschäftigung,Unterbeschäftigung (ohne Kurzarbeit),4600.0,2115.0,2025,8,Unterbeschäftigung | Unterbeschäftigung (ohne Kurzarbeit)
+2025-08,Unterbeschäftigung,Unterbeschäftigung im engeren Sinne,4575.0,2113.0,2025,8,Unterbeschäftigung | Unterbeschäftigung im engeren Sinne
+2025-08,Unterbeschäftigung,Unterbeschäftigungsquote,3.9,1.8,2025,8,Unterbeschäftigung | Unterbeschäftigungsquote
+2025-08,gemeldete Arbeitsstellen,Bestand,1669.0,,2025,8,gemeldete Arbeitsstellen | Bestand
+2025-08,gemeldete Arbeitsstellen,Zugang (12-Monatssumme),3595.0,,2025,8,gemeldete Arbeitsstellen | Zugang (12-Monatssumme)
+2025-08,gemeldete Arbeitsstellen,Zugang (im Monat),593.0,,2025,8,gemeldete Arbeitsstellen | Zugang (im Monat)
+2025-08,gemeldete Arbeitsstellen,sozialversicherungspflichtig,591.0,,2025,8,gemeldete Arbeitsstellen | sozialversicherungspflichtig
+2025-08,gemeldete Arbeitsstellen,sozialversicherungspflichtig,3551.0,,2025,8,gemeldete Arbeitsstellen | sozialversicherungspflichtig
+2025-08,gemeldete Arbeitsstellen,sozialversicherungspflichtig,1655.0,,2025,8,gemeldete Arbeitsstellen | sozialversicherungspflichtig
+2025-09,Arbeitslose,15 bis unter 25 Jahre,499.0,216.0,2025,9,Arbeitslose | 15 bis unter 25 Jahre
+2025-09,Arbeitslose,25 bis unter 50 Jahre,1968.0,873.0,2025,9,Arbeitslose | 25 bis unter 50 Jahre
+2025-09,Arbeitslose,50 Jahre und älter,1437.0,496.0,2025,9,Arbeitslose | 50 Jahre und älter
+2025-09,Arbeitslose,55 Jahre und älter,1091.0,338.0,2025,9,Arbeitslose | 55 Jahre und älter
+2025-09,Arbeitslose,Abgang (12-Monatssumme),9155.0,3438.0,2025,9,Arbeitslose | Abgang (12-Monatssumme)
+2025-09,Arbeitslose,Abgang (im Monat),781.0,255.0,2025,9,Arbeitslose | Abgang (im Monat)
+2025-09,Arbeitslose,Arbeitslosenquote,3.3,1.4,2025,9,Arbeitslose | Arbeitslosenquote
+2025-09,Arbeitslose,Ausländer,1332.0,817.0,2025,9,Arbeitslose | Ausländer
+2025-09,Arbeitslose,Bestand,3904.0,1585.0,2025,9,Arbeitslose | Bestand
+2025-09,Arbeitslose,Frauen,1795.0,738.0,2025,9,Arbeitslose | Frauen
+2025-09,Arbeitslose,Langzeitarbeitslose,820.0,592.0,2025,9,Arbeitslose | Langzeitarbeitslose
+2025-09,Arbeitslose,Männer,2109.0,847.0,2025,9,Arbeitslose | Männer
+2025-09,Arbeitslose,Zugang (12-Monatssumme),9848.0,3328.0,2025,9,Arbeitslose | Zugang (12-Monatssumme)
+2025-09,Arbeitslose,Zugang (im Monat),794.0,236.0,2025,9,Arbeitslose | Zugang (im Monat)
+2025-09,Arbeitslose,schwerbehinderte Menschen,349.0,116.0,2025,9,Arbeitslose | schwerbehinderte Menschen
+2025-09,Arbeitsuchende,Bestand,6061.0,2724.0,2025,9,Arbeitsuchende | Bestand
+2025-09,Grundsicherung für Arbeitsuchende,Bedarfsgemeinschaften (BG),,2669.28381333,2025,9,Grundsicherung für Arbeitsuchende | Bedarfsgemeinschaften (BG)
+2025-09,Grundsicherung für Arbeitsuchende,Personen in Bedarfsgemeinschaften (PERS),,5218.35009897,2025,9,Grundsicherung für Arbeitsuchende | Personen in Bedarfsgemeinschaften (PERS)
+2025-09,Grundsicherung für Arbeitsuchende,dar. Regelleistungsberechtigte (RLB),,4934.14935761,2025,9,Grundsicherung für Arbeitsuchende | dar. Regelleistungsberechtigte (RLB)
+2025-09,Grundsicherung für Arbeitsuchende,dav. erwerbsfähige Leistungsberechtigte (ELB),,3564.44743883,2025,9,Grundsicherung für Arbeitsuchende | dav. erwerbsfähige Leistungsberechtigte (ELB)
+2025-09,Grundsicherung für Arbeitsuchende,nicht erwerbsfähige Leistungsberechtigte (NEF),,1369.70191877,2025,9,Grundsicherung für Arbeitsuchende | nicht erwerbsfähige Leistungsberechtigte (NEF)
+2025-09,Unterbeschäftigung,Arbeitslosigkeit im weiteren Sinne,4095.0,1754.0,2025,9,Unterbeschäftigung | Arbeitslosigkeit im weiteren Sinne
+2025-09,Unterbeschäftigung,Unterbeschäftigung (ohne Kurzarbeit),4589.0,2099.0,2025,9,Unterbeschäftigung | Unterbeschäftigung (ohne Kurzarbeit)
+2025-09,Unterbeschäftigung,Unterbeschäftigung im engeren Sinne,4565.0,2096.0,2025,9,Unterbeschäftigung | Unterbeschäftigung im engeren Sinne
+2025-09,Unterbeschäftigung,Unterbeschäftigungsquote,3.9,1.8,2025,9,Unterbeschäftigung | Unterbeschäftigungsquote
+2025-09,gemeldete Arbeitsstellen,Bestand,1806.0,,2025,9,gemeldete Arbeitsstellen | Bestand
+2025-09,gemeldete Arbeitsstellen,Zugang (12-Monatssumme),3659.0,,2025,9,gemeldete Arbeitsstellen | Zugang (12-Monatssumme)
+2025-09,gemeldete Arbeitsstellen,Zugang (im Monat),341.0,,2025,9,gemeldete Arbeitsstellen | Zugang (im Monat)
+2025-09,gemeldete Arbeitsstellen,sozialversicherungspflichtig,334.0,,2025,9,gemeldete Arbeitsstellen | sozialversicherungspflichtig
+2025-09,gemeldete Arbeitsstellen,sozialversicherungspflichtig,3609.0,,2025,9,gemeldete Arbeitsstellen | sozialversicherungspflichtig
+2025-09,gemeldete Arbeitsstellen,sozialversicherungspflichtig,1787.0,,2025,9,gemeldete Arbeitsstellen | sozialversicherungspflichtig
+2025-10,Arbeitslose,15 bis unter 25 Jahre,385.0,176.0,2025,10,Arbeitslose | 15 bis unter 25 Jahre
+2025-10,Arbeitslose,25 bis unter 50 Jahre,1875.0,869.0,2025,10,Arbeitslose | 25 bis unter 50 Jahre
+2025-10,Arbeitslose,50 Jahre und älter,1401.0,474.0,2025,10,Arbeitslose | 50 Jahre und älter
+2025-10,Arbeitslose,55 Jahre und älter,1065.0,324.0,2025,10,Arbeitslose | 55 Jahre und älter
+2025-10,Arbeitslose,Abgang (12-Monatssumme),9344.0,3463.0,2025,10,Arbeitslose | Abgang (12-Monatssumme)
+2025-10,Arbeitslose,Abgang (im Monat),1063.0,369.0,2025,10,Arbeitslose | Abgang (im Monat)
+2025-10,Arbeitslose,Arbeitslosenquote,3.1,1.3,2025,10,Arbeitslose | Arbeitslosenquote
+2025-10,Arbeitslose,Ausländer,1250.0,748.0,2025,10,Arbeitslose | Ausländer
+2025-10,Arbeitslose,Bestand,3661.0,1519.0,2025,10,Arbeitslose | Bestand
+2025-10,Arbeitslose,Frauen,1660.0,701.0,2025,10,Arbeitslose | Frauen
+2025-10,Arbeitslose,Langzeitarbeitslose,846.0,606.0,2025,10,Arbeitslose | Langzeitarbeitslose
+2025-10,Arbeitslose,Männer,2001.0,818.0,2025,10,Arbeitslose | Männer
+2025-10,Arbeitslose,Zugang (12-Monatssumme),9872.0,3303.0,2025,10,Arbeitslose | Zugang (12-Monatssumme)
+2025-10,Arbeitslose,Zugang (im Monat),828.0,282.0,2025,10,Arbeitslose | Zugang (im Monat)
+2025-10,Arbeitslose,schwerbehinderte Menschen,352.0,118.0,2025,10,Arbeitslose | schwerbehinderte Menschen
+2025-10,Arbeitsuchende,Bestand,5917.0,2690.0,2025,10,Arbeitsuchende | Bestand
+2025-10,Grundsicherung für Arbeitsuchende,Bedarfsgemeinschaften (BG),,2629.34803905,2025,10,Grundsicherung für Arbeitsuchende | Bedarfsgemeinschaften (BG)
+2025-10,Grundsicherung für Arbeitsuchende,Personen in Bedarfsgemeinschaften (PERS),,5120.19876632,2025,10,Grundsicherung für Arbeitsuchende | Personen in Bedarfsgemeinschaften (PERS)
+2025-10,Grundsicherung für Arbeitsuchende,dar. Regelleistungsberechtigte (RLB),,4847.48576875,2025,10,Grundsicherung für Arbeitsuchende | dar. Regelleistungsberechtigte (RLB)
+2025-10,Grundsicherung für Arbeitsuchende,dav. erwerbsfähige Leistungsberechtigte (ELB),,3499.3404433,2025,10,Grundsicherung für Arbeitsuchende | dav. erwerbsfähige Leistungsberechtigte (ELB)
+2025-10,Grundsicherung für Arbeitsuchende,nicht erwerbsfähige Leistungsberechtigte (NEF),,1348.14532546,2025,10,Grundsicherung für Arbeitsuchende | nicht erwerbsfähige Leistungsberechtigte (NEF)
+2025-10,Unterbeschäftigung,Arbeitslosigkeit im weiteren Sinne,3835.0,1674.0,2025,10,Unterbeschäftigung | Arbeitslosigkeit im weiteren Sinne
+2025-10,Unterbeschäftigung,Unterbeschäftigung (ohne Kurzarbeit),4362.0,2037.0,2025,10,Unterbeschäftigung | Unterbeschäftigung (ohne Kurzarbeit)
+2025-10,Unterbeschäftigung,Unterbeschäftigung im engeren Sinne,4339.0,2033.0,2025,10,Unterbeschäftigung | Unterbeschäftigung im engeren Sinne
+2025-10,Unterbeschäftigung,Unterbeschäftigungsquote,3.7,1.7,2025,10,Unterbeschäftigung | Unterbeschäftigungsquote
+2025-10,gemeldete Arbeitsstellen,Bestand,1747.0,,2025,10,gemeldete Arbeitsstellen | Bestand
+2025-10,gemeldete Arbeitsstellen,Zugang (12-Monatssumme),3650.0,,2025,10,gemeldete Arbeitsstellen | Zugang (12-Monatssumme)
+2025-10,gemeldete Arbeitsstellen,Zugang (im Monat),278.0,,2025,10,gemeldete Arbeitsstellen | Zugang (im Monat)
+2025-10,gemeldete Arbeitsstellen,sozialversicherungspflichtig,275.0,,2025,10,gemeldete Arbeitsstellen | sozialversicherungspflichtig
+2025-10,gemeldete Arbeitsstellen,sozialversicherungspflichtig,3608.0,,2025,10,gemeldete Arbeitsstellen | sozialversicherungspflichtig
+2025-10,gemeldete Arbeitsstellen,sozialversicherungspflichtig,1731.0,,2025,10,gemeldete Arbeitsstellen | sozialversicherungspflichtig
+2025-11,Arbeitslose,15 bis unter 25 Jahre,388.0,176.0,2025,11,Arbeitslose | 15 bis unter 25 Jahre
+2025-11,Arbeitslose,25 bis unter 50 Jahre,1880.0,870.0,2025,11,Arbeitslose | 25 bis unter 50 Jahre
+2025-11,Arbeitslose,50 Jahre und älter,1389.0,471.0,2025,11,Arbeitslose | 50 Jahre und älter
+2025-11,Arbeitslose,55 Jahre und älter,1065.0,331.0,2025,11,Arbeitslose | 55 Jahre und älter
+2025-11,Arbeitslose,Abgang (12-Monatssumme),9292.0,3422.0,2025,11,Arbeitslose | Abgang (12-Monatssumme)
+2025-11,Arbeitslose,Abgang (im Monat),749.0,274.0,2025,11,Arbeitslose | Abgang (im Monat)
+2025-11,Arbeitslose,Arbeitslosenquote,3.1,1.3,2025,11,Arbeitslose | Arbeitslosenquote
+2025-11,Arbeitslose,Ausländer,1253.0,760.0,2025,11,Arbeitslose | Ausländer
+2025-11,Arbeitslose,Bestand,3657.0,1517.0,2025,11,Arbeitslose | Bestand
+2025-11,Arbeitslose,Frauen,1640.0,694.0,2025,11,Arbeitslose | Frauen
+2025-11,Arbeitslose,Langzeitarbeitslose,874.0,623.0,2025,11,Arbeitslose | Langzeitarbeitslose
+2025-11,Arbeitslose,Männer,2017.0,823.0,2025,11,Arbeitslose | Männer
+2025-11,Arbeitslose,Zugang (12-Monatssumme),9844.0,3284.0,2025,11,Arbeitslose | Zugang (12-Monatssumme)
+2025-11,Arbeitslose,Zugang (im Monat),741.0,250.0,2025,11,Arbeitslose | Zugang (im Monat)
+2025-11,Arbeitslose,schwerbehinderte Menschen,344.0,111.0,2025,11,Arbeitslose | schwerbehinderte Menschen
+2025-11,Arbeitsuchende,Bestand,6048.0,2697.0,2025,11,Arbeitsuchende | Bestand
+2025-11,Grundsicherung für Arbeitsuchende,Bedarfsgemeinschaften (BG),,2632.77681496,2025,11,Grundsicherung für Arbeitsuchende | Bedarfsgemeinschaften (BG)
+2025-11,Grundsicherung für Arbeitsuchende,Personen in Bedarfsgemeinschaften (PERS),,5126.67877136,2025,11,Grundsicherung für Arbeitsuchende | Personen in Bedarfsgemeinschaften (PERS)
+2025-11,Grundsicherung für Arbeitsuchende,dar. Regelleistungsberechtigte (RLB),,4839.95606261,2025,11,Grundsicherung für Arbeitsuchende | dar. Regelleistungsberechtigte (RLB)
+2025-11,Grundsicherung für Arbeitsuchende,dav. erwerbsfähige Leistungsberechtigte (ELB),,3504.91585589,2025,11,Grundsicherung für Arbeitsuchende | dav. erwerbsfähige Leistungsberechtigte (ELB)
+2025-11,Grundsicherung für Arbeitsuchende,nicht erwerbsfähige Leistungsberechtigte (NEF),,1335.04020672,2025,11,Grundsicherung für Arbeitsuchende | nicht erwerbsfähige Leistungsberechtigte (NEF)
+2025-11,Unterbeschäftigung,Arbeitslosigkeit im weiteren Sinne,3843.0,1679.0,2025,11,Unterbeschäftigung | Arbeitslosigkeit im weiteren Sinne
+2025-11,Unterbeschäftigung,Unterbeschäftigung (ohne Kurzarbeit),4380.0,2025.0,2025,11,Unterbeschäftigung | Unterbeschäftigung (ohne Kurzarbeit)
+2025-11,Unterbeschäftigung,Unterbeschäftigung im engeren Sinne,4360.0,2023.0,2025,11,Unterbeschäftigung | Unterbeschäftigung im engeren Sinne
+2025-11,Unterbeschäftigung,Unterbeschäftigungsquote,3.7,1.7,2025,11,Unterbeschäftigung | Unterbeschäftigungsquote
+2025-11,gemeldete Arbeitsstellen,Bestand,1666.0,,2025,11,gemeldete Arbeitsstellen | Bestand
+2025-11,gemeldete Arbeitsstellen,Zugang (12-Monatssumme),3684.0,,2025,11,gemeldete Arbeitsstellen | Zugang (12-Monatssumme)
+2025-11,gemeldete Arbeitsstellen,Zugang (im Monat),342.0,,2025,11,gemeldete Arbeitsstellen | Zugang (im Monat)
+2025-11,gemeldete Arbeitsstellen,sozialversicherungspflichtig,339.0,,2025,11,gemeldete Arbeitsstellen | sozialversicherungspflichtig
+2025-11,gemeldete Arbeitsstellen,sozialversicherungspflichtig,3639.0,,2025,11,gemeldete Arbeitsstellen | sozialversicherungspflichtig
+2025-11,gemeldete Arbeitsstellen,sozialversicherungspflichtig,1651.0,,2025,11,gemeldete Arbeitsstellen | sozialversicherungspflichtig
+2025-12,Arbeitslose,15 bis unter 25 Jahre,409.0,185.0,2025,12,Arbeitslose | 15 bis unter 25 Jahre
+2025-12,Arbeitslose,25 bis unter 50 Jahre,1919.0,822.0,2025,12,Arbeitslose | 25 bis unter 50 Jahre
+2025-12,Arbeitslose,50 Jahre und älter,1406.0,459.0,2025,12,Arbeitslose | 50 Jahre und älter
+2025-12,Arbeitslose,55 Jahre und älter,1073.0,319.0,2025,12,Arbeitslose | 55 Jahre und älter
+2025-12,Arbeitslose,Abgang (12-Monatssumme),9406.0,3481.0,2025,12,Arbeitslose | Abgang (12-Monatssumme)
+2025-12,Arbeitslose,Abgang (im Monat),775.0,354.0,2025,12,Arbeitslose | Abgang (im Monat)
+2025-12,Arbeitslose,Arbeitslosenquote,3.2,1.3,2025,12,Arbeitslose | Arbeitslosenquote
+2025-12,Arbeitslose,Ausländer,1246.0,721.0,2025,12,Arbeitslose | Ausländer
+2025-12,Arbeitslose,Bestand,3734.0,1466.0,2025,12,Arbeitslose | Bestand
+2025-12,Arbeitslose,Frauen,1644.0,664.0,2025,12,Arbeitslose | Frauen
+2025-12,Arbeitslose,Langzeitarbeitslose,872.0,610.0,2025,12,Arbeitslose | Langzeitarbeitslose
+2025-12,Arbeitslose,Männer,2090.0,802.0,2025,12,Arbeitslose | Männer
+2025-12,Arbeitslose,Zugang (12-Monatssumme),9897.0,3309.0,2025,12,Arbeitslose | Zugang (12-Monatssumme)
+2025-12,Arbeitslose,Zugang (im Monat),847.0,282.0,2025,12,Arbeitslose | Zugang (im Monat)
+2025-12,Arbeitslose,schwerbehinderte Menschen,352.0,112.0,2025,12,Arbeitslose | schwerbehinderte Menschen
+2025-12,Arbeitsuchende,Bestand,6269.0,2653.0,2025,12,Arbeitsuchende | Bestand
+2025-12,Grundsicherung für Arbeitsuchende,Bedarfsgemeinschaften (BG),,2619.193501,2025,12,Grundsicherung für Arbeitsuchende | Bedarfsgemeinschaften (BG)
+2025-12,Grundsicherung für Arbeitsuchende,Personen in Bedarfsgemeinschaften (PERS),,5137.2707299,2025,12,Grundsicherung für Arbeitsuchende | Personen in Bedarfsgemeinschaften (PERS)
+2025-12,Grundsicherung für Arbeitsuchende,dar. Regelleistungsberechtigte (RLB),,4838.0745289,2025,12,Grundsicherung für Arbeitsuchende | dar. Regelleistungsberechtigte (RLB)
+2025-12,Grundsicherung für Arbeitsuchende,dav. erwerbsfähige Leistungsberechtigte (ELB),,3489.35303939,2025,12,Grundsicherung für Arbeitsuchende | dav. erwerbsfähige Leistungsberechtigte (ELB)
+2025-12,Grundsicherung für Arbeitsuchende,nicht erwerbsfähige Leistungsberechtigte (NEF),,1348.72148951,2025,12,Grundsicherung für Arbeitsuchende | nicht erwerbsfähige Leistungsberechtigte (NEF)
+2025-12,Unterbeschäftigung,Arbeitslosigkeit im weiteren Sinne,3945.0,1650.0,2025,12,Unterbeschäftigung | Arbeitslosigkeit im weiteren Sinne
+2025-12,Unterbeschäftigung,Unterbeschäftigung (ohne Kurzarbeit),4488.0,2005.0,2025,12,Unterbeschäftigung | Unterbeschäftigung (ohne Kurzarbeit)
+2025-12,Unterbeschäftigung,Unterbeschäftigung im engeren Sinne,4469.0,2003.0,2025,12,Unterbeschäftigung | Unterbeschäftigung im engeren Sinne
+2025-12,Unterbeschäftigung,Unterbeschäftigungsquote,3.8,1.7,2025,12,Unterbeschäftigung | Unterbeschäftigungsquote
+2025-12,gemeldete Arbeitsstellen,Bestand,1400.0,,2025,12,gemeldete Arbeitsstellen | Bestand
+2025-12,gemeldete Arbeitsstellen,Zugang (12-Monatssumme),3653.0,,2025,12,gemeldete Arbeitsstellen | Zugang (12-Monatssumme)
+2025-12,gemeldete Arbeitsstellen,Zugang (im Monat),205.0,,2025,12,gemeldete Arbeitsstellen | Zugang (im Monat)
+2025-12,gemeldete Arbeitsstellen,sozialversicherungspflichtig,204.0,,2025,12,gemeldete Arbeitsstellen | sozialversicherungspflichtig
+2025-12,gemeldete Arbeitsstellen,sozialversicherungspflichtig,3608.0,,2025,12,gemeldete Arbeitsstellen | sozialversicherungspflichtig
+2025-12,gemeldete Arbeitsstellen,sozialversicherungspflichtig,1388.0,,2025,12,gemeldete Arbeitsstellen | sozialversicherungspflichtig
+2026-01,Arbeitslose,15 bis unter 25 Jahre,434.0,183.0,2026,1,Arbeitslose | 15 bis unter 25 Jahre
+2026-01,Arbeitslose,25 bis unter 50 Jahre,2205.0,869.0,2026,1,Arbeitslose | 25 bis unter 50 Jahre
+2026-01,Arbeitslose,50 Jahre und älter,1631.0,499.0,2026,1,Arbeitslose | 50 Jahre und älter
+2026-01,Arbeitslose,55 Jahre und älter,1252.0,360.0,2026,1,Arbeitslose | 55 Jahre und älter
+2026-01,Arbeitslose,Abgang (12-Monatssumme),9405.0,3462.0,2026,1,Arbeitslose | Abgang (12-Monatssumme)
+2026-01,Arbeitslose,Abgang (im Monat),572.0,185.0,2026,1,Arbeitslose | Abgang (im Monat)
+2026-01,Arbeitslose,Arbeitslosenquote,3.6,1.3,2026,1,Arbeitslose | Arbeitslosenquote
+2026-01,Arbeitslose,Ausländer,1419.0,775.0,2026,1,Arbeitslose | Ausländer
+2026-01,Arbeitslose,Bestand,4270.0,1551.0,2026,1,Arbeitslose | Bestand
+2026-01,Arbeitslose,Frauen,1783.0,699.0,2026,1,Arbeitslose | Frauen
+2026-01,Arbeitslose,Langzeitarbeitslose,948.0,655.0,2026,1,Arbeitslose | Langzeitarbeitslose
+2026-01,Arbeitslose,Männer,2487.0,852.0,2026,1,Arbeitslose | Männer
+2026-01,Arbeitslose,Zugang (12-Monatssumme),9935.0,3297.0,2026,1,Arbeitslose | Zugang (12-Monatssumme)
+2026-01,Arbeitslose,Zugang (im Monat),1111.0,259.0,2026,1,Arbeitslose | Zugang (im Monat)
+2026-01,Arbeitslose,schwerbehinderte Menschen,391.0,124.0,2026,1,Arbeitslose | schwerbehinderte Menschen
+2026-01,Arbeitsuchende,Bestand,6362.0,2637.0,2026,1,Arbeitsuchende | Bestand
+2026-01,Grundsicherung für Arbeitsuchende,Bedarfsgemeinschaften (BG),,2635.82843173,2026,1,Grundsicherung für Arbeitsuchende | Bedarfsgemeinschaften (BG)
+2026-01,Grundsicherung für Arbeitsuchende,Personen in Bedarfsgemeinschaften (PERS),,5141.58484699,2026,1,Grundsicherung für Arbeitsuchende | Personen in Bedarfsgemeinschaften (PERS)
+2026-01,Grundsicherung für Arbeitsuchende,dar. Regelleistungsberechtigte (RLB),,4870.57157335,2026,1,Grundsicherung für Arbeitsuchende | dar. Regelleistungsberechtigte (RLB)
+2026-01,Grundsicherung für Arbeitsuchende,dav. erwerbsfähige Leistungsberechtigte (ELB),,3517.27818068,2026,1,Grundsicherung für Arbeitsuchende | dav. erwerbsfähige Leistungsberechtigte (ELB)
+2026-01,Grundsicherung für Arbeitsuchende,nicht erwerbsfähige Leistungsberechtigte (NEF),,1353.29339267,2026,1,Grundsicherung für Arbeitsuchende | nicht erwerbsfähige Leistungsberechtigte (NEF)
+2026-01,Unterbeschäftigung,Arbeitslosigkeit im weiteren Sinne,4452.0,1713.0,2026,1,Unterbeschäftigung | Arbeitslosigkeit im weiteren Sinne
+2026-01,Unterbeschäftigung,Unterbeschäftigung (ohne Kurzarbeit),4949.0,2030.0,2026,1,Unterbeschäftigung | Unterbeschäftigung (ohne Kurzarbeit)
+2026-01,Unterbeschäftigung,Unterbeschäftigung im engeren Sinne,4928.0,2027.0,2026,1,Unterbeschäftigung | Unterbeschäftigung im engeren Sinne
+2026-01,Unterbeschäftigung,Unterbeschäftigungsquote,4.2,1.7,2026,1,Unterbeschäftigung | Unterbeschäftigungsquote
+2026-01,gemeldete Arbeitsstellen,Bestand,1325.0,,2026,1,gemeldete Arbeitsstellen | Bestand
+2026-01,gemeldete Arbeitsstellen,Zugang (12-Monatssumme),3597.0,,2026,1,gemeldete Arbeitsstellen | Zugang (12-Monatssumme)
+2026-01,gemeldete Arbeitsstellen,Zugang (im Monat),163.0,,2026,1,gemeldete Arbeitsstellen | Zugang (im Monat)
+2026-01,gemeldete Arbeitsstellen,sozialversicherungspflichtig,163.0,,2026,1,gemeldete Arbeitsstellen | sozialversicherungspflichtig
+2026-01,gemeldete Arbeitsstellen,sozialversicherungspflichtig,3556.0,,2026,1,gemeldete Arbeitsstellen | sozialversicherungspflichtig
+2026-01,gemeldete Arbeitsstellen,sozialversicherungspflichtig,1313.0,,2026,1,gemeldete Arbeitsstellen | sozialversicherungspflichtig
+2026-02,Arbeitslose,15 bis unter 25 Jahre,449.0,179.0,2026,2,Arbeitslose | 15 bis unter 25 Jahre
+2026-02,Arbeitslose,25 bis unter 50 Jahre,2151.0,872.0,2026,2,Arbeitslose | 25 bis unter 50 Jahre
+2026-02,Arbeitslose,50 Jahre und älter,1626.0,491.0,2026,2,Arbeitslose | 50 Jahre und älter
+2026-02,Arbeitslose,55 Jahre und älter,1236.0,336.0,2026,2,Arbeitslose | 55 Jahre und älter
+2026-02,Arbeitslose,Abgang (12-Monatssumme),9411.0,3398.0,2026,2,Arbeitslose | Abgang (12-Monatssumme)
+2026-02,Arbeitslose,Abgang (im Monat),851.0,282.0,2026,2,Arbeitslose | Abgang (im Monat)
+2026-02,Arbeitslose,Arbeitslosenquote,3.6,1.3,2026,2,Arbeitslose | Arbeitslosenquote
+2026-02,Arbeitslose,Ausländer,1415.0,777.0,2026,2,Arbeitslose | Ausländer
+2026-02,Arbeitslose,Bestand,4226.0,1542.0,2026,2,Arbeitslose | Bestand
+2026-02,Arbeitslose,Frauen,1756.0,694.0,2026,2,Arbeitslose | Frauen
+2026-02,Arbeitslose,Langzeitarbeitslose,940.0,662.0,2026,2,Arbeitslose | Langzeitarbeitslose
+2026-02,Arbeitslose,Männer,2470.0,848.0,2026,2,Arbeitslose | Männer
+2026-02,Arbeitslose,Zugang (12-Monatssumme),9961.0,3306.0,2026,2,Arbeitslose | Zugang (12-Monatssumme)
+2026-02,Arbeitslose,Zugang (im Monat),812.0,249.0,2026,2,Arbeitslose | Zugang (im Monat)
+2026-02,Arbeitslose,schwerbehinderte Menschen,390.0,131.0,2026,2,Arbeitslose | schwerbehinderte Menschen
+2026-02,Arbeitsuchende,Bestand,6448.0,2648.0,2026,2,Arbeitsuchende | Bestand
+2026-02,Grundsicherung für Arbeitsuchende,Bedarfsgemeinschaften (BG),,2666.87709574,2026,2,Grundsicherung für Arbeitsuchende | Bedarfsgemeinschaften (BG)
+2026-02,Grundsicherung für Arbeitsuchende,Personen in Bedarfsgemeinschaften (PERS),,5173.91606677,2026,2,Grundsicherung für Arbeitsuchende | Personen in Bedarfsgemeinschaften (PERS)
+2026-02,Grundsicherung für Arbeitsuchende,dar. Regelleistungsberechtigte (RLB),,4877.05306268,2026,2,Grundsicherung für Arbeitsuchende | dar. Regelleistungsberechtigte (RLB)
+2026-02,Grundsicherung für Arbeitsuchende,dav. erwerbsfähige Leistungsberechtigte (ELB),,3546.6768257,2026,2,Grundsicherung für Arbeitsuchende | dav. erwerbsfähige Leistungsberechtigte (ELB)
+2026-02,Grundsicherung für Arbeitsuchende,nicht erwerbsfähige Leistungsberechtigte (NEF),,1330.37623698,2026,2,Grundsicherung für Arbeitsuchende | nicht erwerbsfähige Leistungsberechtigte (NEF)
+2026-02,Unterbeschäftigung,Arbeitslosigkeit im weiteren Sinne,4416.0,1707.0,2026,2,Unterbeschäftigung | Arbeitslosigkeit im weiteren Sinne
+2026-02,Unterbeschäftigung,Unterbeschäftigung (ohne Kurzarbeit),4947.0,2052.0,2026,2,Unterbeschäftigung | Unterbeschäftigung (ohne Kurzarbeit)
+2026-02,Unterbeschäftigung,Unterbeschäftigung im engeren Sinne,4931.0,2050.0,2026,2,Unterbeschäftigung | Unterbeschäftigung im engeren Sinne
+2026-02,Unterbeschäftigung,Unterbeschäftigungsquote,4.2,1.7,2026,2,Unterbeschäftigung | Unterbeschäftigungsquote
+2026-02,gemeldete Arbeitsstellen,Bestand,1348.0,,2026,2,gemeldete Arbeitsstellen | Bestand
+2026-02,gemeldete Arbeitsstellen,Zugang (12-Monatssumme),3514.0,,2026,2,gemeldete Arbeitsstellen | Zugang (12-Monatssumme)
+2026-02,gemeldete Arbeitsstellen,Zugang (im Monat),230.0,,2026,2,gemeldete Arbeitsstellen | Zugang (im Monat)
+2026-02,gemeldete Arbeitsstellen,sozialversicherungspflichtig,227.0,,2026,2,gemeldete Arbeitsstellen | sozialversicherungspflichtig
+2026-02,gemeldete Arbeitsstellen,sozialversicherungspflichtig,3478.0,,2026,2,gemeldete Arbeitsstellen | sozialversicherungspflichtig
+2026-02,gemeldete Arbeitsstellen,sozialversicherungspflichtig,1336.0,,2026,2,gemeldete Arbeitsstellen | sozialversicherungspflichtig
+2026-03,Arbeitslose,15 bis unter 25 Jahre,436.0,179.0,2026,3,Arbeitslose | 15 bis unter 25 Jahre
+2026-03,Arbeitslose,25 bis unter 50 Jahre,2065.0,869.0,2026,3,Arbeitslose | 25 bis unter 50 Jahre
+2026-03,Arbeitslose,50 Jahre und älter,1551.0,495.0,2026,3,Arbeitslose | 50 Jahre und älter
+2026-03,Arbeitslose,55 Jahre und älter,1188.0,342.0,2026,3,Arbeitslose | 55 Jahre und älter
+2026-03,Arbeitslose,Abgang (12-Monatssumme),9467.0,3392.0,2026,3,Arbeitslose | Abgang (12-Monatssumme)
+2026-03,Arbeitslose,Abgang (im Monat),956.0,290.0,2026,3,Arbeitslose | Abgang (im Monat)
+2026-03,Arbeitslose,Arbeitslosenquote,3.5,1.3,2026,3,Arbeitslose | Arbeitslosenquote
+2026-03,Arbeitslose,Ausländer,1354.0,754.0,2026,3,Arbeitslose | Ausländer
+2026-03,Arbeitslose,Bestand,4052.0,1543.0,2026,3,Arbeitslose | Bestand
+2026-03,Arbeitslose,Frauen,1728.0,700.0,2026,3,Arbeitslose | Frauen
+2026-03,Arbeitslose,Langzeitarbeitslose,947.0,677.0,2026,3,Arbeitslose | Langzeitarbeitslose
+2026-03,Arbeitslose,Männer,2324.0,843.0,2026,3,Arbeitslose | Männer
+2026-03,Arbeitslose,Zugang (12-Monatssumme),9943.0,3269.0,2026,3,Arbeitslose | Zugang (12-Monatssumme)
+2026-03,Arbeitslose,Zugang (im Monat),791.0,268.0,2026,3,Arbeitslose | Zugang (im Monat)
+2026-03,Arbeitslose,schwerbehinderte Menschen,373.0,135.0,2026,3,Arbeitslose | schwerbehinderte Menschen
+2026-03,Arbeitsuchende,Bestand,6264.0,2653.0,2026,3,Arbeitsuchende | Bestand
+2026-03,Grundsicherung für Arbeitsuchende,Bedarfsgemeinschaften (BG),,2696.08041838,2026,3,Grundsicherung für Arbeitsuchende | Bedarfsgemeinschaften (BG)
+2026-03,Grundsicherung für Arbeitsuchende,Personen in Bedarfsgemeinschaften (PERS),,5225.96918587,2026,3,Grundsicherung für Arbeitsuchende | Personen in Bedarfsgemeinschaften (PERS)
+2026-03,Grundsicherung für Arbeitsuchende,dar. Regelleistungsberechtigte (RLB),,4920.24152547,2026,3,Grundsicherung für Arbeitsuchende | dar. Regelleistungsberechtigte (RLB)
+2026-03,Grundsicherung für Arbeitsuchende,dav. erwerbsfähige Leistungsberechtigte (ELB),,3576.48941497,2026,3,Grundsicherung für Arbeitsuchende | dav. erwerbsfähige Leistungsberechtigte (ELB)
+2026-03,Grundsicherung für Arbeitsuchende,nicht erwerbsfähige Leistungsberechtigte (NEF),,1343.7521105,2026,3,Grundsicherung für Arbeitsuchende | nicht erwerbsfähige Leistungsberechtigte (NEF)
+2026-03,Unterbeschäftigung,Arbeitslosigkeit im weiteren Sinne,4228.0,1696.0,2026,3,Unterbeschäftigung | Arbeitslosigkeit im weiteren Sinne
+2026-03,Unterbeschäftigung,Unterbeschäftigung (ohne Kurzarbeit),4761.0,2061.0,2026,3,Unterbeschäftigung | Unterbeschäftigung (ohne Kurzarbeit)
+2026-03,Unterbeschäftigung,Unterbeschäftigung im engeren Sinne,4741.0,2058.0,2026,3,Unterbeschäftigung | Unterbeschäftigung im engeren Sinne
+2026-03,Unterbeschäftigung,Unterbeschäftigungsquote,4.0,1.7,2026,3,Unterbeschäftigung | Unterbeschäftigungsquote
+2026-03,gemeldete Arbeitsstellen,Bestand,1310.0,,2026,3,gemeldete Arbeitsstellen | Bestand
+2026-03,gemeldete Arbeitsstellen,Zugang (12-Monatssumme),3544.0,,2026,3,gemeldete Arbeitsstellen | Zugang (12-Monatssumme)
+2026-03,gemeldete Arbeitsstellen,Zugang (im Monat),255.0,,2026,3,gemeldete Arbeitsstellen | Zugang (im Monat)
+2026-03,gemeldete Arbeitsstellen,sozialversicherungspflichtig,251.0,,2026,3,gemeldete Arbeitsstellen | sozialversicherungspflichtig
+2026-03,gemeldete Arbeitsstellen,sozialversicherungspflichtig,3506.0,,2026,3,gemeldete Arbeitsstellen | sozialversicherungspflichtig
+2026-03,gemeldete Arbeitsstellen,sozialversicherungspflichtig,1296.0,,2026,3,gemeldete Arbeitsstellen | sozialversicherungspflichtig
+2026-04,Arbeitslose,15 bis unter 25 Jahre,380.0,162.0,2026,4,Arbeitslose | 15 bis unter 25 Jahre
+2026-04,Arbeitslose,25 bis unter 50 Jahre,1999.0,878.0,2026,4,Arbeitslose | 25 bis unter 50 Jahre
+2026-04,Arbeitslose,50 Jahre und älter,1532.0,525.0,2026,4,Arbeitslose | 50 Jahre und älter
+2026-04,Arbeitslose,55 Jahre und älter,1182.0,364.0,2026,4,Arbeitslose | 55 Jahre und älter
+2026-04,Arbeitslose,Abgang (12-Monatssumme),9560.0,3404.0,2026,4,Arbeitslose | Abgang (12-Monatssumme)
+2026-04,Arbeitslose,Abgang (im Monat),957.0,262.0,2026,4,Arbeitslose | Abgang (im Monat)
+2026-04,Arbeitslose,Arbeitslosenquote,3.3,1.3,2026,4,Arbeitslose | Arbeitslosenquote
+2026-04,Arbeitslose,Ausländer,1263.0,736.0,2026,4,Arbeitslose | Ausländer
+2026-04,Arbeitslose,Bestand,3911.0,1565.0,2026,4,Arbeitslose | Bestand
+2026-04,Arbeitslose,Frauen,1710.0,712.0,2026,4,Arbeitslose | Frauen
+2026-04,Arbeitslose,Langzeitarbeitslose,983.0,694.0,2026,4,Arbeitslose | Langzeitarbeitslose
+2026-04,Arbeitslose,Männer,2201.0,853.0,2026,4,Arbeitslose | Männer
+2026-04,Arbeitslose,Zugang (12-Monatssumme),9989.0,3257.0,2026,4,Arbeitslose | Zugang (12-Monatssumme)
+2026-04,Arbeitslose,Zugang (im Monat),819.0,263.0,2026,4,Arbeitslose | Zugang (im Monat)
+2026-04,Arbeitslose,schwerbehinderte Menschen,381.0,144.0,2026,4,Arbeitslose | schwerbehinderte Menschen
+2026-04,Arbeitsuchende,Bestand,6148.0,2686.0,2026,4,Arbeitsuchende | Bestand
+2026-04,Grundsicherung für Arbeitsuchende,Bedarfsgemeinschaften (BG),,2703.29405001,2026,4,Grundsicherung für Arbeitsuchende | Bedarfsgemeinschaften (BG)
+2026-04,Grundsicherung für Arbeitsuchende,Personen in Bedarfsgemeinschaften (PERS),,5193.21251273,2026,4,Grundsicherung für Arbeitsuchende | Personen in Bedarfsgemeinschaften (PERS)
+2026-04,Grundsicherung für Arbeitsuchende,dar. Regelleistungsberechtigte (RLB),,4890.97799123,2026,4,Grundsicherung für Arbeitsuchende | dar. Regelleistungsberechtigte (RLB)
+2026-04,Grundsicherung für Arbeitsuchende,dav. erwerbsfähige Leistungsberechtigte (ELB),,3567.83565384,2026,4,Grundsicherung für Arbeitsuchende | dav. erwerbsfähige Leistungsberechtigte (ELB)
+2026-04,Grundsicherung für Arbeitsuchende,nicht erwerbsfähige Leistungsberechtigte (NEF),,1323.14233739,2026,4,Grundsicherung für Arbeitsuchende | nicht erwerbsfähige Leistungsberechtigte (NEF)
+2026-04,Unterbeschäftigung,Arbeitslosigkeit im weiteren Sinne,4117.0,1734.0,2026,4,Unterbeschäftigung | Arbeitslosigkeit im weiteren Sinne
+2026-04,Unterbeschäftigung,Unterbeschäftigung (ohne Kurzarbeit),4647.0,2082.0,2026,4,Unterbeschäftigung | Unterbeschäftigung (ohne Kurzarbeit)
+2026-04,Unterbeschäftigung,Unterbeschäftigung im engeren Sinne,4624.0,2079.0,2026,4,Unterbeschäftigung | Unterbeschäftigung im engeren Sinne
+2026-04,Unterbeschäftigung,Unterbeschäftigungsquote,3.9,1.8,2026,4,Unterbeschäftigung | Unterbeschäftigungsquote
+2026-04,gemeldete Arbeitsstellen,Bestand,1260.0,,2026,4,gemeldete Arbeitsstellen | Bestand
+2026-04,gemeldete Arbeitsstellen,Zugang (12-Monatssumme),3582.0,,2026,4,gemeldete Arbeitsstellen | Zugang (12-Monatssumme)
+2026-04,gemeldete Arbeitsstellen,Zugang (im Monat),245.0,,2026,4,gemeldete Arbeitsstellen | Zugang (im Monat)
+2026-04,gemeldete Arbeitsstellen,sozialversicherungspflichtig,234.0,,2026,4,gemeldete Arbeitsstellen | sozialversicherungspflichtig
+2026-04,gemeldete Arbeitsstellen,sozialversicherungspflichtig,3537.0,,2026,4,gemeldete Arbeitsstellen | sozialversicherungspflichtig
+2026-04,gemeldete Arbeitsstellen,sozialversicherungspflichtig,1244.0,,2026,4,gemeldete Arbeitsstellen | sozialversicherungspflichtig
+2026-05,Arbeitslose,15 bis unter 25 Jahre,395.0,166.0,2026,5,Arbeitslose | 15 bis unter 25 Jahre
+2026-05,Arbeitslose,25 bis unter 50 Jahre,1945.0,888.0,2026,5,Arbeitslose | 25 bis unter 50 Jahre
+2026-05,Arbeitslose,50 Jahre und älter,1495.0,498.0,2026,5,Arbeitslose | 50 Jahre und älter
+2026-05,Arbeitslose,55 Jahre und älter,1138.0,343.0,2026,5,Arbeitslose | 55 Jahre und älter
+2026-05,Arbeitslose,Abgang (12-Monatssumme),9636.0,3375.0,2026,5,Arbeitslose | Abgang (12-Monatssumme)
+2026-05,Arbeitslose,Abgang (im Monat),862.0,275.0,2026,5,Arbeitslose | Abgang (im Monat)
+2026-05,Arbeitslose,Arbeitslosenquote,3.2,1.3,2026,5,Arbeitslose | Arbeitslosenquote
+2026-05,Arbeitslose,Ausländer,1202.0,711.0,2026,5,Arbeitslose | Ausländer
+2026-05,Arbeitslose,Bestand,3835.0,1552.0,2026,5,Arbeitslose | Bestand
+2026-05,Arbeitslose,Frauen,1704.0,716.0,2026,5,Arbeitslose | Frauen
+2026-05,Arbeitslose,Langzeitarbeitslose,1011.0,714.0,2026,5,Arbeitslose | Langzeitarbeitslose
+2026-05,Arbeitslose,Männer,2131.0,836.0,2026,5,Arbeitslose | Männer
+2026-05,Arbeitslose,Zugang (12-Monatssumme),10026.0,3238.0,2026,5,Arbeitslose | Zugang (12-Monatssumme)
+2026-05,Arbeitslose,Zugang (im Monat),786.0,243.0,2026,5,Arbeitslose | Zugang (im Monat)
+2026-05,Arbeitslose,schwerbehinderte Menschen,371.0,136.0,2026,5,Arbeitslose | schwerbehinderte Menschen
+2026-05,Arbeitsuchende,Bestand,6218.0,2665.0,2026,5,Arbeitsuchende | Bestand
+2026-05,Grundsicherung für Arbeitsuchende,Bedarfsgemeinschaften (BG),,2714.36631223,2026,5,Grundsicherung für Arbeitsuchende | Bedarfsgemeinschaften (BG)
+2026-05,Grundsicherung für Arbeitsuchende,Personen in Bedarfsgemeinschaften (PERS),,5214.82254224,2026,5,Grundsicherung für Arbeitsuchende | Personen in Bedarfsgemeinschaften (PERS)
+2026-05,Grundsicherung für Arbeitsuchende,dar. Regelleistungsberechtigte (RLB),,4898.73293141,2026,5,Grundsicherung für Arbeitsuchende | dar. Regelleistungsberechtigte (RLB)
+2026-05,Grundsicherung für Arbeitsuchende,dav. erwerbsfähige Leistungsberechtigte (ELB),,3572.7014193,2026,5,Grundsicherung für Arbeitsuchende | dav. erwerbsfähige Leistungsberechtigte (ELB)
+2026-05,Grundsicherung für Arbeitsuchende,nicht erwerbsfähige Leistungsberechtigte (NEF),,1326.03151211,2026,5,Grundsicherung für Arbeitsuchende | nicht erwerbsfähige Leistungsberechtigte (NEF)
+2026-05,Unterbeschäftigung,Arbeitslosigkeit im weiteren Sinne,4070.0,1732.0,2026,5,Unterbeschäftigung | Arbeitslosigkeit im weiteren Sinne
+2026-05,Unterbeschäftigung,Unterbeschäftigung (ohne Kurzarbeit),4603.0,2069.0,2026,5,Unterbeschäftigung | Unterbeschäftigung (ohne Kurzarbeit)
+2026-05,Unterbeschäftigung,Unterbeschäftigung im engeren Sinne,4578.0,2066.0,2026,5,Unterbeschäftigung | Unterbeschäftigung im engeren Sinne
+2026-05,Unterbeschäftigung,Unterbeschäftigungsquote,3.9,1.7,2026,5,Unterbeschäftigung | Unterbeschäftigungsquote
+2026-05,gemeldete Arbeitsstellen,Bestand,1169.0,,2026,5,gemeldete Arbeitsstellen | Bestand
+2026-05,gemeldete Arbeitsstellen,Zugang (12-Monatssumme),3655.0,,2026,5,gemeldete Arbeitsstellen | Zugang (12-Monatssumme)
+2026-05,gemeldete Arbeitsstellen,Zugang (im Monat),253.0,,2026,5,gemeldete Arbeitsstellen | Zugang (im Monat)
+2026-05,gemeldete Arbeitsstellen,sozialversicherungspflichtig,248.0,,2026,5,gemeldete Arbeitsstellen | sozialversicherungspflichtig
+2026-05,gemeldete Arbeitsstellen,sozialversicherungspflichtig,3609.0,,2026,5,gemeldete Arbeitsstellen | sozialversicherungspflichtig
+2026-05,gemeldete Arbeitsstellen,sozialversicherungspflichtig,1155.0,,2026,5,gemeldete Arbeitsstellen | sozialversicherungspflichtig
+2026-06,Arbeitslose,15 bis unter 25 Jahre,391.0,154.0,2026,6,Arbeitslose | 15 bis unter 25 Jahre
+2026-06,Arbeitslose,25 bis unter 50 Jahre,1887.0,855.0,2026,6,Arbeitslose | 25 bis unter 50 Jahre
+2026-06,Arbeitslose,50 Jahre und älter,1496.0,491.0,2026,6,Arbeitslose | 50 Jahre und älter
+2026-06,Arbeitslose,55 Jahre und älter,1134.0,338.0,2026,6,Arbeitslose | 55 Jahre und älter
+2026-06,Arbeitslose,Abgang (12-Monatssumme),9721.0,3379.0,2026,6,Arbeitslose | Abgang (12-Monatssumme)
+2026-06,Arbeitslose,Abgang (im Monat),773.0,290.0,2026,6,Arbeitslose | Abgang (im Monat)
+2026-06,Arbeitslose,Arbeitslosenquote,3.2,1.3,2026,6,Arbeitslose | Arbeitslosenquote
+2026-06,Arbeitslose,Ausländer,1176.0,681.0,2026,6,Arbeitslose | Ausländer
+2026-06,Arbeitslose,Bestand,3774.0,1500.0,2026,6,Arbeitslose | Bestand
+2026-06,Arbeitslose,Frauen,1654.0,682.0,2026,6,Arbeitslose | Frauen
+2026-06,Arbeitslose,Langzeitarbeitslose,996.0,709.0,2026,6,Arbeitslose | Langzeitarbeitslose
+2026-06,Arbeitslose,Männer,2120.0,818.0,2026,6,Arbeitslose | Männer
+2026-06,Arbeitslose,Zugang (12-Monatssumme),9939.0,3115.0,2026,6,Arbeitslose | Zugang (12-Monatssumme)
+2026-06,Arbeitslose,Zugang (im Monat),716.0,215.0,2026,6,Arbeitslose | Zugang (im Monat)
+2026-06,Arbeitslose,schwerbehinderte Menschen,374.0,130.0,2026,6,Arbeitslose | schwerbehinderte Menschen
+2026-06,Arbeitsuchende,Bestand,6322.0,2625.0,2026,6,Arbeitsuchende | Bestand
+2026-06,Grundsicherung für Arbeitsuchende,Bedarfsgemeinschaften (BG),,2673.35337327,2026,6,Grundsicherung für Arbeitsuchende | Bedarfsgemeinschaften (BG)
+2026-06,Grundsicherung für Arbeitsuchende,Personen in Bedarfsgemeinschaften (PERS),,5149.98600518,2026,6,Grundsicherung für Arbeitsuchende | Personen in Bedarfsgemeinschaften (PERS)
+2026-06,Grundsicherung für Arbeitsuchende,dar. Regelleistungsberechtigte (RLB),,4841.2685966,2026,6,Grundsicherung für Arbeitsuchende | dar. Regelleistungsberechtigte (RLB)
+2026-06,Grundsicherung für Arbeitsuchende,dav. erwerbsfähige Leistungsberechtigte (ELB),,3523.61950251,2026,6,Grundsicherung für Arbeitsuchende | dav. erwerbsfähige Leistungsberechtigte (ELB)
+2026-06,Grundsicherung für Arbeitsuchende,nicht erwerbsfähige Leistungsberechtigte (NEF),,1317.64909409,2026,6,Grundsicherung für Arbeitsuchende | nicht erwerbsfähige Leistungsberechtigte (NEF)
+2026-06,Unterbeschäftigung,Arbeitslosigkeit im weiteren Sinne,4024.0,1681.0,2026,6,Unterbeschäftigung | Arbeitslosigkeit im weiteren Sinne
+2026-06,Unterbeschäftigung,Unterbeschäftigung (ohne Kurzarbeit),4559.0,2020.0,2026,6,Unterbeschäftigung | Unterbeschäftigung (ohne Kurzarbeit)
+2026-06,Unterbeschäftigung,Unterbeschäftigung im engeren Sinne,4534.0,2018.0,2026,6,Unterbeschäftigung | Unterbeschäftigung im engeren Sinne
+2026-06,Unterbeschäftigung,Unterbeschäftigungsquote,3.8,1.7,2026,6,Unterbeschäftigung | Unterbeschäftigungsquote
+2026-06,gemeldete Arbeitsstellen,Bestand,1192.0,,2026,6,gemeldete Arbeitsstellen | Bestand
+2026-06,gemeldete Arbeitsstellen,Zugang (12-Monatssumme),3538.0,,2026,6,gemeldete Arbeitsstellen | Zugang (12-Monatssumme)
+2026-06,gemeldete Arbeitsstellen,Zugang (im Monat),243.0,,2026,6,gemeldete Arbeitsstellen | Zugang (im Monat)
+2026-06,gemeldete Arbeitsstellen,sozialversicherungspflichtig,238.0,,2026,6,gemeldete Arbeitsstellen | sozialversicherungspflichtig
+2026-06,gemeldete Arbeitsstellen,sozialversicherungspflichtig,3490.0,,2026,6,gemeldete Arbeitsstellen | sozialversicherungspflichtig
+2026-06,gemeldete Arbeitsstellen,sozialversicherungspflichtig,1176.0,,2026,6,gemeldete Arbeitsstellen | sozialversicherungspflichtig
