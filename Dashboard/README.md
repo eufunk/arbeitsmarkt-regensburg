@@ -6,7 +6,7 @@ Interaktives Streamlit-Dashboard zu den bisher analysierten Kennzahlen aus
 
 [![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://daelwve9mj8pxz32vshq7u.streamlit.app/)
 
-**Live:** https://daelwve9mj8pxz32vshq7u.streamlit.app/
+**[Live-Dashboard](https://daelwve9mj8pxz32vshq7u.streamlit.app/)**
 
 ## Voraussetzung
 

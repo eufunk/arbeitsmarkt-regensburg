@@ -6,7 +6,7 @@ Statistik-Nr. t73906-0).
 
 [![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://daelwve9mj8pxz32vshq7u.streamlit.app/)
 
-**Live-Dashboard:** https://daelwve9mj8pxz32vshq7u.streamlit.app/
+**[Live-Dashboard](https://daelwve9mj8pxz32vshq7u.streamlit.app/)**
 
 ## Datengrundlage
 
