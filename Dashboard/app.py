@@ -41,6 +41,15 @@ if kennzahlen is None:
         "`Notebooks/01_Exploration.ipynb` einmal komplett ausführen, "
         "damit `Data/processed/*.csv` entsteht."
     )
+    with st.expander("Diagnose"):
+        st.write("Gesucht in:", str(PROCESSED_DIR))
+        st.write("Verzeichnis existiert:", PROCESSED_DIR.exists())
+        if PROCESSED_DIR.exists():
+            st.write("Inhalt:", [p.name for p in PROCESSED_DIR.iterdir()])
+        data_dir = PROCESSED_DIR.parent
+        st.write("Data/-Verzeichnis existiert:", data_dir.exists())
+        if data_dir.exists():
+            st.write("Inhalt von Data/:", [p.name for p in data_dir.iterdir()])
     st.stop()
 
 st.title("Arbeitsmarkt Regensburg — Jobcenter (SGB II)")
