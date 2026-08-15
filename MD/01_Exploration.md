@@ -5,7 +5,7 @@
 Liest die 15 monatlichen Excel-Berichte "Eckwerte für Jobcenter" (Jobcenter Regensburg,
 Statistik-Nr. t73906-0) aus `Data/RegensburgJCData/` ein, bereinigt und strukturiert sie zu
 einer Zeitreihe und exportiert das Ergebnis als CSV für die Weiterverarbeitung in
-[`02_Analyse.ipynb`](02_Analyse.md). Enthält **keine Grafiken** — reine Daten-Pipeline
+[`02_Analyse_SGBII.ipynb`](02_Analyse_SGBII.md). Enthält **keine Grafiken** — reine Daten-Pipeline
 (Einlesen → Bereinigen → Aufbereiten → Export).
 
 ## Input
@@ -55,7 +55,7 @@ versioniert und müssen bei Bedarf per Notebook-Lauf neu erzeugt werden.
    - Mittelwert und Standardabweichung je Kennzahl werden zusätzlich direkt über NumPy
      (`np.mean`, `np.std` auf `.to_numpy()`) ausgegeben.
 6. **Export** — `df.to_csv(...)` und `kennzahlen.to_csv(...)` nach `Data/processed/`.
-7. **Abschluss (Markdown)** — Verweis auf `02_Analyse.ipynb`.
+7. **Abschluss (Markdown)** — Verweis auf `02_Analyse_SGBII.ipynb`.
 
 ## Ausgewählte SGB-II-Kennzahlen (Wide-Tabelle)
 
@@ -72,11 +72,11 @@ versioniert und müssen bei Bedarf per Notebook-Lauf neu erzeugt werden.
 
 - Python-Pakete: `pandas`, `numpy`, `openpyxl`, `matplotlib` (für Setup-Konsistenz, hier nicht
   zwingend genutzt)
-- Wird das Notebook nicht ausgeführt, fehlen die CSVs für `02_Analyse.ipynb` — dieses bricht
-  dann beim Einlesen ab.
+- Wird das Notebook nicht ausgeführt, fehlen die CSVs für `02_Analyse_SGBII.ipynb` — dieses
+  bricht dann beim Einlesen ab.
 
 ## Verwandte Dateien
 
 - Themenabgleich gegen den Lernplan: [`ThemenCheck.md`](ThemenCheck.md)
-- Fortsetzung: [`02_Analyse.ipynb`](../Notebooks/02_Analyse.ipynb) /
-  [`02_Analyse.md`](02_Analyse.md)
+- Fortsetzung: [`02_Analyse_SGBII.ipynb`](../Notebooks/02_Analyse_SGBII.ipynb) /
+  [`02_Analyse_SGBII.md`](02_Analyse_SGBII.md)

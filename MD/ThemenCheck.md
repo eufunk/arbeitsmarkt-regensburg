@@ -1,6 +1,6 @@
 # Themen-Check: Arbeitsmarkt-Regensburg-Notebooks vs. DatenanalysePython.md
 
-Abgleich der Notebooks `Notebooks/01_Exploration.ipynb` und `Notebooks/02_Analyse.ipynb` gegen
+Abgleich der Notebooks `Notebooks/01_Exploration.ipynb` und `Notebooks/02_Analyse_SGBII.ipynb` gegen
 Abschnitt 2 „Datenanalyse mit Pandas & NumPy“ aus [`DatenanalysePython.md`](../DatenanalysePython.md).
 
 Stand: nach Aufteilung in Exploration (Einlesen/Bereinigen/Aufbereiten/Export) und Analyse
@@ -12,7 +12,7 @@ Stand: nach Aufteilung in Exploration (Einlesen/Bereinigen/Aufbereiten/Export) u
 |---|---|---|
 | Series & DataFrame | ✅ | 01_Exploration |
 | Dateien einlesen (Excel) | ✅ (via `openpyxl`, nicht `pd.read_excel`) | 01_Exploration |
-| Dateien einlesen (CSV) | ✅ (`pd.read_csv`) | 02_Analyse |
+| Dateien einlesen (CSV) | ✅ (`pd.read_csv`) | 02_Analyse_SGBII |
 | Daten exportieren (`to_csv`) | ✅ | 01_Exploration |
 | `[]`, `.loc[]`, `.iloc[]` | ✅ | 01/02 |
 | Boolesche Filter (`&`, `\|`) | ✅ | 01_Exploration |
@@ -46,8 +46,8 @@ Stand: nach Aufteilung in Exploration (Einlesen/Bereinigen/Aufbereiten/Export) u
 
 | Thema | Status |
 |---|---|
-| Lineplot | ✅ (02_Analyse) |
-| Barplot | ✅ (02_Analyse) |
+| Lineplot | ✅ (02_Analyse_SGBII) |
+| Barplot | ✅ (02_Analyse_SGBII) |
 | Scatterplot | ❌ fehlt |
 | Histogram | ❌ fehlt |
 | Boxplot / Violinplot | ❌ fehlt |

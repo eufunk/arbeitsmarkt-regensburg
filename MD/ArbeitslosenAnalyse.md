@@ -44,29 +44,68 @@ Spalte B (Insgesamt SGB II+SGB III) und Spalte G (Rechtskreis SGB II) je Bericht
 - **Vergleich "Insgesamt (SGB II+SGB III)" vs. "SGB II"** — wie hoch ist der Jobcenter-Anteil
   an der gesamten Arbeitslosigkeit, und verändert er sich über die Zeit?
 
-### Noch ungenutzte Tabellenblätter (in jeder der 15 Dateien vorhanden)
-- **1.2 Eckwerte Zeitreihe** — Zeitreihe direkt im Bericht, evtl. als Cross-Check oder für
-  längere Historie nutzbar
-- **2.1 Arbeitslosigkeit Zugang** / **2.2 Bestand** / **2.3 Abgang** — vermutlich feinere
-  Aufschlüsselung (z. B. nach Herkunft des Zugangs, Verbleib nach Abgang)
-- **2.4 Langzeitarbeitslosigkeit** — Detailtabelle über das hinaus, was wir aus "1.1" ziehen
-- **2.5 Unterbeschäftigung** — Detailtabelle
-- **3.1 Bedarfsgemeinschaften** / **3.2 Personen in BG** — vermutlich Aufschlüsselung nach
-  BG-Typ (Singles, Alleinerziehende, Paare mit/ohne Kinder)
-- **3.3 Erwerbstätigkeit** — erwerbstätige Leistungsberechtigte ("Aufstocker": Menschen, die
-  trotz Arbeit ergänzend SGB-II-Leistungen beziehen) — komplett neues Themenfeld
-- **3.4 Langzeitleistungsbezug** — wie lange bleiben Personen im SGB-II-Bezug?
-- **3.5 Bewegungen Personen** — Zu- und Abgänge im Leistungsbezug
-- **3.6 Zahlungsansprüche** — finanzielle Kennzahlen (Euro-Beträge), bisher nicht betrachtet
-- **4.1 Förderung** / **4.2 Förderung Strukturen** — aktive Arbeitsmarktpolitik,
-  Eingliederungsleistungen, Maßnahmen — komplett neues Themenfeld, keine Berührung bisher
+### Noch ungenutzte Tabellenblätter
+
+Jede der 15 Dateien hat 21 Tabellenblätter, nicht nur "1.1 Eckwerte". Alle wurden mittlerweile
+systematisch gesichtet — Abschnitt "1. Tabellenblätter der Rohdaten untersuchen" in
+[`01_Exploration.ipynb`](../Notebooks/01_Exploration.ipynb) gibt für jedes Blatt per Print-Ausgabe
+eine Einschätzung (Daten + Diagramm-Ideen). Kurzfassung hier:
+
+**⚠️ Wichtige Einschränkung:** Die Blätter **3.1–3.6** und **4.1–4.2** melden nicht den
+Berichtsmonat des Dateinamens, sondern Daten mit **3 bzw. 6 Monaten Wartezeit** (z. B. meldet
+die Juni-2026-Datei dort Stand "März 2026" bzw. "Dezember 2025"). Beim Aufbau einer Zeitreihe
+aus mehreren Dateien muss der tatsächliche Stichmonat aus dem Blattinhalt gelesen werden, nicht
+aus dem Dateinamen abgeleitet werden.
+
+- **1.2 Eckwerte Zeitreihe** — enthält bereits eine rollierende ~13-Monats-Zeitreihe direkt im
+  Bericht (gleiche Kennzahlen wie 1.1). Eignet sich als Cross-Check für unsere selbst gebaute
+  Zeitreihe, liefert aber keine neuen Kennzahlen.
+- **2.1 Arbeitslosigkeit Zugang** — Zugang nach Zugangsgrund (z. B. "aus Erwerbstätigkeit").
+  Idee: gestapeltes Balkendiagramm "woher kommen die neuen Arbeitslosen".
+- **2.2 Arbeitslosigkeit Bestand** — inhaltlich weitgehend deckungsgleich mit "1.1", kein
+  großer Mehrwert.
+- **2.3 Arbeitslosigkeit Abgang** — Abgang nach Abgangsgrund (z. B. "in Erwerbstätigkeit").
+  Idee: Zugang vs. Abgang nach Grund gegenüberstellen, um zu sehen, wie viele tatsächlich in
+  Arbeit abgehen.
+- **2.4 Langzeitarbeitslosigkeit** — Langzeitarbeitslose zusätzlich nach Geschlecht (nicht nur
+  Alter wie in "1.1"). Idee: Geschlechterverteilung der Langzeitarbeitslosen als Zeitreihe.
+- **2.5 Unterbeschäftigung** — feinere Komponenten der Unterbeschäftigungs-Lücke (z. B.
+  "Aktivierung und berufliche Eingliederung", "Sonderregelung für Ältere"). Idee: gestapeltes
+  Flächendiagramm der Komponenten.
+- **3.1 Bedarfsgemeinschaften** — Struktur nach **Haushaltsgröße** (1, 2, 3, 4+ Personen), nicht
+  nach BG-Typ wie ursprünglich vermutet. Idee: Balkendiagramm der Haushaltsgrößenverteilung,
+  Zeitreihe des Single-Haushalt-Anteils.
+- **3.2 Personen in BG** — Aufschlüsselung nach Geschlecht plus Teilmenge ELB.
+- **3.3 Erwerbstätigkeit** — "Aufstocker" (erwerbstätige ELB), aufgeschlüsselt nach
+  abhängig/selbstständig und Einkommenshöhe (Geringfügigkeit vs. Übergangsbereich). Komplett
+  neues Themenfeld, direkt anschlussfähig an die Trichter-Grafik im Dashboard (zusätzliche
+  Stufe "davon in Arbeit, aber bedürftig").
+- **3.4 Langzeitleistungsbezug** — neue Kennzahl **Langzeitleistungsbeziehende (LZB)**: mind.
+  21 von 24 Monaten im Bezug — nicht identisch mit Langzeitarbeitslosen, da Bürgergeld auch
+  ohne Arbeitslosigkeit bezogen werden kann. Idee: LZB vs. LZA im Vergleich.
+- **3.5 Bewegungen Personen** — Zu-/Abgänge im Regelleistungsbezug (ELB-Ebene) inkl.
+  Vorbezugs-Historie (Hinweis auf "Drehtür-Effekt": erneuter Bezug innerhalb 12 Monaten).
+- **3.6 Zahlungsansprüche** — einzige Quelle für **Euro-Beträge**: Summe der Zahlungsansprüche,
+  Ø Anspruch je BG, aufgeschlüsselt nach Regelbedarf ELB/NEF. Bisher komplett unberührtes
+  Themenfeld (Kostenvolumen).
+- **4.1 Förderung** — Eintritte in arbeitsmarktpolitische Maßnahmen nach Instrumenten-Kategorie.
+- **4.2 Förderung Strukturen** — Bestand an Maßnahmenteilnehmenden nach Geschlecht, Alter,
+  LZA-Status, Schwerbehinderung; enthält die fertige Kennzahl **Aktivierungsquote (AQ1/AQ2a)**.
+
+Nicht nutzbar (reine Metadaten/Links, keine Zahlen): Deckblatt, Impressum, Inhaltsverzeichnis
+(nützlich nur als Zeichenerklärung-Nachschlagewerk), Grafik (nur eingebettete Bilder), Linkliste,
+Statistik-Infoseite.
 
 ## Priorisierungsvorschlag für die Fortsetzung
 
-1. Zugang/Abgang (Fluktuation) ergänzen — direkt in "1.1 Eckwerte" verfügbar, kleiner Aufwand
+1. Zugang/Abgang (Fluktuation) ergänzen — direkt in "1.1 Eckwerte" verfügbar, kleiner Aufwand,
+   keine Wartezeit-Problematik
 2. Altersstruktur/Geschlecht als Zeitreihe statt Momentaufnahme
-3. Erwerbstätigkeit/Aufstocker (3.3) — inhaltlich relevanter neuer Aspekt
-4. Förderung (4.1/4.2) — falls Fokus auf aktive Arbeitsmarktpolitik gewünscht ist
+3. Erwerbstätigkeit/Aufstocker (3.3) — inhaltlich relevanter neuer Aspekt (⚠️ 3 Monate Wartezeit)
+4. Zahlungsansprüche (3.6) — einziger Zugang zu Euro-Beträgen, bisher komplett unbeleuchtet
+   (⚠️ 3 Monate Wartezeit)
+5. Förderung (4.1/4.2) — falls Fokus auf aktive Arbeitsmarktpolitik gewünscht ist
+   (⚠️ 3 Monate Wartezeit)
 
 ## 📊 Geplant: Dashboard
 

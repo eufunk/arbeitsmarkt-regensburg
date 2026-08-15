@@ -22,22 +22,22 @@ Data/
   RegensburgJCData/     Rohdaten (.xlsx, nicht versioniert)
   processed/             aufbereitete CSVs, versioniert fürs Dashboard-Deployment
 Notebooks/
-  01_Exploration.ipynb   Einlesen, Bereinigen, Aufbereiten, Export nach Data/processed/
-  02_Analyse.ipynb       Visualisierung und inhaltliche Auswertung
+  01_Exploration.ipynb      Einlesen, Bereinigen, Aufbereiten, Export nach Data/processed/
+  02_Analyse_SGBII.ipynb    Visualisierung und inhaltliche Auswertung (Rechtskreis SGB II)
 Dashboard/
-  app.py                 interaktives Streamlit-Dashboard
+  app.py                    interaktives Streamlit-Dashboard
 MD/
-  ArbeitslosenAnalyse.md inhaltliche Themenübersicht (behandelt / offen)
-  ThemenCheck.md          Abgleich gegen den Lernplan (DatenanalysePython.md)
-  01_Exploration.md       Dokumentation zu 01_Exploration.ipynb
-  02_Analyse.md           Dokumentation zu 02_Analyse.ipynb
+  ArbeitslosenAnalyse.md    inhaltliche Themenübersicht (behandelt / offen)
+  ThemenCheck.md             Abgleich gegen den Lernplan (DatenanalysePython.md)
+  01_Exploration.md          Dokumentation zu 01_Exploration.ipynb
+  02_Analyse_SGBII.md        Dokumentation zu 02_Analyse_SGBII.ipynb
 ```
 
 ## Lokal ausführen
 
 1. `Notebooks/01_Exploration.ipynb` einmal komplett ausführen (erzeugt `Data/processed/*.csv`
    aus den Rohdaten).
-2. `Notebooks/02_Analyse.ipynb` für Visualisierung und Auswertung.
+2. `Notebooks/02_Analyse_SGBII.ipynb` für Visualisierung und Auswertung.
 3. Dashboard starten:
    ```
    pip install -r Dashboard/requirements.txt

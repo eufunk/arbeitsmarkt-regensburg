@@ -2,7 +2,7 @@
 
 Interaktives Streamlit-Dashboard zu den bisher analysierten Kennzahlen aus
 [`Notebooks/01_Exploration.ipynb`](../Notebooks/01_Exploration.ipynb) /
-[`Notebooks/02_Analyse.ipynb`](../Notebooks/02_Analyse.ipynb).
+[`Notebooks/02_Analyse_SGBII.ipynb`](../Notebooks/02_Analyse_SGBII.ipynb).
 
 [![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://daelwve9mj8pxz32vshq7u.streamlit.app/)
 
