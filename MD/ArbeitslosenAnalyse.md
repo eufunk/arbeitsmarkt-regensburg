@@ -107,16 +107,23 @@ Statistik-Infoseite.
 5. Förderung (4.1/4.2) — falls Fokus auf aktive Arbeitsmarktpolitik gewünscht ist
    (⚠️ 3 Monate Wartezeit)
 
-## 📊 Geplant: Dashboard
+## 📊 Dashboard
 
-Sobald der inhaltliche Umfang steht, soll ein interaktives Dashboard entstehen (Streamlit,
-Dash oder Flask). Grobe Idee:
+Ist bereits gebaut und deployed: **Streamlit**, mit Kopfzeilen-Tabs (`st.tabs()`) als
+Navigation. [Live-Dashboard](https://daelwve9mj8pxz32vshq7u.streamlit.app/),
+Details: [`Dashboard/README.md`](../Dashboard/README.md).
 
-- Zeitreihen-Charts mit Zeitraum-Filter für alle erschlossenen Kennzahlen
-- Kennzahlen-Kacheln für den aktuellsten Berichtsmonat inkl. Veränderung zum Vormonat/Vorjahr
-- Altersstruktur- und Geschlechterverteilung als interaktive Diagramme (sobald als Zeitreihe
-  verfügbar, auch im Zeitverlauf filterbar)
+- Tab **"SGB II Übersicht"** enthält alle bisher fertigen Charts (entspricht inhaltlich
+  `02_Analyse_SGBII.ipynb`, plus Trichter-Grafik und formatierte Kennzahlen-Tabelle)
+- Sechs weitere Tabs sind als Platzhalter für genau die oben gelistete Priorisierung
+  vorbereitet (Fluktuation, Demografie, Erwerbstätigkeit, Bezugsdauer, Finanzen, Förderung) —
+  jeder zeigt bereits Datenquelle, geplante Diagramme und Priorität, nur die eigentlichen
+  Charts fehlen noch
+- Zeitraum-Filter (Slider) und Berichtsmonat-Auswahl in der Sidebar, wirken auf alle
+  Zeitreihen-Charts bzw. Momentaufnahmen
 - Datenbasis: die aufbereiteten CSVs aus `Data/processed/`
   (`eckwerte_long.csv`, `kennzahlen_sgb2.csv`) — kein erneutes Excel-Parsing nötig
+- Alle Charts interaktiv (Plotly, `hovermode="x unified"`)
 
-Technologieentscheidung (Streamlit vs. Dash vs. Flask) steht noch aus.
+Nächster Schritt: die sechs Platzhalter-Tabs nacheinander mit echten Charts befüllen, in der
+oben genannten Prioritätsreihenfolge.

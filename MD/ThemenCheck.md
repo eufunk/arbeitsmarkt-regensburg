@@ -4,7 +4,8 @@ Abgleich der Notebooks `Notebooks/01_Exploration.ipynb` und `Notebooks/02_Analys
 Abschnitt 2 „Datenanalyse mit Pandas & NumPy“ aus [`DatenanalysePython.md`](../DatenanalysePython.md).
 
 Stand: nach Aufteilung in Exploration (Einlesen/Bereinigen/Aufbereiten/Export) und Analyse
-(Visualisierung/Auswertung).
+(Visualisierung/Auswertung), inkl. Streamlit-Dashboard (`Dashboard/app.py`) als dritter
+Baustein für Abschnitt 4 „Datenvisualisierung“.
 
 ## Abschnitt 2: Datenanalyse mit Pandas & NumPy
 
@@ -46,14 +47,15 @@ Stand: nach Aufteilung in Exploration (Einlesen/Bereinigen/Aufbereiten/Export) u
 
 | Thema | Status |
 |---|---|
-| Lineplot | ✅ (02_Analyse_SGBII) |
-| Barplot | ✅ (02_Analyse_SGBII) |
+| Lineplot | ✅ (02_Analyse_SGBII, Dashboard) |
+| Barplot | ✅ (02_Analyse_SGBII, Dashboard) |
 | Scatterplot | ❌ fehlt |
 | Histogram | ❌ fehlt |
 | Boxplot / Violinplot | ❌ fehlt |
 | Pieplot / Donut | ❌ fehlt |
+| Funnel-Chart | ✅ (Dashboard, Trichter-Grafik RLB/ELB) |
 | Heatmap | ❌ fehlt |
-| Plotly (interaktiv) | ❌ fehlt (nur matplotlib) |
+| Plotly (interaktiv) | ✅ (02_Analyse_SGBII: 4 von 5 Charts; Dashboard: alle Charts, `hovermode="x unified"`) |
 
 ## Offene Punkte für spätere Ergänzung
 
