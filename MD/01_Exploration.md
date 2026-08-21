@@ -2,7 +2,7 @@
 
 ## Zweck
 
-Liest die 15 monatlichen Excel-Berichte "Eckwerte für Jobcenter" (Jobcenter Regensburg,
+Liest die 18 monatlichen Excel-Berichte "Eckwerte für Jobcenter" (Jobcenter Regensburg,
 Statistik-Nr. t73906-0) aus `Data/RegensburgJCData/` ein, bereinigt und strukturiert sie zu
 einer Zeitreihe und exportiert das Ergebnis als CSV für die Weiterverarbeitung in
 [`02_Analyse_SGBII.ipynb`](02_Analyse_SGBII.md). Enthält **keine Grafiken** — reine
@@ -10,7 +10,7 @@ Daten-Pipeline (Rohdaten sichten → Einlesen → Bereinigen → Aufbereiten →
 
 ## Input
 
-- `Data/RegensburgJCData/*.xlsx` (15 Dateien, April 2025 – Juni 2026, benannt
+- `Data/RegensburgJCData/*.xlsx` (18 Dateien, Januar 2025 – Juni 2026, benannt
   `jc-eckwerte-t73906-0-JJJJMM-xlsx.xlsx`)
 - Jede Datei hat rund 21 Tabellenblätter. Aktiv geparst wird nur **"1.1 Eckwerte"**, dort
   Spalte B *"Insgesamt (SGB II und SGB III)"* und Spalte G *"Rechtskreis SGB II"*
@@ -44,13 +44,13 @@ Beide Dateien liegen unter `Data/`, das komplett in `.gitignore` steht (mit Ausn
      sind für spätere Erweiterungen vorgemerkt, siehe [`ArbeitslosenAnalyse.md`](ArbeitslosenAnalyse.md)).
 4. **2. Daten einlesen**
    - `normalize_label()`: entfernt Fußnotenmarker (z. B. `" 1)"`, `" 2) 4)"`) aus
-     Zeilenbeschriftungen per Regex, damit gleiche Merkmale über alle 15 Dateien hinweg
+     Zeilenbeschriftungen per Regex, damit gleiche Merkmale über alle 18 Dateien hinweg
      identisch benannt sind (Berichte revidieren Fußnoten-Referenzen zwischen Monaten).
    - `parse_eckwerte(path)`: liest Zeilen 9–47 des Blatts "1.1 Eckwerte"; Zeilen ohne
      Zahlenwert sind Kategorie-Überschriften (z. B. "Arbeitslose", "Grundsicherung für
      Arbeitsuchende"), Zeilen mit Zahlenwert werden als Datensatz erfasst. Der Berichtsmonat
      wird aus dem Dateinamen abgeleitet (`pd.Period`), nicht aus dem Blattinhalt.
-   - Alle 15 Dateien werden geparst und zu einem DataFrame `df` zusammengeführt; zusätzlich
+   - Alle 18 Dateien werden geparst und zu einem DataFrame `df` zusammengeführt; zusätzlich
      werden `jahr`, `monat` (aus `period`) sowie ein kombinierter Schlüssel `label`
      (`kategorie | merkmal`) ergänzt — Letzterer löst Namenskollisionen wie "Bestand" (kommt
      bei "Arbeitsuchende", "Arbeitslose" und "gemeldete Arbeitsstellen" vor).

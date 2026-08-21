@@ -10,7 +10,7 @@ Statistik-Nr. t73906-0).
 
 ## Datengrundlage
 
-15 monatliche Excel-Berichte (April 2025 – Juni 2026) für das Jobcenter Regensburg, jeweils mit
+18 monatliche Excel-Berichte (Januar 2025 – Juni 2026) für das Jobcenter Regensburg, jeweils mit
 dem aktuellen Monatswert je Merkmal, getrennt nach *"Insgesamt (SGB II und SGB III)"* und
 *"Rechtskreis SGB II"* (= Jobcenter-Zuständigkeit). Die Rohdaten liegen lokal unter
 `Data/RegensburgJCData/` und sind nicht Teil des Repositories (siehe `.gitignore`).
@@ -24,13 +24,18 @@ Data/
 Notebooks/
   01_Exploration.ipynb      Einlesen, Bereinigen, Aufbereiten, Export nach Data/processed/
   02_Analyse_SGBII.ipynb    Visualisierung und inhaltliche Auswertung (Rechtskreis SGB II)
+  03_Statistik.ipynb        Deskriptive Statistik, Korrelation, Hypothesentest, Regression
 Dashboard/
   app.py                    interaktives Streamlit-Dashboard
+Dok/
+  Projektdokumentation.docx projektbegleitende Dokumentation (Word)
+  Projektpraesentation.pptx Projektpräsentation (PowerPoint)
 MD/
   ArbeitslosenAnalyse.md    inhaltliche Themenübersicht (behandelt / offen)
   ThemenCheck.md             Abgleich gegen den Lernplan (DatenanalysePython.md)
   01_Exploration.md          Dokumentation zu 01_Exploration.ipynb
   02_Analyse_SGBII.md        Dokumentation zu 02_Analyse_SGBII.ipynb
+  03_Statistik.md            Dokumentation zu 03_Statistik.ipynb
 ```
 
 ## Lokal ausführen
@@ -38,7 +43,9 @@ MD/
 1. `Notebooks/01_Exploration.ipynb` einmal komplett ausführen (erzeugt `Data/processed/*.csv`
    aus den Rohdaten).
 2. `Notebooks/02_Analyse_SGBII.ipynb` für Visualisierung und Auswertung.
-3. Dashboard starten:
+3. `Notebooks/03_Statistik.ipynb` für vertiefte statistische Verfahren (Korrelation,
+   Hypothesentest, Regression).
+4. Dashboard starten:
    ```
    pip install -r Dashboard/requirements.txt
    streamlit run Dashboard/app.py

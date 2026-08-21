@@ -1,23 +1,23 @@
 # Arbeitslosenanalyse Regensburg — Inhaltliche Themenübersicht
 
 Überblick, welche Aspekte der Arbeitslosigkeit im Jobcenter Regensburg (Rechtskreis SGB II,
-April 2025 – Juni 2026) wir aus den Rohdaten bereits ausgewertet haben, und was in den
+Januar 2025 – Juni 2026) wir aus den Rohdaten bereits ausgewertet haben, und was in den
 Rohdaten noch steckt, aber bislang nicht analysiert wurde.
 
-Rohdaten: `Data/RegensburgJCData/*.xlsx` (15 Monatsberichte "Eckwerte für Jobcenter").
+Rohdaten: `Data/RegensburgJCData/*.xlsx` (18 Monatsberichte "Eckwerte für Jobcenter").
 Bisher genutzt wurde ausschließlich das Tabellenblatt **"1.1 Eckwerte"**, dort nur der Ausschnitt
 Spalte B (Insgesamt SGB II+SGB III) und Spalte G (Rechtskreis SGB II) je Berichtsmonat.
 
 ## ✅ Bereits analysiert
 
-- **Bestand der Arbeitslosen** (SGB II) über die Zeit — leicht gestiegen (1.457 → 1.500),
-  Spanne 1.438–1.587
+- **Bestand der Arbeitslosen** (SGB II) über die Zeit — leicht gestiegen (1.470 → 1.500),
+  Spanne 1.382–1.587
 - **Arbeitslosenquote** über die Zeit — stabil zwischen 1,2 % und 1,4 %
 - **Langzeitarbeitslosigkeit** — absolute Zahl und Anteil am Bestand; deutlichster Trend
-  (526 → 709 Personen, Anteil 36 % → 47 %)
+  (502 → 709 Personen, Anteil 34 % → 47 %)
 - **Unterbeschäftigungsquote** im Vergleich zur Arbeitslosenquote
 - **Bedarfsgemeinschaften** und **Personen im Leistungsbezug** über die Zeit — beide
-  rückläufig (je ca. −5 %)
+  rückläufig (ca. −4 % bzw. −6 %)
 - **Altersstruktur** der Arbeitslosen (15–25 / 25–50 / 50+) — nur letzter Berichtsmonat,
   keine Zeitreihe
 - **Geschlechterverteilung** (Männer/Frauen) — nur letzter Berichtsmonat, keine Zeitreihe
@@ -46,7 +46,7 @@ Spalte B (Insgesamt SGB II+SGB III) und Spalte G (Rechtskreis SGB II) je Bericht
 
 ### Noch ungenutzte Tabellenblätter
 
-Jede der 15 Dateien hat 21 Tabellenblätter, nicht nur "1.1 Eckwerte". Alle wurden mittlerweile
+Jede der 18 Dateien hat 21 Tabellenblätter, nicht nur "1.1 Eckwerte". Alle wurden mittlerweile
 systematisch gesichtet — Abschnitt "1. Tabellenblätter der Rohdaten untersuchen" in
 [`01_Exploration.ipynb`](../Notebooks/01_Exploration.ipynb) gibt für jedes Blatt per Print-Ausgabe
 eine Einschätzung (Daten + Diagramm-Ideen). Kurzfassung hier:

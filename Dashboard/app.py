@@ -413,10 +413,10 @@ with tab_uebersicht:
             {"selector": ".col7", "props": [("max-width", "110px")]},
         ])
         st.markdown(
-            '<div style="overflow-y: auto; width: 100%; max-height: 420px; padding-right: 20px; box-sizing: border-box;">'
-            '<div style="overflow-x: auto; width: 100%;">'
+            '<div style="overflow-x: auto; overflow-y: auto; width: 100%; max-height: 420px; '
+            'padding-right: 20px; box-sizing: border-box;">'
             f'{styler.to_html()}'
-            '</div></div>',
+            '</div>',
             unsafe_allow_html=True,
         )
 

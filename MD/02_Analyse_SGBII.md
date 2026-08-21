@@ -4,7 +4,7 @@
 
 Baut auf den von [`01_Exploration.ipynb`](01_Exploration.md) exportierten CSV-Dateien auf und
 enthält die **gesamte Visualisierung und inhaltliche Auswertung** der Arbeitsmarktdaten des
-Jobcenters Regensburg (Rechtskreis **SGB II**, April 2025 – Juni 2026). Alle Grafiken des
+Jobcenters Regensburg (Rechtskreis **SGB II**, Januar 2025 – Juni 2026). Alle Grafiken des
 Notebook-Teils liegen hier. Ausgewertet wird ausschließlich der SGB-II-Anteil (Jobcenter-
 Zuständigkeit) — die parallel vorliegende "Insgesamt (SGB II+SGB III)"-Spalte aus den Rohdaten
 wird nicht visualisiert.
@@ -66,10 +66,10 @@ Jupyter (Diagramme + Tabellen als Zell-Output).
      Vorjahresmonat (`.iloc[-13]`).
 9. **7. Zusammenfassung (Markdown)**
    - Textliche Einordnung der wichtigsten Befunde:
-     - Arbeitslose (Bestand): 1.457 (Apr 2025) → 1.500 (Jun 2026), Spanne 1.438–1.587
+     - Arbeitslose (Bestand): 1.470 (Jan 2025) → 1.500 (Jun 2026), Spanne 1.382–1.587
      - Arbeitslosenquote: stabil zwischen 1,2 % und 1,4 %
-     - Langzeitarbeitslose: 526 → 709 (+ ca. 35 %), deutlichster Trend im Datensatz
-     - Bedarfsgemeinschaften / Personen in BG: beide rückläufig (je ca. −5 %)
+     - Langzeitarbeitslose: 502 → 709 (+ ca. 41 %), deutlichster Trend im Datensatz
+     - Bedarfsgemeinschaften / Personen in BG: beide rückläufig (ca. −4 % bzw. −6 %)
 
 ## Enthaltene Diagramme (5 insgesamt)
 
@@ -87,8 +87,9 @@ Werte an dieser Stelle gemeinsam als eine Tooltip-Box statt einzeln pro Linie.
 Bewusst entfernt (redundant zur Übersicht): Bestand-Arbeitslose als eigenständiger
 Linien-/Balkenchart, Bedarfsgemeinschaften/Personen-in-BG als eigener Dualachsen-Chart.
 
-Noch nicht enthalten (siehe [`ThemenCheck.md`](ThemenCheck.md)): Scatterplot, Histogram,
-Boxplot, Heatmap.
+Scatterplot, Histogramm, Boxplot und Heatmap sind mittlerweile in
+[`03_Statistik.ipynb`](../Notebooks/03_Statistik.ipynb) enthalten (siehe
+[`03_Statistik.md`](03_Statistik.md)), nicht hier.
 
 ## Voraussetzungen
 
@@ -99,6 +100,8 @@ Boxplot, Heatmap.
 
 - Datengrundlage: [`01_Exploration.ipynb`](../Notebooks/01_Exploration.ipynb) /
   [`01_Exploration.md`](01_Exploration.md)
+- Vertiefende Statistik (Korrelation, Hypothesentest, Regression):
+  [`03_Statistik.ipynb`](../Notebooks/03_Statistik.ipynb) / [`03_Statistik.md`](03_Statistik.md)
 - Themenabgleich gegen den Lernplan: [`ThemenCheck.md`](ThemenCheck.md)
 - Inhaltliche Themenübersicht (analysiert/offen): [`ArbeitslosenAnalyse.md`](ArbeitslosenAnalyse.md)
 - Der Übersichtschart und der Quote-Chart existieren in gleicher Form auch im
