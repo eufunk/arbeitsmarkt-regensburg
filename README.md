@@ -26,6 +26,7 @@ Notebooks/
   02_Analyse_SGBII.ipynb    Visualisierung und inhaltliche Auswertung (Rechtskreis SGB II)
   03_Statistik.ipynb        Deskriptive Statistik, Korrelation, Hypothesentest, Regression
   04_Fluktuation.ipynb      Zugang/Abgang, Netto-Fluktuation, 12-Monatssummen
+  05_Demografie.ipynb       Altersstruktur, Geschlecht, Ausländer, Schwerbehinderte (Zeitreihe)
 Dashboard/
   app.py                    interaktives Streamlit-Dashboard
 Dok/
@@ -38,6 +39,7 @@ MD/
   02_Analyse_SGBII.md        Dokumentation zu 02_Analyse_SGBII.ipynb
   03_Statistik.md            Dokumentation zu 03_Statistik.ipynb
   04_Fluktuation.md          Dokumentation zu 04_Fluktuation.ipynb
+  05_Demografie.md           Dokumentation zu 05_Demografie.ipynb
 ```
 
 ## Lokal ausführen
@@ -48,7 +50,9 @@ MD/
 3. `Notebooks/03_Statistik.ipynb` für vertiefte statistische Verfahren (Korrelation,
    Hypothesentest, Regression).
 4. `Notebooks/04_Fluktuation.ipynb` für Zugang/Abgang aus Arbeitslosigkeit (Fluktuation).
-5. Dashboard starten:
+5. `Notebooks/05_Demografie.ipynb` für Altersstruktur, Geschlecht, Ausländer und
+   Schwerbehinderte als Zeitreihe.
+6. Dashboard starten:
    ```
    pip install -r Dashboard/requirements.txt
    streamlit run Dashboard/app.py

@@ -28,14 +28,18 @@ Spalte B (Insgesamt SGB II+SGB III) und Spalte G (Rechtskreis SGB II) je Bericht
   der Bestandsänderung zeigt eine systematische Differenz von rund 21 Personen/Monat, plausibel
   durch Rechtskreiswechsel SGB II ↔ SGB III erklärbar (siehe
   [`04_Fluktuation.ipynb`](../Notebooks/04_Fluktuation.ipynb))
+- **Altersstruktur und Geschlecht als Zeitreihe** (statt nur Momentaufnahme), plus **55+ als
+  Teilmenge von 50+** — sehr stabile Verteilung, aber Anteil der 55-Jährigen und Älteren an
+  der Gruppe 50+ steigt von 64,8 % auf 68,8 %; Männeranteil steigt leicht (53,1 % → 54,5 %)
+- **Schwerbehinderte Menschen** unter den Arbeitslosen — kleiner, leicht steigender Anteil
+  (7,9 % → 8,7 %)
+- **Ausländische Arbeitslose** — überraschend hoher, deutlich rückläufiger Anteil (51,7 % →
+  45,4 % des Bestands); bislang auffälligste neue Erkenntnis abseits der
+  Langzeitarbeitslosigkeit (siehe [`05_Demografie.ipynb`](../Notebooks/05_Demografie.ipynb))
 
 ## 🔲 In den Rohdaten vorhanden, aber noch nicht analysiert
 
 ### Noch ungenutzte Zeilen in "1.1 Eckwerte" (gleiches Blatt, das wir schon nutzen)
-- **Altersstruktur und Geschlecht als Zeitreihe** statt nur Momentaufnahme des letzten Monats
-  (55+ separat, nicht nur 50+)
-- **Schwerbehinderte Menschen** unter den Arbeitslosen
-- **Ausländische Arbeitslose**
 - **Gemeldete Arbeitsstellen** (Zugang, Bestand, davon sozialversicherungspflichtig) —
   Nachfrageseite des Arbeitsmarkts, bisher komplett ausgeklammert
 - **Unterbeschäftigung im engeren Sinne** und **ohne Kurzarbeit** (Detailkomponenten der
@@ -103,7 +107,8 @@ Statistik-Infoseite.
 
 1. ~~Zugang/Abgang (Fluktuation) ergänzen~~ — ✅ erledigt, siehe
    [`04_Fluktuation.ipynb`](../Notebooks/04_Fluktuation.ipynb)
-2. Altersstruktur/Geschlecht als Zeitreihe statt Momentaufnahme
+2. ~~Altersstruktur/Geschlecht als Zeitreihe statt Momentaufnahme~~ — ✅ erledigt (inkl.
+   Ausländer, Schwerbehinderte), siehe [`05_Demografie.ipynb`](../Notebooks/05_Demografie.ipynb)
 3. Erwerbstätigkeit/Aufstocker (3.3) — inhaltlich relevanter neuer Aspekt (⚠️ 3 Monate Wartezeit)
 4. Zahlungsansprüche (3.6) — einziger Zugang zu Euro-Beträgen, bisher komplett unbeleuchtet
    (⚠️ 3 Monate Wartezeit)
@@ -120,15 +125,17 @@ Details: [`Dashboard/README.md`](../Dashboard/README.md).
   `02_Analyse_SGBII.ipynb`, plus Trichter-Grafik und formatierte Kennzahlen-Tabelle)
 - Tab **"Fluktuation"** ist fertig (entspricht `04_Fluktuation.ipynb`): Zugang/Abgang im
   Monatsverlauf, Netto-Fluktuation vs. Bestandsänderung, 12-Monatssummen
-- Fünf weitere Tabs sind als Platzhalter für die oben gelistete Priorisierung vorbereitet
-  (Demografie, Erwerbstätigkeit, Bezugsdauer, Finanzen, Förderung) — jeder zeigt bereits
-  Datenquelle, geplante Diagramme und Priorität, nur die eigentlichen Charts fehlen noch
+- Tab **"Demografie"** ist fertig (entspricht `05_Demografie.ipynb`): Altersstruktur und
+  Geschlecht als Zeitreihe, plus Ausländer und Schwerbehinderte als Zeitreihe
+- Vier weitere Tabs sind als Platzhalter für die oben gelistete Priorisierung vorbereitet
+  (Erwerbstätigkeit, Bezugsdauer, Finanzen, Förderung) — jeder zeigt bereits Datenquelle,
+  geplante Diagramme und Priorität, nur die eigentlichen Charts fehlen noch
 - Zeitraum-Filter (Slider) und Berichtsmonat-Auswahl in der Sidebar, wirken auf alle
   Zeitreihen-Charts bzw. Momentaufnahmen
 - Datenbasis: die aufbereiteten CSVs aus `Data/processed/`
-  (`eckwerte_long.csv`, `kennzahlen_sgb2.csv`, `fluktuation_sgb2.csv`) — kein erneutes
-  Excel-Parsing nötig
+  (`eckwerte_long.csv`, `kennzahlen_sgb2.csv`, `fluktuation_sgb2.csv`,
+  `demografie_sgb2.csv`) — kein erneutes Excel-Parsing nötig
 - Alle Charts interaktiv (Plotly, `hovermode="x unified"`)
 
-Nächster Schritt: die fünf verbleibenden Platzhalter-Tabs nacheinander mit echten Charts
+Nächster Schritt: die vier verbleibenden Platzhalter-Tabs nacheinander mit echten Charts
 befüllen, in der oben genannten Prioritätsreihenfolge.

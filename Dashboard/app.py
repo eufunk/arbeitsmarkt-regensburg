@@ -22,9 +22,10 @@ def load_data():
     long_path = PROCESSED_DIR / "eckwerte_long.csv"
     wide_path = PROCESSED_DIR / "kennzahlen_sgb2.csv"
     fluktuation_path = PROCESSED_DIR / "fluktuation_sgb2.csv"
+    demografie_path = PROCESSED_DIR / "demografie_sgb2.csv"
 
     if not long_path.exists() or not wide_path.exists():
-        return None, None, None
+        return None, None, None, None
 
     df_long = pd.read_csv(long_path)
     df_long["period"] = pd.PeriodIndex(df_long["period"], freq="M").to_timestamp()
@@ -37,10 +38,15 @@ def load_data():
         fluktuation = pd.read_csv(fluktuation_path, index_col="period", parse_dates=["period"])
         fluktuation = fluktuation.sort_index()
 
-    return df_long, kennzahlen, fluktuation
+    demografie = None
+    if demografie_path.exists():
+        demografie = pd.read_csv(demografie_path, index_col="period", parse_dates=["period"])
+        demografie = demografie.sort_index()
+
+    return df_long, kennzahlen, fluktuation, demografie
 
 
-df_long, kennzahlen, fluktuation = load_data()
+df_long, kennzahlen, fluktuation, demografie = load_data()
 
 if kennzahlen is None:
     st.error(
@@ -95,6 +101,11 @@ flu_view = None
 if fluktuation is not None:
     flu_mask = (fluktuation.index >= date_range[0]) & (fluktuation.index <= date_range[1])
     flu_view = fluktuation.loc[flu_mask]
+
+demo_view = None
+if demografie is not None:
+    demo_mask = (demografie.index >= date_range[0]) & (demografie.index <= date_range[1])
+    demo_view = demografie.loc[demo_mask]
 
 if view.empty:
     st.warning("Kein Berichtsmonat im gewählten Zeitraum.")
@@ -481,9 +492,17 @@ with tab_fluktuation:
         st.markdown("#### Netto-Fluktuation vs. tatsächliche Bestandsänderung")
         bestand_delta = view["Arbeitslose (Bestand)"].diff().reindex(flu_view.index)
         netto = flu_view["Netto-Fluktuation (im Monat)"]
-        farben = ["#dc2626" if v >= 0 else "#16a34a" for v in netto]
+        netto_positiv = netto.where(netto >= 0)
+        netto_negativ = netto.where(netto < 0)
         fig = go.Figure()
-        fig.add_trace(go.Bar(x=netto.index, y=netto, name="Netto-Fluktuation", marker_color=farben))
+        fig.add_trace(go.Bar(
+            x=netto.index, y=netto_positiv, name="Netto-Fluktuation: Zugang > Abgang",
+            marker_color="#dc2626",
+        ))
+        fig.add_trace(go.Bar(
+            x=netto.index, y=netto_negativ, name="Netto-Fluktuation: Abgang > Zugang",
+            marker_color="#16a34a",
+        ))
         fig.add_trace(go.Scatter(
             x=bestand_delta.index, y=bestand_delta, name="Tatsächliche Bestandsänderung",
             mode="lines+markers", line=dict(color="#1e3a8a", width=2), marker=dict(size=6),
@@ -537,22 +556,125 @@ with tab_fluktuation:
 # =================================================================================
 with tab_demografie:
     st.subheader("Demografie im Zeitverlauf")
-    geplant(
-        beschreibung=(
-            "Altersstruktur und Geschlecht gibt es im Übersicht-Tab bisher nur als Momentaufnahme "
-            "für den letzten Berichtsmonat. Hier sollen diese Merkmale als echte Zeitreihe sowie "
-            "weitere Personengruppen (Schwerbehinderte, Ausländer) ergänzt werden."
-        ),
-        datenquelle="Blatt „1.1 Eckwerte“ (Altersgruppen, Geschlecht, Schwerbehinderte, Ausländer je "
-        "Berichtsmonat) sowie Blatt „2.4 Langzeitarbeitslosigkeit“ (Geschlechterverteilung "
-        "speziell der Langzeitarbeitslosen).",
-        ideen=[
-            "Gestapeltes Flächendiagramm der Altersgruppen über die Zeit",
-            "Geschlechteranteil als Zeitreihe (statt nur letzter Monat)",
-            "Anteil Schwerbehinderte / Ausländer an allen Arbeitslosen als Zeitreihe",
-        ],
-        prioritaet="Priorität 2",
-    )
+
+    if demo_view is None or demo_view.empty:
+        st.warning(
+            "Keine Demografie-Daten gefunden. Bitte zuerst "
+            "`Notebooks/05_Demografie.ipynb` einmal komplett ausführen, damit "
+            "`Data/processed/demografie_sgb2.csv` entsteht."
+        )
+    else:
+        st.caption(
+            "Altersstruktur und Geschlecht gibt es im Tab „SGB II Übersicht“ bisher nur als "
+            "Momentaufnahme für den gewählten Berichtsmonat. Hier als echte Zeitreihe, "
+            "ergänzt um zwei bislang unanalysierte Personengruppen: Ausländer und "
+            "schwerbehinderte Menschen. Rechtskreis SGB II."
+        )
+
+        st.markdown("#### Altersstruktur im Zeitverlauf")
+        alter_stapel = ["15 bis unter 25 Jahre", "25 bis unter 50 Jahre", "50 bis unter 55 Jahre", "55 Jahre und älter"]
+        farben_alter = {
+            "15 bis unter 25 Jahre": "#2563eb", "25 bis unter 50 Jahre": "#7c3aed",
+            "50 bis unter 55 Jahre": "#f59e0b", "55 Jahre und älter": "#dc2626",
+        }
+        fig = go.Figure()
+        for gruppe in alter_stapel:
+            fig.add_trace(go.Scatter(
+                x=demo_view.index, y=demo_view[gruppe], name=gruppe,
+                mode="lines", stackgroup="alter", line=dict(color=farben_alter[gruppe], width=0.5),
+            ))
+        fig.update_layout(
+            title="Altersstruktur der Arbeitslosen im Zeitverlauf (SGB II)",
+            yaxis_title="Personen",
+            xaxis_title="Monat",
+            hovermode="x unified",
+            legend=dict(orientation="h", y=1.15),
+            height=440,
+        )
+        st.plotly_chart(fig, width="stretch")
+        st.caption(
+            "Alle vier Bänder sind überschneidungsfrei und summieren sich zum Gesamtbestand "
+            "(Fläche) — die Gruppe „50 Jahre und älter“ ist dafür in „50 bis unter 55“ und "
+            "„55 und älter“ aufgeteilt. Ihr gemeinsamer Anteil an „50+“ zeigt: die Gruppe "
+            "„55 und älter“ wächst darin von 64,8 % auf 68,8 % — die Alterung innerhalb der "
+            "älteren Arbeitslosen nimmt zu."
+        )
+
+        st.markdown("#### Geschlechterverteilung im Zeitverlauf")
+        fig = go.Figure()
+        fig.add_trace(go.Scatter(
+            x=demo_view.index, y=demo_view["Männer"], name="Männer",
+            mode="lines", stackgroup="geschlecht", line=dict(color="#2563eb", width=0.5),
+        ))
+        fig.add_trace(go.Scatter(
+            x=demo_view.index, y=demo_view["Frauen"], name="Frauen",
+            mode="lines", stackgroup="geschlecht", line=dict(color="#db2777", width=0.5),
+        ))
+        fig.update_layout(
+            title="Geschlechterverteilung der Arbeitslosen im Zeitverlauf (SGB II)",
+            yaxis_title="Personen",
+            xaxis_title="Monat",
+            hovermode="x unified",
+            legend=dict(orientation="h", y=1.15),
+            height=400,
+        )
+        st.plotly_chart(fig, width="stretch")
+        st.caption(
+            "Leichte Verschiebung zu mehr Männern über den Beobachtungszeitraum — der "
+            "Männeranteil steigt von 53,1 % auf 54,5 %, der Bestandsanstieg der letzten "
+            "Monate geht überproportional auf Männer zurück."
+        )
+
+        col_a, col_b = st.columns(2)
+        with col_a:
+            st.markdown("#### Ausländische Arbeitslose")
+            fig = go.Figure()
+            fig.add_trace(go.Scatter(
+                x=demo_view.index, y=demo_view["Ausländer"], name="absolut",
+                mode="lines+markers", line=dict(color="#0d9488"), marker=dict(size=5), yaxis="y1",
+            ))
+            fig.add_trace(go.Scatter(
+                x=demo_view.index, y=demo_view["Anteil Ausländer (%)"], name="Anteil (%)",
+                mode="lines+markers", line=dict(color="#f59e0b", dash="dot"), marker=dict(size=5), yaxis="y2",
+            ))
+            fig.update_layout(
+                yaxis=dict(title="Personen"),
+                yaxis2=dict(title="Anteil (%)", overlaying="y", side="right", ticksuffix="%"),
+                xaxis_title="Monat",
+                hovermode="x unified",
+                legend=dict(orientation="h", y=1.15),
+                height=380,
+            )
+            st.plotly_chart(fig, width="stretch")
+            st.caption(
+                "Überraschend hoher, deutlich rückläufiger Anteil: von 51,7 % (Jan 2025) "
+                "auf 45,4 % (Jun 2026) — fast die Hälfte des SGB-II-Arbeitslosenbestands."
+            )
+
+        with col_b:
+            st.markdown("#### Schwerbehinderte Menschen")
+            fig = go.Figure()
+            fig.add_trace(go.Scatter(
+                x=demo_view.index, y=demo_view["schwerbehinderte Menschen"], name="absolut",
+                mode="lines+markers", line=dict(color="#7c3aed"), marker=dict(size=5), yaxis="y1",
+            ))
+            fig.add_trace(go.Scatter(
+                x=demo_view.index, y=demo_view["Anteil Schwerbehinderte (%)"], name="Anteil (%)",
+                mode="lines+markers", line=dict(color="#f59e0b", dash="dot"), marker=dict(size=5), yaxis="y2",
+            ))
+            fig.update_layout(
+                yaxis=dict(title="Personen"),
+                yaxis2=dict(title="Anteil (%)", overlaying="y", side="right", ticksuffix="%"),
+                xaxis_title="Monat",
+                hovermode="x unified",
+                legend=dict(orientation="h", y=1.15),
+                height=380,
+            )
+            st.plotly_chart(fig, width="stretch")
+            st.caption(
+                "Kleinerer, leicht steigender Anteil: von 7,9 % (Jan 2025) auf 8,7 % "
+                "(Jun 2026)."
+            )
 
 # =================================================================================
 # Tab 4: Erwerbstätigkeit / Aufstocker
