@@ -1,13 +1,14 @@
 # Themen-Check: Arbeitsmarkt-Regensburg-Notebooks vs. DatenanalysePython.md
 
-Abgleich der Notebooks `Notebooks/01_Exploration.ipynb`, `Notebooks/02_Analyse_SGBII.ipynb`
-und `Notebooks/03_Statistik.ipynb` gegen Abschnitt 2 „Datenanalyse mit Pandas & NumPy“ aus
-[`DatenanalysePython.md`](../DatenanalysePython.md).
+Abgleich der Notebooks `Notebooks/01_Exploration.ipynb`, `Notebooks/02_Analyse_SGBII.ipynb`,
+`Notebooks/03_Statistik.ipynb` und `Notebooks/04_Fluktuation.ipynb` gegen Abschnitt 2
+„Datenanalyse mit Pandas & NumPy“ aus [`DatenanalysePython.md`](../DatenanalysePython.md).
 
 Stand: nach Aufteilung in Exploration (Einlesen/Bereinigen/Aufbereiten/Export), Analyse
-(Visualisierung/Auswertung) und Statistik (deskriptive Statistik, Korrelation,
-Inferenzstatistik, Regression), inkl. Streamlit-Dashboard (`Dashboard/app.py`) als weiterem
-Baustein für Abschnitt 4 „Datenvisualisierung“.
+(Visualisierung/Auswertung), Statistik (deskriptive Statistik, Korrelation,
+Inferenzstatistik, Regression) und Fluktuation (Zugang/Abgang, Netto-Fluktuation,
+12-Monatssummen), inkl. Streamlit-Dashboard (`Dashboard/app.py`) als weiterem Baustein für
+Abschnitt 4 „Datenvisualisierung“.
 
 ## Abschnitt 2: Datenanalyse mit Pandas & NumPy
 
@@ -59,7 +60,7 @@ Baustein für Abschnitt 4 „Datenvisualisierung“.
 | Pieplot / Donut | ❌ fehlt |
 | Funnel-Chart | ✅ (Dashboard, Trichter-Grafik RLB/ELB) |
 | Heatmap | ✅ (03_Statistik, Korrelationsmatrix) |
-| Plotly (interaktiv) | ✅ (02_Analyse_SGBII: 4 von 5 Charts; 03_Statistik: alle 5 Charts; Dashboard: alle Charts, `hovermode="x unified"`) |
+| Plotly (interaktiv) | ✅ (02_Analyse_SGBII: 4 von 5 Charts; 03_Statistik: alle 5 Charts; 04_Fluktuation: alle 3 Charts; Dashboard: alle Charts, `hovermode="x unified"`) |
 
 ## Offene Punkte für spätere Ergänzung
 

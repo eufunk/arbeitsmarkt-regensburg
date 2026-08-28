@@ -23,12 +23,15 @@ Spalte B (Insgesamt SGB II+SGB III) und Spalte G (Rechtskreis SGB II) je Bericht
 - **Geschlechterverteilung** (Männer/Frauen) — nur letzter Berichtsmonat, keine Zeitreihe
 - **Veränderung zum Vormonat / Vorjahresmonat** für die vier Kernkennzahlen (Bestand,
   Langzeitarbeitslose, Bedarfsgemeinschaften, Personen in BG)
+- **Fluktuation** (Zugang/Abgang aus Arbeitslosigkeit, im Monat und als 12-Monatssumme) —
+  Zugang Ø 267/Monat, Abgang Ø 281/Monat, Netto-Fluktuation überwiegend negativ; Abgleich mit
+  der Bestandsänderung zeigt eine systematische Differenz von rund 21 Personen/Monat, plausibel
+  durch Rechtskreiswechsel SGB II ↔ SGB III erklärbar (siehe
+  [`04_Fluktuation.ipynb`](../Notebooks/04_Fluktuation.ipynb))
 
 ## 🔲 In den Rohdaten vorhanden, aber noch nicht analysiert
 
 ### Noch ungenutzte Zeilen in "1.1 Eckwerte" (gleiches Blatt, das wir schon nutzen)
-- **Zugang und Abgang** aus Arbeitslosigkeit (im Monat und als 12-Monatssumme) — bisher nur
-  der *Bestand* betrachtet, nicht die Dynamik/Fluktuation
 - **Altersstruktur und Geschlecht als Zeitreihe** statt nur Momentaufnahme des letzten Monats
   (55+ separat, nicht nur 50+)
 - **Schwerbehinderte Menschen** unter den Arbeitslosen
@@ -98,8 +101,8 @@ Statistik-Infoseite.
 
 ## Priorisierungsvorschlag für die Fortsetzung
 
-1. Zugang/Abgang (Fluktuation) ergänzen — direkt in "1.1 Eckwerte" verfügbar, kleiner Aufwand,
-   keine Wartezeit-Problematik
+1. ~~Zugang/Abgang (Fluktuation) ergänzen~~ — ✅ erledigt, siehe
+   [`04_Fluktuation.ipynb`](../Notebooks/04_Fluktuation.ipynb)
 2. Altersstruktur/Geschlecht als Zeitreihe statt Momentaufnahme
 3. Erwerbstätigkeit/Aufstocker (3.3) — inhaltlich relevanter neuer Aspekt (⚠️ 3 Monate Wartezeit)
 4. Zahlungsansprüche (3.6) — einziger Zugang zu Euro-Beträgen, bisher komplett unbeleuchtet
@@ -115,15 +118,17 @@ Details: [`Dashboard/README.md`](../Dashboard/README.md).
 
 - Tab **"SGB II Übersicht"** enthält alle bisher fertigen Charts (entspricht inhaltlich
   `02_Analyse_SGBII.ipynb`, plus Trichter-Grafik und formatierte Kennzahlen-Tabelle)
-- Sechs weitere Tabs sind als Platzhalter für genau die oben gelistete Priorisierung
-  vorbereitet (Fluktuation, Demografie, Erwerbstätigkeit, Bezugsdauer, Finanzen, Förderung) —
-  jeder zeigt bereits Datenquelle, geplante Diagramme und Priorität, nur die eigentlichen
-  Charts fehlen noch
+- Tab **"Fluktuation"** ist fertig (entspricht `04_Fluktuation.ipynb`): Zugang/Abgang im
+  Monatsverlauf, Netto-Fluktuation vs. Bestandsänderung, 12-Monatssummen
+- Fünf weitere Tabs sind als Platzhalter für die oben gelistete Priorisierung vorbereitet
+  (Demografie, Erwerbstätigkeit, Bezugsdauer, Finanzen, Förderung) — jeder zeigt bereits
+  Datenquelle, geplante Diagramme und Priorität, nur die eigentlichen Charts fehlen noch
 - Zeitraum-Filter (Slider) und Berichtsmonat-Auswahl in der Sidebar, wirken auf alle
   Zeitreihen-Charts bzw. Momentaufnahmen
 - Datenbasis: die aufbereiteten CSVs aus `Data/processed/`
-  (`eckwerte_long.csv`, `kennzahlen_sgb2.csv`) — kein erneutes Excel-Parsing nötig
+  (`eckwerte_long.csv`, `kennzahlen_sgb2.csv`, `fluktuation_sgb2.csv`) — kein erneutes
+  Excel-Parsing nötig
 - Alle Charts interaktiv (Plotly, `hovermode="x unified"`)
 
-Nächster Schritt: die sechs Platzhalter-Tabs nacheinander mit echten Charts befüllen, in der
-oben genannten Prioritätsreihenfolge.
+Nächster Schritt: die fünf verbleibenden Platzhalter-Tabs nacheinander mit echten Charts
+befüllen, in der oben genannten Prioritätsreihenfolge.

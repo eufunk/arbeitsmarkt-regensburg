@@ -21,19 +21,26 @@ st.set_page_config(page_title="Arbeitsmarkt Regensburg (SGB II)", layout="wide")
 def load_data():
     long_path = PROCESSED_DIR / "eckwerte_long.csv"
     wide_path = PROCESSED_DIR / "kennzahlen_sgb2.csv"
+    fluktuation_path = PROCESSED_DIR / "fluktuation_sgb2.csv"
 
     if not long_path.exists() or not wide_path.exists():
-        return None, None
+        return None, None, None
 
     df_long = pd.read_csv(long_path)
     df_long["period"] = pd.PeriodIndex(df_long["period"], freq="M").to_timestamp()
 
     kennzahlen = pd.read_csv(wide_path, index_col="period", parse_dates=["period"])
     kennzahlen = kennzahlen.sort_index()
-    return df_long, kennzahlen
+
+    fluktuation = None
+    if fluktuation_path.exists():
+        fluktuation = pd.read_csv(fluktuation_path, index_col="period", parse_dates=["period"])
+        fluktuation = fluktuation.sort_index()
+
+    return df_long, kennzahlen, fluktuation
 
 
-df_long, kennzahlen = load_data()
+df_long, kennzahlen, fluktuation = load_data()
 
 if kennzahlen is None:
     st.error(
@@ -83,6 +90,11 @@ date_range = st.sidebar.slider(
 
 mask = (kennzahlen.index >= date_range[0]) & (kennzahlen.index <= date_range[1])
 view = kennzahlen.loc[mask]
+
+flu_view = None
+if fluktuation is not None:
+    flu_mask = (fluktuation.index >= date_range[0]) & (fluktuation.index <= date_range[1])
+    flu_view = fluktuation.loc[flu_mask]
 
 if view.empty:
     st.warning("Kein Berichtsmonat im gewählten Zeitraum.")
@@ -425,22 +437,100 @@ with tab_uebersicht:
 # =================================================================================
 with tab_fluktuation:
     st.subheader("Fluktuation: Zugang & Abgang aus Arbeitslosigkeit")
-    geplant(
-        beschreibung=(
-            "Der bisherige Fokus liegt auf dem **Bestand** an Arbeitslosen. Dieser Tab ergänzt "
-            "die Dynamik: wie viele Personen werden monatlich neu arbeitslos, und wie viele "
-            "verlassen die Arbeitslosigkeit wieder?"
-        ),
-        datenquelle="Blatt „1.1 Eckwerte“, Zeilen „Zugang (im Monat)“, „Zugang (12-Monatssumme)“, "
-        "„Abgang (im Monat)“, „Abgang (12-Monatssumme)“ — bereits in `eckwerte_long.csv` "
-        "enthalten, nur noch nicht visualisiert.",
-        ideen=[
-            "Zeitreihe Zugang vs. Abgang (gruppierte Balken oder zwei Linien)",
-            "Netto-Veränderung (Zugang − Abgang) pro Monat als Wasserfall- oder Balkendiagramm",
-            "Gleitende 12-Monatssumme zur Glättung saisonaler Effekte",
-        ],
-        prioritaet="Priorität 1 (kein zusätzlicher Wartezeit-Aufwand, Daten direkt verfügbar)",
-    )
+
+    if flu_view is None or flu_view.empty:
+        st.warning(
+            "Keine Fluktuationsdaten gefunden. Bitte zuerst "
+            "`Notebooks/04_Fluktuation.ipynb` einmal komplett ausführen, damit "
+            "`Data/processed/fluktuation_sgb2.csv` entsteht."
+        )
+    else:
+        st.caption(
+            "Der bisherige Fokus (Tab „SGB II Übersicht“) liegt auf dem **Bestand** an "
+            "Arbeitslosen. Dieser Tab zeigt die Dynamik dahinter: wie viele Personen werden "
+            "monatlich neu arbeitslos (**Zugang**), und wie viele verlassen die "
+            "Arbeitslosigkeit wieder (**Abgang**)? Rechtskreis SGB II."
+        )
+
+        st.markdown("#### Zugang und Abgang im Monatsverlauf")
+        fig = go.Figure()
+        fig.add_trace(go.Bar(
+            x=flu_view.index, y=flu_view["Zugang (im Monat)"], name="Zugang",
+            marker_color="#dc2626",
+        ))
+        fig.add_trace(go.Bar(
+            x=flu_view.index, y=-flu_view["Abgang (im Monat)"], name="Abgang",
+            marker_color="#16a34a",
+        ))
+        fig.update_layout(
+            title="Zugang und Abgang aus Arbeitslosigkeit im Monatsverlauf (SGB II)",
+            yaxis_title="Personen (Abgang als negativer Balken)",
+            xaxis_title="Monat",
+            barmode="relative",
+            hovermode="x unified",
+            legend=dict(orientation="h", y=1.12),
+            height=420,
+        )
+        st.plotly_chart(fig, width="stretch")
+        st.caption(
+            "Zugang = neu arbeitslos gemeldete Personen im jeweiligen Monat, Abgang = "
+            "Personen, die die Arbeitslosigkeit im jeweiligen Monat verlassen haben "
+            "(Gründe stehen erst im Blatt „2.3 Arbeitslosigkeit Abgang“, hier nicht enthalten)."
+        )
+
+        st.markdown("#### Netto-Fluktuation vs. tatsächliche Bestandsänderung")
+        bestand_delta = view["Arbeitslose (Bestand)"].diff().reindex(flu_view.index)
+        netto = flu_view["Netto-Fluktuation (im Monat)"]
+        farben = ["#dc2626" if v >= 0 else "#16a34a" for v in netto]
+        fig = go.Figure()
+        fig.add_trace(go.Bar(x=netto.index, y=netto, name="Netto-Fluktuation", marker_color=farben))
+        fig.add_trace(go.Scatter(
+            x=bestand_delta.index, y=bestand_delta, name="Tatsächliche Bestandsänderung",
+            mode="lines+markers", line=dict(color="#1e3a8a", width=2), marker=dict(size=6),
+        ))
+        fig.add_hline(y=0, line_color="grey")
+        fig.update_layout(
+            title="Netto-Fluktuation vs. tatsächliche Bestandsänderung (SGB II)",
+            yaxis_title="Personen",
+            xaxis_title="Monat",
+            hovermode="x unified",
+            legend=dict(orientation="h", y=1.12),
+            height=420,
+        )
+        st.plotly_chart(fig, width="stretch")
+        st.caption(
+            "Die Netto-Fluktuation (Zugang − Abgang) erklärt die tatsächliche Bestandsänderung "
+            "nicht vollständig — im Schnitt liegt sie rund 21 Personen pro Monat darunter, "
+            "plausibel erklärbar durch Rechtskreiswechsel zwischen SGB II und SGB III, die "
+            "sich im Bestand niederschlagen, aber nicht als eigene Zugangs-/Abgangskategorie "
+            "erscheinen."
+        )
+
+        st.markdown("#### 12-Monatssummen: der mittelfristige Trend")
+        fig = go.Figure()
+        fig.add_trace(go.Scatter(
+            x=flu_view.index, y=flu_view["Zugang (12-Monatssumme)"], name="Zugang (12-Monatssumme)",
+            mode="lines+markers", line=dict(color="#dc2626"), marker=dict(size=6),
+        ))
+        fig.add_trace(go.Scatter(
+            x=flu_view.index, y=flu_view["Abgang (12-Monatssumme)"], name="Abgang (12-Monatssumme)",
+            mode="lines+markers", line=dict(color="#16a34a"), marker=dict(size=6),
+        ))
+        fig.update_layout(
+            title="Zugang und Abgang: 12-Monatssummen im Zeitverlauf (SGB II)",
+            yaxis_title="Personen (rollierende 12-Monatssumme)",
+            xaxis_title="Monat",
+            hovermode="x unified",
+            legend=dict(orientation="h", y=1.12),
+            height=420,
+        )
+        st.plotly_chart(fig, width="stretch")
+        st.caption(
+            "Glättet saisonale Schwankungen der Monatswerte und zeigt den mittelfristigen "
+            "Trend: Der Zugangstrend ist rückläufig, der Abgangstrend leicht steigend — die "
+            "rollierende Netto-Fluktuation hat sich über den Beobachtungszeitraum spürbar "
+            "verschlechtert, ohne dass sich das bislang deutlich im Bestand zeigt."
+        )
 
 # =================================================================================
 # Tab 3: Demografie (Alter, Geschlecht als Zeitreihe, Schwerbehinderte, Ausländer)

@@ -25,6 +25,7 @@ Notebooks/
   01_Exploration.ipynb      Einlesen, Bereinigen, Aufbereiten, Export nach Data/processed/
   02_Analyse_SGBII.ipynb    Visualisierung und inhaltliche Auswertung (Rechtskreis SGB II)
   03_Statistik.ipynb        Deskriptive Statistik, Korrelation, Hypothesentest, Regression
+  04_Fluktuation.ipynb      Zugang/Abgang, Netto-Fluktuation, 12-Monatssummen
 Dashboard/
   app.py                    interaktives Streamlit-Dashboard
 Dok/
@@ -36,6 +37,7 @@ MD/
   01_Exploration.md          Dokumentation zu 01_Exploration.ipynb
   02_Analyse_SGBII.md        Dokumentation zu 02_Analyse_SGBII.ipynb
   03_Statistik.md            Dokumentation zu 03_Statistik.ipynb
+  04_Fluktuation.md          Dokumentation zu 04_Fluktuation.ipynb
 ```
 
 ## Lokal ausführen
@@ -45,7 +47,8 @@ MD/
 2. `Notebooks/02_Analyse_SGBII.ipynb` für Visualisierung und Auswertung.
 3. `Notebooks/03_Statistik.ipynb` für vertiefte statistische Verfahren (Korrelation,
    Hypothesentest, Regression).
-4. Dashboard starten:
+4. `Notebooks/04_Fluktuation.ipynb` für Zugang/Abgang aus Arbeitslosigkeit (Fluktuation).
+5. Dashboard starten:
    ```
    pip install -r Dashboard/requirements.txt
    streamlit run Dashboard/app.py
