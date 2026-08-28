@@ -23,9 +23,12 @@ def load_data():
     wide_path = PROCESSED_DIR / "kennzahlen_sgb2.csv"
     fluktuation_path = PROCESSED_DIR / "fluktuation_sgb2.csv"
     demografie_path = PROCESSED_DIR / "demografie_sgb2.csv"
+    erwerbstaetigkeit_path = PROCESSED_DIR / "erwerbstaetigkeit_sgb2.csv"
+    finanzen_path = PROCESSED_DIR / "finanzen_sgb2.csv"
+    foerderung_path = PROCESSED_DIR / "foerderung_sgb2.csv"
 
     if not long_path.exists() or not wide_path.exists():
-        return None, None, None, None
+        return None, None, None, None, None, None, None
 
     df_long = pd.read_csv(long_path)
     df_long["period"] = pd.PeriodIndex(df_long["period"], freq="M").to_timestamp()
@@ -43,10 +46,25 @@ def load_data():
         demografie = pd.read_csv(demografie_path, index_col="period", parse_dates=["period"])
         demografie = demografie.sort_index()
 
-    return df_long, kennzahlen, fluktuation, demografie
+    erwerbstaetigkeit = None
+    if erwerbstaetigkeit_path.exists():
+        erwerbstaetigkeit = pd.read_csv(erwerbstaetigkeit_path, index_col="period", parse_dates=["period"])
+        erwerbstaetigkeit = erwerbstaetigkeit.sort_index()
+
+    finanzen = None
+    if finanzen_path.exists():
+        finanzen = pd.read_csv(finanzen_path, index_col="period", parse_dates=["period"])
+        finanzen = finanzen.sort_index()
+
+    foerderung = None
+    if foerderung_path.exists():
+        foerderung = pd.read_csv(foerderung_path, index_col="period", parse_dates=["period"])
+        foerderung = foerderung.sort_index()
+
+    return df_long, kennzahlen, fluktuation, demografie, erwerbstaetigkeit, finanzen, foerderung
 
 
-df_long, kennzahlen, fluktuation, demografie = load_data()
+df_long, kennzahlen, fluktuation, demografie, erwerbstaetigkeit, finanzen, foerderung = load_data()
 
 if kennzahlen is None:
     st.error(
@@ -151,7 +169,7 @@ def geplant(beschreibung: str, datenquelle: str, ideen: list[str], prioritaet: s
 
 
 # --- Navigation: Menü-Tabs ------------------------------------------------------
-tab_uebersicht, tab_fluktuation, tab_demografie, tab_erwerbstaetigkeit, tab_bezugsdauer, tab_finanzen, tab_foerderung = st.tabs(
+tab_uebersicht, tab_fluktuation, tab_demografie, tab_erwerbstaetigkeit, tab_bezugsdauer, tab_finanzen, tab_foerderung, tab_glossar = st.tabs(
     [
         "📊 SGB II Übersicht",
         "🔄 Fluktuation",
@@ -160,6 +178,7 @@ tab_uebersicht, tab_fluktuation, tab_demografie, tab_erwerbstaetigkeit, tab_bezu
         "⏳ Bezugsdauer",
         "💶 Finanzen",
         "🎯 Förderung",
+        "📖 Glossar",
     ]
 )
 
@@ -681,24 +700,128 @@ with tab_demografie:
 # =================================================================================
 with tab_erwerbstaetigkeit:
     st.subheader("Erwerbstätigkeit trotz Bürgergeld-Bezug (\"Aufstocker\")")
-    geplant(
-        beschreibung=(
-            "Komplett neues Themenfeld: Personen, die trotz eines Jobs ergänzend Bürgergeld "
-            "beziehen, weil ihr Einkommen nicht zum Leben reicht. Passt inhaltlich direkt an die "
-            "Trichter-Grafik im Übersicht-Tab an — dort endet die Kette bei „Arbeitslose“, hier "
-            "käme die Ergänzung „davon in Arbeit, aber bedürftig“ dazu."
-        ),
-        datenquelle="Blatt „3.3 Erwerbstätigkeit“ — erwerbstätige erwerbsfähige Leistungsberechtigte "
-        "(ELB), aufgeschlüsselt nach abhängig/selbstständig und Einkommenshöhe "
-        "(Geringfügigkeitsgrenze vs. Übergangsbereich).",
-        ideen=[
-            "Zeitreihe der Aufstocker-Zahl (absolut und Anteil an allen ELB)",
-            "Aufschlüsselung abhängig vs. selbstständig erwerbstätig",
-            "Erweiterte Trichter-Grafik mit zusätzlicher Stufe „erwerbstätige ELB“",
-        ],
-        prioritaet="Priorität 3",
-        wartezeit=True,
-    )
+
+    if erwerbstaetigkeit is None or erwerbstaetigkeit.empty:
+        st.warning(
+            "Keine Erwerbstätigkeits-Daten gefunden. Bitte zuerst "
+            "`Notebooks/06_Erwerbstaetigkeit.ipynb` einmal komplett ausführen, damit "
+            "`Data/processed/erwerbstaetigkeit_sgb2.csv` entsteht."
+        )
+    else:
+        st.caption(
+            "Erwerbstätige erwerbsfähige Leistungsberechtigte (ELB) — in der öffentlichen "
+            "Diskussion oft „Aufstocker“ genannt: Personen, die trotz eigenem "
+            "Erwerbseinkommen ergänzend Bürgergeld beziehen. Passt inhaltlich an die "
+            "Trichter-Grafik im Tab „SGB II Übersicht“ an."
+        )
+        with st.expander("Was bedeutet ELB?"):
+            st.markdown(
+                "**Erwerbsfähige Leistungsberechtigte (ELB)** sind Personen innerhalb einer "
+                "Bedarfsgemeinschaft (BG), die Bürgergeld beziehen **und** erwerbsfähig sind "
+                "(zwischen 15 und 65 Jahren, gesundheitlich in der Lage zu arbeiten). Sie "
+                "sind die Kernzielgruppe der Arbeitsvermittlung des Jobcenters. Abzugrenzen "
+                "von den **nicht erwerbsfähigen Leistungsberechtigten (NEF)** — v. a. Kinder "
+                "unter 15 Jahren und dauerhaft erwerbsunfähige Angehörige innerhalb derselben "
+                "BG. **Erwerbstätige ELB** sind ELB, die zusätzlich eigenes Einkommen aus "
+                "Beschäftigung oder Selbstständigkeit haben — die „Aufstocker“, um die es in "
+                "diesem Tab geht. Weitere Begriffe: siehe Tab „📖 Glossar“."
+            )
+        st.info(
+            "⚠️ Das Tabellenblatt „3.3 Erwerbstätigkeit“ meldet nur Werte mit **3 Monaten "
+            "Wartezeit**. Die hier gezeigte Zeitreihe (Oktober 2024 – März 2026) liegt "
+            "daher 3 Monate früher als der übrige Berichtszeitraum (Januar 2025 – Juni "
+            "2026) und wird **nicht** vom Zeitraum-Filter der Sidebar beeinflusst."
+        )
+
+        st.markdown("#### Erwerbstätige ELB im Zeitverlauf: die Aufstocker-Quote")
+        fig = go.Figure()
+        fig.add_trace(go.Scatter(
+            x=erwerbstaetigkeit.index, y=erwerbstaetigkeit["erwerbstätige ELB"], name="erwerbstätige ELB (absolut)",
+            mode="lines+markers", line=dict(color="#2563eb"), marker=dict(size=6), yaxis="y1",
+        ))
+        fig.add_trace(go.Scatter(
+            x=erwerbstaetigkeit.index, y=erwerbstaetigkeit["Aufstockerquote (%)"], name="Aufstockerquote (%)",
+            mode="lines+markers", line=dict(color="#f59e0b", dash="dot"), marker=dict(size=6), yaxis="y2",
+        ))
+        fig.update_layout(
+            yaxis=dict(title="Personen"),
+            yaxis2=dict(title="Anteil an allen ELB (%)", overlaying="y", side="right", ticksuffix="%"),
+            xaxis_title="Monat",
+            hovermode="x unified",
+            legend=dict(orientation="h", y=1.15),
+            height=440,
+        )
+        st.plotly_chart(fig, width="stretch")
+        st.caption(
+            "Die Aufstockerquote (erwerbstätige ELB / alle ELB, hier selbst berechnet) ist "
+            "mit Ø 21,4 % bemerkenswert stabil — rund jede fünfte erwerbsfähige "
+            "leistungsberechtigte Person ist erwerbstätig, verdient aber nicht genug für "
+            "den vollständigen Ausstieg aus dem Bürgergeld-Bezug."
+        )
+
+        col_a, col_b = st.columns(2)
+        with col_a:
+            st.markdown("#### Abhängig vs. selbständig")
+            fig = go.Figure()
+            fig.add_trace(go.Scatter(
+                x=erwerbstaetigkeit.index, y=erwerbstaetigkeit["abhängig erwerbstätig"], name="abhängig erwerbstätig",
+                mode="lines", stackgroup="erwerb", line=dict(color="#2563eb", width=0.5),
+            ))
+            fig.add_trace(go.Scatter(
+                x=erwerbstaetigkeit.index, y=erwerbstaetigkeit["selbständig erwerbstätig"], name="selbständig erwerbstätig",
+                mode="lines", stackgroup="erwerb", line=dict(color="#7c3aed", width=0.5),
+            ))
+            fig.update_layout(
+                yaxis_title="Personen",
+                xaxis_title="Monat",
+                hovermode="x unified",
+                legend=dict(orientation="h", y=1.15),
+                height=400,
+            )
+            st.plotly_chart(fig, width="stretch")
+            st.caption(
+                "**Abhängig erwerbstätig** = angestellt bei einem Arbeitgeber (Lohn/Gehalt). "
+                "**Selbständig erwerbstätig** = eigenes Gewerbe/Freiberuflichkeit "
+                "(Betriebsgewinn statt Lohn). Beide Gruppen zusammen ergeben die "
+                "„erwerbstätige ELB“ aus der Grafik oben. Klar dominiert von abhängiger "
+                "Beschäftigung (93–94 %), selbständig Erwerbstätige bleiben eine stabile "
+                "Minderheit von rund 6–7 %."
+            )
+
+        with col_b:
+            st.markdown("#### Einkommensstruktur (abhängig erwerbstätig)")
+            einkommens_stufen = ["bis zur Geringfügigkeitsgrenze", "im Übergangsbereich", "über dem Übergangsbereich"]
+            farben_einkommen = {"bis zur Geringfügigkeitsgrenze": "#f59e0b", "im Übergangsbereich": "#2563eb", "über dem Übergangsbereich": "#16a34a"}
+            fig = go.Figure()
+            for stufe in einkommens_stufen:
+                fig.add_trace(go.Scatter(
+                    x=erwerbstaetigkeit.index, y=erwerbstaetigkeit[stufe], name=stufe,
+                    mode="lines", stackgroup="einkommen", line=dict(color=farben_einkommen[stufe], width=0.5),
+                ))
+            fig.update_layout(
+                yaxis_title="Personen",
+                xaxis_title="Monat",
+                hovermode="x unified",
+                legend=dict(orientation="h", y=1.15),
+                height=400,
+            )
+            st.plotly_chart(fig, width="stretch")
+            st.caption(
+                "Die drei Stufen sind überschneidungsfrei und summieren sich exakt zu "
+                "„abhängig erwerbstätig“ aus der Grafik links — sie zeigen, wie viel die "
+                "abhängig erwerbstätigen Aufstocker verdienen:\n\n"
+                "- **bis zur Geringfügigkeitsgrenze**: Minijob, aktuell bis 603 € brutto/Monat.\n"
+                "- **im Übergangsbereich** (\"Midi-Job\"): 603 € bis 2.000 € brutto/Monat, mit "
+                "reduzierten Sozialversicherungsbeiträgen.\n"
+                "- **über dem Übergangsbereich**: mehr als 2.000 € brutto/Monat — trotzdem "
+                "reicht das Einkommen (z. B. wegen Teilzeit, hoher Miete oder mehrerer "
+                "Kinder in der Bedarfsgemeinschaft) nicht aus, um ganz ohne Bürgergeld "
+                "auszukommen.\n\n"
+                "**Trend:** leichte Verschiebung zu höheren Einkommen — der Anteil „bis "
+                "Geringfügigkeitsgrenze“ sinkt von 43,4 % auf 38,1 % (jeweils bezogen auf "
+                "alle abhängig Erwerbstätigen), während „im Übergangsbereich“ (48,0 % → "
+                "51,0 %) und „über dem Übergangsbereich“ (8,6 % → 10,9 %) steigen."
+            )
 
 # =================================================================================
 # Tab 5: Bezugsdauer (Langzeitleistungsbezug, Bewegungen, Haushaltsstruktur)
@@ -730,43 +853,297 @@ with tab_bezugsdauer:
 # =================================================================================
 with tab_finanzen:
     st.subheader("Zahlungsansprüche in Euro")
-    geplant(
-        beschreibung=(
-            "Bisher zeigt das Dashboard nur Personen- und Haushaltszahlen. Dieser Tab bringt die "
-            "einzige Quelle für tatsächliche **Euro-Beträge**: das Finanzvolumen der "
-            "SGB-II-Leistungen."
-        ),
-        datenquelle="Blatt „3.6 Zahlungsansprüche“ — Summe der Zahlungsansprüche (in Tsd. Euro), "
-        "durchschnittlicher Anspruch je Bedarfsgemeinschaft, aufgeschlüsselt nach Regelbedarf "
-        "für erwerbsfähige (ELB) und nicht erwerbsfähige (NEF) Leistungsberechtigte.",
-        ideen=[
-            "Zeitreihe der monatlichen Gesamtsumme in Euro",
-            "Durchschnittlicher Zahlungsanspruch je Bedarfsgemeinschaft im Zeitverlauf",
-            "Aufteilung Regelbedarf ELB vs. NEF als gestapeltes Balkendiagramm",
-        ],
-        prioritaet="Priorität 4",
-        wartezeit=True,
-    )
+
+    if finanzen is None or finanzen.empty:
+        st.warning(
+            "Keine Finanzdaten gefunden. Bitte zuerst `Notebooks/07_Finanzen.ipynb` "
+            "einmal komplett ausführen, damit `Data/processed/finanzen_sgb2.csv` entsteht."
+        )
+    else:
+        st.caption(
+            "Die einzige Quelle für tatsächliche **Euro-Beträge** im gesamten Datensatz: "
+            "Höhe und Struktur der Zahlungsansprüche für Bedarfsgemeinschaften (BG) nach "
+            "SGB II — Regelbedarf, Kosten der Unterkunft, Sozialversicherungsbeiträge u. a."
+        )
+        st.info(
+            "⚠️ Das Tabellenblatt „3.6 Zahlungsansprüche“ meldet nur Werte mit **3 Monaten "
+            "Wartezeit**. Die hier gezeigte Zeitreihe (Oktober 2024 – März 2026) liegt "
+            "daher 3 Monate früher als der übrige Berichtszeitraum (Januar 2025 – Juni "
+            "2026) und wird **nicht** vom Zeitraum-Filter der Sidebar beeinflusst."
+        )
+
+        st.markdown("#### Gesamtvolumen der Zahlungsansprüche im Zeitverlauf")
+        fig = go.Figure()
+        fig.add_trace(go.Scatter(
+            x=finanzen.index, y=finanzen["Insgesamt (Tsd. Euro)"], name="Insgesamt (Tsd. Euro)",
+            mode="lines+markers", line=dict(color="#2563eb"), marker=dict(size=6), yaxis="y1",
+        ))
+        fig.add_trace(go.Scatter(
+            x=finanzen.index, y=finanzen["Ø je BG insgesamt (Euro)"], name="Ø je BG (Euro)",
+            mode="lines+markers", line=dict(color="#f59e0b", dash="dot"), marker=dict(size=6), yaxis="y2",
+        ))
+        fig.update_layout(
+            yaxis=dict(title="Insgesamt (Tsd. Euro)"),
+            yaxis2=dict(title="Ø je BG (Euro)", overlaying="y", side="right"),
+            xaxis_title="Monat",
+            hovermode="x unified",
+            legend=dict(orientation="h", y=1.15),
+            height=440,
+        )
+        st.plotly_chart(fig, width="stretch")
+        st.caption(
+            "Das Gesamtvolumen ist über den Zeitraum praktisch stabil (3.451,5 → 3.473,0 "
+            "Tsd. Euro), der Anspruch je Bedarfsgemeinschaft ist dagegen spürbar gestiegen "
+            "(1.251 € → 1.288 €) — weil die Zahl der Bedarfsgemeinschaften sinkt, das "
+            "Gesamtvolumen aber kaum."
+        )
+
+        st.markdown("#### Struktur der Zahlungsansprüche")
+        leaf_spalten = ["Regelbedarf ELB", "Regelbedarf NEF", "Mehrbedarfe", "Kosten der Unterkunft", "Sozialversicherungsbeiträge", "weitere Zahlungsansprüche"]
+        leaf_farben = {
+            "Regelbedarf ELB": "#2563eb", "Regelbedarf NEF": "#7c3aed", "Mehrbedarfe": "#db2777",
+            "Kosten der Unterkunft": "#f59e0b", "Sozialversicherungsbeiträge": "#16a34a", "weitere Zahlungsansprüche": "#6b7280",
+        }
+        fig = go.Figure()
+        for spalte in leaf_spalten:
+            fig.add_trace(go.Scatter(
+                x=finanzen.index, y=finanzen[spalte], name=spalte,
+                mode="lines", stackgroup="finanzen", line=dict(color=leaf_farben[spalte], width=0.5),
+            ))
+        fig.update_layout(
+            yaxis_title="Tsd. Euro",
+            xaxis_title="Monat",
+            hovermode="x unified",
+            legend=dict(orientation="h", y=1.15),
+            height=440,
+        )
+        st.plotly_chart(fig, width="stretch")
+        st.caption(
+            "Die sechs Posten sind überschneidungsfrei und summieren sich exakt zum "
+            "Gesamtvolumen. **Regelbedarf ELB** (Grundsicherung für erwerbsfähige "
+            "Leistungsberechtigte) ist mit rund 40 % der größte Posten, gefolgt von "
+            "**Kosten der Unterkunft** (~36 %, Miete/Heizung). Auffälligster Trend: "
+            "**Sozialversicherungsbeiträge** steigen deutlich (15,6 % → 18,3 % Anteil), "
+            "während **Regelbedarf NEF** (v. a. Kinder in der Bedarfsgemeinschaft) sinkt "
+            "(3,8 % → 2,8 %)."
+        )
 
 # =================================================================================
 # Tab 7: Förderung (aktive Arbeitsmarktpolitik)
 # =================================================================================
 with tab_foerderung:
     st.subheader("Förderung der aktiven Arbeitsmarktpolitik")
-    geplant(
-        beschreibung=(
-            "Komplett neues Themenfeld ohne bisherige Berührung: Maßnahmen zur Eingliederung in "
-            "Arbeit (z. B. Weiterbildung, Aktivierung), die das Jobcenter finanziert."
-        ),
-        datenquelle="Blatt „4.1 Förderung“ (Eintritte in Maßnahmen nach Instrumenten-Kategorie, "
-        "inkl. gleitender 12-Monatssumme) und Blatt „4.2 Förderung Strukturen“ (Bestand an "
-        "Teilnehmenden nach Geschlecht, Alter, LZA-Status, Schwerbehinderung, sowie die fertige "
-        "Kennzahl Aktivierungsquote AQ1/AQ2a).",
-        ideen=[
-            "Balkendiagramm der Maßnahmen-Kategorien nach Teilnehmerzahl",
-            "Bestand an Teilnehmenden nach Altersgruppe (gestapeltes Balkendiagramm)",
-            "Aktivierungsquote (AQ1/AQ2a) als Zeitreihe",
-        ],
-        prioritaet="Priorität 5",
-        wartezeit=True,
+
+    if foerderung is None or foerderung.empty:
+        st.warning(
+            "Keine Förderungs-Daten gefunden. Bitte zuerst "
+            "`Notebooks/08_Foerderung.ipynb` einmal komplett ausführen, damit "
+            "`Data/processed/foerderung_sgb2.csv` entsteht."
+        )
+    else:
+        st.caption(
+            "Maßnahmen zur Eingliederung in Arbeit (z. B. Weiterbildung, "
+            "Vermittlungsbudget, Eingliederungszuschuss), die das Jobcenter finanziert. "
+            "Die Förderstatistik zählt Förderfälle, nicht Personen — wer mehrere "
+            "Leistungen gleichzeitig erhält, wird mehrfach gezählt."
+        )
+        st.info(
+            "⚠️ Die Tabellenblätter „4.1 Förderung“ und „4.2 Förderung Strukturen“ melden "
+            "nur Werte mit **3 Monaten Wartezeit**. Die hier gezeigte Zeitreihe (Oktober "
+            "2024 – März 2026) liegt daher 3 Monate früher als der übrige "
+            "Berichtszeitraum (Januar 2025 – Juni 2026) und wird **nicht** vom "
+            "Zeitraum-Filter der Sidebar beeinflusst."
+        )
+
+        st.markdown("#### Eintritte und Bestand an Fördermaßnahmen")
+        fig = go.Figure()
+        fig.add_trace(go.Bar(
+            x=foerderung.index, y=foerderung["Eintritte (Summe)"], name="Eintritte (im Monat)",
+            marker_color="#f59e0b", yaxis="y1",
+        ))
+        fig.add_trace(go.Scatter(
+            x=foerderung.index, y=foerderung["Bestand (Summe)"], name="Bestand (im Monat)",
+            mode="lines+markers", line=dict(color="#2563eb"), marker=dict(size=6), yaxis="y2",
+        ))
+        fig.update_layout(
+            yaxis=dict(title="Eintritte im Monat"),
+            yaxis2=dict(title="Bestand im Monat", overlaying="y", side="right"),
+            xaxis_title="Monat",
+            hovermode="x unified",
+            legend=dict(orientation="h", y=1.15),
+            height=440,
+        )
+        st.plotly_chart(fig, width="stretch")
+        st.caption(
+            "Eintritte = neu begonnene Förderfälle im Monat. Bestand = Personen, die "
+            "aktuell an einer Maßnahme teilnehmen. Der Bestand stieg bis zu einem "
+            "Höchststand von 313 im April 2025 und ist seither wieder gesunken."
+        )
+
+        st.markdown("#### Aktivierungsquote im Zeitverlauf")
+        with st.expander("Was bedeuten AQ1 und AQ2a?"):
+            st.markdown(
+                "Die **Aktivierungsquote** ist eine von der Bundesagentur direkt "
+                "mitgelieferte, bestandsorientierte Kennzahl — der Anteil aktivierter "
+                "(in Fördermaßnahmen befindlicher) Personen an:\n"
+                "- **AQ1**: allen Teilnehmenden plus Arbeitslosen,\n"
+                "- **AQ2a**: allen erwerbsfähigen Leistungsberechtigten (ELB)."
+            )
+        fig = go.Figure()
+        fig.add_trace(go.Scatter(x=foerderung.index, y=foerderung["AQ1 (%)"], name="AQ1", mode="lines+markers", line=dict(color="#2563eb"), marker=dict(size=5)))
+        fig.add_trace(go.Scatter(x=foerderung.index, y=foerderung["AQ1 12M-Durchschnitt (%)"], name="AQ1 (12M-Ø)", mode="lines", line=dict(color="#2563eb", dash="dot")))
+        fig.add_trace(go.Scatter(x=foerderung.index, y=foerderung["AQ2a (%)"], name="AQ2a", mode="lines+markers", line=dict(color="#7c3aed"), marker=dict(size=5)))
+        fig.add_trace(go.Scatter(x=foerderung.index, y=foerderung["AQ2a 12M-Durchschnitt (%)"], name="AQ2a (12M-Ø)", mode="lines", line=dict(color="#7c3aed", dash="dot")))
+        fig.update_layout(
+            yaxis_title="Prozent", yaxis_ticksuffix="%",
+            xaxis_title="Monat",
+            hovermode="x unified",
+            legend=dict(orientation="h", y=1.15),
+            height=440,
+        )
+        st.plotly_chart(fig, width="stretch")
+        st.caption(
+            "Beide Quoten sind in den Rohwerten rückläufig (AQ1: 13,3 % → 9,9 %; AQ2a: "
+            "6,0 % → 5,5 %) — nur ein kleiner Teil der SGB-II-Grundgesamtheit nimmt "
+            "aktuell an einer Fördermaßnahme teil."
+        )
+
+        st.markdown("#### Struktur des Bestands: Geschlecht und Vorgeschichte")
+        anteil_frauen = (foerderung["Bestand Frauen"] / foerderung["Bestand (Summe)"] * 100).round(1)
+        anteil_lza = (foerderung["Bestand vor Eintritt LZA"] / foerderung["Bestand (Summe)"] * 100).round(1)
+        fig = go.Figure()
+        fig.add_trace(go.Scatter(x=foerderung.index, y=anteil_frauen, name="Anteil Frauen am Bestand (%)", mode="lines+markers", line=dict(color="#db2777"), marker=dict(size=5)))
+        fig.add_trace(go.Scatter(x=foerderung.index, y=anteil_lza, name="Anteil vor Eintritt langzeitarbeitslos (%)", mode="lines+markers", line=dict(color="#dc2626"), marker=dict(size=5)))
+        fig.update_layout(
+            yaxis_title="Prozent", yaxis_ticksuffix="%",
+            xaxis_title="Monat",
+            hovermode="x unified",
+            legend=dict(orientation="h", y=1.15),
+            height=420,
+        )
+        st.plotly_chart(fig, width="stretch")
+        st.caption(
+            "Der Frauenanteil bleibt stabil bei rund 44 %. Auffälliger: Der Anteil "
+            "zuvor langzeitarbeitsloser Teilnehmender steigt deutlich (16,2 % → 23,6 %) "
+            "— passend zur insgesamt steigenden Langzeitarbeitslosigkeit im Datensatz "
+            "(siehe Tab „SGB II Übersicht“)."
+        )
+
+# =================================================================================
+# Tab 8: Glossar
+# =================================================================================
+with tab_glossar:
+    st.subheader("Glossar: Begriffe rund um SGB II und Bürgergeld")
+    st.caption(
+        "Alle Fachbegriffe, die in diesem Dashboard verwendet werden, an einem Ort erklärt — "
+        "nach Themen gruppiert."
+    )
+
+    with st.expander("Grundbegriffe", expanded=True):
+        st.markdown(
+            "- **SGB II** (Zweites Buch Sozialgesetzbuch): regelt die *Grundsicherung für "
+            "Arbeitsuchende*, umgangssprachlich „Bürgergeld“ (bis 2022: „Hartz IV“). Wird von "
+            "den **Jobcentern** verwaltet.\n"
+            "- **SGB III**: regelt die *Arbeitslosenversicherung* (u. a. Arbeitslosengeld I). "
+            "Zuständig ist die **Agentur für Arbeit**, nicht das Jobcenter.\n"
+            "- **Rechtskreis**: gibt an, ob eine Person dem SGB II (Jobcenter) oder SGB III "
+            "(Agentur für Arbeit) zugeordnet ist. Alle Kennzahlen in diesem Dashboard "
+            "beziehen sich — sofern nicht anders angegeben — ausschließlich auf den "
+            "**Rechtskreis SGB II**.\n"
+            "- **Bürgergeld**: umgangssprachlicher Name für die Geldleistung nach SGB II.\n"
+            "- **Jobcenter**: die Behörde, die SGB-II-Leistungen verwaltet und in "
+            "Arbeit vermittelt — hier: Jobcenter Regensburg."
+        )
+
+    with st.expander("Personengruppen im SGB II", expanded=True):
+        st.markdown(
+            "- **Arbeitslose (Bestand)**: Personen, die zum Stichtag als arbeitslos gemeldet "
+            "sind (SGB II).\n"
+            "- **Langzeitarbeitslose (LZA)**: Personen, die seit mindestens einem Jahr "
+            "ununterbrochen arbeitslos gemeldet sind.\n"
+            "- **Bedarfsgemeinschaft (BG)**: der Haushalt bzw. die Personengruppe, die "
+            "gemeinsam wirtschaftet und gemeinsam Bürgergeld beantragt (z. B. eine Familie).\n"
+            "- **Personen in BG**: alle Mitglieder einer Bedarfsgemeinschaft, inkl. Kinder "
+            "und nicht erwerbsfähiger Angehöriger — daher immer größer als die Zahl der "
+            "Arbeitslosen.\n"
+            "- **Regelleistungsberechtigte (RLB)**: alle laufend anspruchsberechtigten "
+            "Personen innerhalb einer BG (Teilmenge von „Personen in BG“).\n"
+            "- **Erwerbsfähige Leistungsberechtigte (ELB)**: RLB, die erwerbsfähig sind "
+            "(15 bis 65 Jahre, gesundheitlich arbeitsfähig) — die Kernzielgruppe der "
+            "Arbeitsvermittlung.\n"
+            "- **Nicht erwerbsfähige Leistungsberechtigte (NEF)**: RLB, die nicht "
+            "erwerbsfähig sind — vor allem Kinder unter 15 Jahren und dauerhaft "
+            "erwerbsunfähige Angehörige.\n"
+            "- **Erwerbstätige ELB / „Aufstocker“**: ELB, die zusätzlich zum Bürgergeld "
+            "eigenes Einkommen aus abhängiger oder selbständiger Erwerbstätigkeit haben."
+        )
+
+    with st.expander("Kennzahlen (Quoten)"):
+        st.markdown(
+            "- **Arbeitslosenquote**: Anteil der Arbeitslosen (SGB II) an allen zivilen "
+            "Erwerbspersonen Regensburgs (Beschäftigte + Arbeitslose).\n"
+            "- **Unterbeschäftigungsquote**: wie die Arbeitslosenquote, aber mit einer "
+            "breiteren Bezugsgröße, die zusätzlich Personen in arbeitsmarktpolitischen "
+            "Maßnahmen einschließt — deshalb meist etwas höher.\n"
+            "- **Aufstockerquote**: Anteil der erwerbstätigen ELB an allen ELB. Nicht "
+            "direkt in den Rohdaten enthalten, sondern im Dashboard selbst berechnet "
+            "(erwerbstätige ELB ÷ Insgesamt ELB).\n"
+            "- **Netto-Fluktuation**: Zugang minus Abgang aus Arbeitslosigkeit in einem "
+            "Monat — positiv bedeutet mehr Zugänge als Abgänge."
+        )
+
+    with st.expander("Einkommen der Aufstocker"):
+        st.markdown(
+            "- **Geringfügigkeitsgrenze**: Verdienstgrenze für einen Minijob, aktuell "
+            "603 € brutto im Monat.\n"
+            "- **Übergangsbereich** (auch „Midi-Job“-Bereich): Einkommensspanne oberhalb der "
+            "Geringfügigkeitsgrenze bis 2.000 € brutto, mit reduzierten "
+            "Sozialversicherungsbeiträgen."
+        )
+
+    with st.expander("Zahlungsansprüche (Finanzen)"):
+        st.markdown(
+            "- **Regelbedarf**: der monatliche Grundbetrag zur Sicherung des "
+            "Existenzminimums (§ 20 SGB II für erwerbsfähige, § 23 SGB II für nicht "
+            "erwerbsfähige Leistungsberechtigte) — deckt u. a. Ernährung, Kleidung, "
+            "Haushaltsenergie.\n"
+            "- **Kosten der Unterkunft (KdU)**: Zahlungsanspruch für Miete und Heizung "
+            "(§ 22 SGB II).\n"
+            "- **Mehrbedarfe**: zusätzliche Zahlungsansprüche für besondere Lebenslagen "
+            "(§ 21 SGB II), z. B. bei Schwangerschaft, Alleinerziehung oder Behinderung.\n"
+            "- **Zahlungsanspruch**: die Summe aus Regelbedarf, Mehrbedarfen, KdU und "
+            "ggf. weiteren Leistungen, auf die eine Bedarfsgemeinschaft laut Berechnung "
+            "Anspruch hat — nicht zwingend identisch mit dem tatsächlich ausgezahlten "
+            "Betrag (z. B. bei anzurechnendem Einkommen)."
+        )
+
+    with st.expander("Förderung (aktive Arbeitsmarktpolitik)"):
+        st.markdown(
+            "- **Fördermaßnahmen / Instrumente**: vom Jobcenter finanzierte Maßnahmen zur "
+            "Eingliederung in Arbeit, z. B. Weiterbildung, Vermittlungsbudget, "
+            "Eingliederungszuschuss.\n"
+            "- **Eintritte**: neu begonnene Förderfälle in einem Monat (Zugang).\n"
+            "- **Bestand**: Personen, die aktuell an einer Maßnahme teilnehmen (Stichtag).\n"
+            "- **Aktivierungsquote**: bestandsorientierte Kennzahl der Bundesagentur — "
+            "**AQ1** = Anteil aktivierter Personen an allen Teilnehmenden plus "
+            "Arbeitslosen, **AQ2a** = Anteil an allen erwerbsfähigen "
+            "Leistungsberechtigten (ELB).\n"
+            "- **„*“ in den Rohdaten**: Anonymisierungs-Symbol für kleine Fallzahlen "
+            "(< 3 Personen) — aus Datenschutzgründen nicht ausgewiesen."
+        )
+
+    with st.expander("Datenbesonderheiten"):
+        st.markdown(
+            "- **Wartezeit (3 bzw. 6 Monate)**: Einige Tabellenblätter der Rohdaten (u. a. "
+            "„3.3 Erwerbstätigkeit“) melden nicht den aktuellen Berichtsmonat, sondern "
+            "Werte mit 3 bzw. 6 Monaten Verzögerung — die Daten müssen von der "
+            "Bundesagentur erst noch vervollständigt werden, bevor sie veröffentlicht "
+            "werden.\n"
+            "- **Statistik-Nr. t73906-0**: die eindeutige Kennung der Bundesagentur für "
+            "Arbeit für den Bericht „Eckwerte für Jobcenter“, Jobcenter Regensburg."
+        )
+
+    st.caption(
+        "Quelle für alle Definitionen: Statistik der Bundesagentur für Arbeit "
+        "(methodische Hinweise zum Bericht „Eckwerte für Jobcenter“)."
     )

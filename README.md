@@ -27,6 +27,9 @@ Notebooks/
   03_Statistik.ipynb        Deskriptive Statistik, Korrelation, Hypothesentest, Regression
   04_Fluktuation.ipynb      Zugang/Abgang, Netto-Fluktuation, 12-Monatssummen
   05_Demografie.ipynb       Altersstruktur, Geschlecht, Ausländer, Schwerbehinderte (Zeitreihe)
+  06_Erwerbstaetigkeit.ipynb Aufstockerquote, Erwerbsform, Einkommensstruktur
+  07_Finanzen.ipynb          Zahlungsansprüche in Euro, Ø je Bedarfsgemeinschaft, Struktur
+  08_Foerderung.ipynb        Eintritte/Bestand an Fördermaßnahmen, Aktivierungsquote
 Dashboard/
   app.py                    interaktives Streamlit-Dashboard
 Dok/
@@ -40,6 +43,9 @@ MD/
   03_Statistik.md            Dokumentation zu 03_Statistik.ipynb
   04_Fluktuation.md          Dokumentation zu 04_Fluktuation.ipynb
   05_Demografie.md           Dokumentation zu 05_Demografie.ipynb
+  06_Erwerbstaetigkeit.md    Dokumentation zu 06_Erwerbstaetigkeit.ipynb
+  07_Finanzen.md             Dokumentation zu 07_Finanzen.ipynb
+  08_Foerderung.md           Dokumentation zu 08_Foerderung.ipynb
 ```
 
 ## Lokal ausführen
@@ -52,7 +58,14 @@ MD/
 4. `Notebooks/04_Fluktuation.ipynb` für Zugang/Abgang aus Arbeitslosigkeit (Fluktuation).
 5. `Notebooks/05_Demografie.ipynb` für Altersstruktur, Geschlecht, Ausländer und
    Schwerbehinderte als Zeitreihe.
-6. Dashboard starten:
+6. `Notebooks/06_Erwerbstaetigkeit.ipynb` für Aufstockerquote und Einkommensstruktur (liest
+   direkt aus den Excel-Rohdaten, Blatt „3.3 Erwerbstätigkeit“).
+7. `Notebooks/07_Finanzen.ipynb` für Zahlungsansprüche in Euro (liest direkt aus den
+   Excel-Rohdaten, Blatt „3.6 Zahlungsansprüche“).
+8. `Notebooks/08_Foerderung.ipynb` für Eintritte/Bestand an Fördermaßnahmen und
+   Aktivierungsquote (liest direkt aus den Excel-Rohdaten, Blätter „4.1 Förderung“ und
+   „4.2 Förderung Strukturen“).
+9. Dashboard starten:
    ```
    pip install -r Dashboard/requirements.txt
    streamlit run Dashboard/app.py

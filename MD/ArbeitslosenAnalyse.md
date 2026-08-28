@@ -5,8 +5,11 @@ Januar 2025 – Juni 2026) wir aus den Rohdaten bereits ausgewertet haben, und w
 Rohdaten noch steckt, aber bislang nicht analysiert wurde.
 
 Rohdaten: `Data/RegensburgJCData/*.xlsx` (18 Monatsberichte "Eckwerte für Jobcenter").
-Bisher genutzt wurde ausschließlich das Tabellenblatt **"1.1 Eckwerte"**, dort nur der Ausschnitt
-Spalte B (Insgesamt SGB II+SGB III) und Spalte G (Rechtskreis SGB II) je Berichtsmonat.
+Kernanalyse basiert auf dem Tabellenblatt **"1.1 Eckwerte"** (Spalte B = Insgesamt
+SGB II+SGB III, Spalte G = Rechtskreis SGB II je Berichtsmonat); ergänzend werden die
+Blätter **"3.3 Erwerbstätigkeit"**, **"3.6 Zahlungsansprüche"**, **"4.1 Förderung"** und
+**"4.2 Förderung Strukturen"** ausgewertet (jeweils direkt aus den Excel-Rohdaten, ⚠️ mit
+3 Monaten Wartezeit).
 
 ## ✅ Bereits analysiert
 
@@ -36,6 +39,24 @@ Spalte B (Insgesamt SGB II+SGB III) und Spalte G (Rechtskreis SGB II) je Bericht
 - **Ausländische Arbeitslose** — überraschend hoher, deutlich rückläufiger Anteil (51,7 % →
   45,4 % des Bestands); bislang auffälligste neue Erkenntnis abseits der
   Langzeitarbeitslosigkeit (siehe [`05_Demografie.ipynb`](../Notebooks/05_Demografie.ipynb))
+- **Erwerbstätigkeit trotz Bürgergeld-Bezug ("Aufstocker")** — erstmals Blatt „3.3
+  Erwerbstätigkeit“ ausgewertet (⚠️ 3 Monate Wartezeit, Zeitreihe daher Okt 2024 – Mär 2026):
+  Aufstockerquote stabil bei Ø 21,4 % (rund jede fünfte erwerbsfähige leistungsberechtigte
+  Person ist erwerbstätig), klar dominiert von abhängiger Beschäftigung (93–94 %), leichte
+  Verschiebung zu höheren Einkommen innerhalb der Aufstocker (siehe
+  [`06_Erwerbstaetigkeit.ipynb`](../Notebooks/06_Erwerbstaetigkeit.ipynb))
+- **Zahlungsansprüche (Finanzen)** — erstmals Blatt „3.6 Zahlungsansprüche“ ausgewertet, die
+  einzige Quelle für tatsächliche Euro-Beträge (⚠️ 3 Monate Wartezeit, Zeitreihe daher Okt
+  2024 – Mär 2026): Gesamtvolumen praktisch stabil (3.451,5 → 3.473,0 Tsd. Euro), aber Ø je
+  Bedarfsgemeinschaft spürbar gestiegen (1.251 € → 1.288 €); Sozialversicherungsbeiträge
+  steigen deutlich (15,6 % → 18,3 % Anteil), Regelbedarf NEF sinkt (siehe
+  [`07_Finanzen.ipynb`](../Notebooks/07_Finanzen.ipynb))
+- **Förderung der aktiven Arbeitsmarktpolitik** — erstmals Blätter „4.1 Förderung“ und „4.2
+  Förderung Strukturen“ ausgewertet (⚠️ 3 Monate Wartezeit, Zeitreihe daher Okt 2024 – Mär
+  2026): Bestand an Teilnehmenden stieg bis Höchststand 313 (April 2025), seither wieder auf
+  250 gesunken; Aktivierungsquoten AQ1/AQ2a rückläufig; Anteil zuvor langzeitarbeitsloser
+  Teilnehmender steigt deutlich (16,2 % → 23,6 %) — passt zur steigenden
+  Langzeitarbeitslosigkeit (siehe [`08_Foerderung.ipynb`](../Notebooks/08_Foerderung.ipynb))
 
 ## 🔲 In den Rohdaten vorhanden, aber noch nicht analysiert
 
@@ -83,21 +104,11 @@ aus dem Dateinamen abgeleitet werden.
   nach BG-Typ wie ursprünglich vermutet. Idee: Balkendiagramm der Haushaltsgrößenverteilung,
   Zeitreihe des Single-Haushalt-Anteils.
 - **3.2 Personen in BG** — Aufschlüsselung nach Geschlecht plus Teilmenge ELB.
-- **3.3 Erwerbstätigkeit** — "Aufstocker" (erwerbstätige ELB), aufgeschlüsselt nach
-  abhängig/selbstständig und Einkommenshöhe (Geringfügigkeit vs. Übergangsbereich). Komplett
-  neues Themenfeld, direkt anschlussfähig an die Trichter-Grafik im Dashboard (zusätzliche
-  Stufe "davon in Arbeit, aber bedürftig").
 - **3.4 Langzeitleistungsbezug** — neue Kennzahl **Langzeitleistungsbeziehende (LZB)**: mind.
   21 von 24 Monaten im Bezug — nicht identisch mit Langzeitarbeitslosen, da Bürgergeld auch
   ohne Arbeitslosigkeit bezogen werden kann. Idee: LZB vs. LZA im Vergleich.
 - **3.5 Bewegungen Personen** — Zu-/Abgänge im Regelleistungsbezug (ELB-Ebene) inkl.
   Vorbezugs-Historie (Hinweis auf "Drehtür-Effekt": erneuter Bezug innerhalb 12 Monaten).
-- **3.6 Zahlungsansprüche** — einzige Quelle für **Euro-Beträge**: Summe der Zahlungsansprüche,
-  Ø Anspruch je BG, aufgeschlüsselt nach Regelbedarf ELB/NEF. Bisher komplett unberührtes
-  Themenfeld (Kostenvolumen).
-- **4.1 Förderung** — Eintritte in arbeitsmarktpolitische Maßnahmen nach Instrumenten-Kategorie.
-- **4.2 Förderung Strukturen** — Bestand an Maßnahmenteilnehmenden nach Geschlecht, Alter,
-  LZA-Status, Schwerbehinderung; enthält die fertige Kennzahl **Aktivierungsquote (AQ1/AQ2a)**.
 
 Nicht nutzbar (reine Metadaten/Links, keine Zahlen): Deckblatt, Impressum, Inhaltsverzeichnis
 (nützlich nur als Zeichenerklärung-Nachschlagewerk), Grafik (nur eingebettete Bilder), Linkliste,
@@ -109,11 +120,17 @@ Statistik-Infoseite.
    [`04_Fluktuation.ipynb`](../Notebooks/04_Fluktuation.ipynb)
 2. ~~Altersstruktur/Geschlecht als Zeitreihe statt Momentaufnahme~~ — ✅ erledigt (inkl.
    Ausländer, Schwerbehinderte), siehe [`05_Demografie.ipynb`](../Notebooks/05_Demografie.ipynb)
-3. Erwerbstätigkeit/Aufstocker (3.3) — inhaltlich relevanter neuer Aspekt (⚠️ 3 Monate Wartezeit)
-4. Zahlungsansprüche (3.6) — einziger Zugang zu Euro-Beträgen, bisher komplett unbeleuchtet
-   (⚠️ 3 Monate Wartezeit)
-5. Förderung (4.1/4.2) — falls Fokus auf aktive Arbeitsmarktpolitik gewünscht ist
-   (⚠️ 3 Monate Wartezeit)
+3. ~~Erwerbstätigkeit/Aufstocker (3.3)~~ — ✅ erledigt, siehe
+   [`06_Erwerbstaetigkeit.ipynb`](../Notebooks/06_Erwerbstaetigkeit.ipynb)
+4. ~~Zahlungsansprüche (3.6)~~ — ✅ erledigt, siehe
+   [`07_Finanzen.ipynb`](../Notebooks/07_Finanzen.ipynb)
+5. ~~Förderung (4.1/4.2)~~ — ✅ erledigt, siehe
+   [`08_Foerderung.ipynb`](../Notebooks/08_Foerderung.ipynb)
+
+**Damit ist die ursprüngliche Priorisierungsliste vollständig abgearbeitet.** Als
+nachrangiges, nicht priorisiertes Thema bleibt Bezugsdauer (Langzeitleistungsbezug,
+Drehtür-Effekt, Haushaltsgrößenstruktur; Blätter 3.1, 3.4, 3.5) offen — siehe Abschnitt
+"Noch ungenutzte Tabellenblätter" oben.
 
 ## 📊 Dashboard
 
@@ -127,15 +144,29 @@ Details: [`Dashboard/README.md`](../Dashboard/README.md).
   Monatsverlauf, Netto-Fluktuation vs. Bestandsänderung, 12-Monatssummen
 - Tab **"Demografie"** ist fertig (entspricht `05_Demografie.ipynb`): Altersstruktur und
   Geschlecht als Zeitreihe, plus Ausländer und Schwerbehinderte als Zeitreihe
-- Vier weitere Tabs sind als Platzhalter für die oben gelistete Priorisierung vorbereitet
-  (Erwerbstätigkeit, Bezugsdauer, Finanzen, Förderung) — jeder zeigt bereits Datenquelle,
-  geplante Diagramme und Priorität, nur die eigentlichen Charts fehlen noch
+- Tab **"Erwerbstätigkeit"** ist fertig (entspricht `06_Erwerbstaetigkeit.ipynb`):
+  Aufstockerquote, abhängig vs. selbständig, Einkommensstruktur — mit eigenem
+  Zeitfenster (Okt 2024 – Mär 2026), unabhängig vom Sidebar-Zeitraum-Filter
+- Tab **"Finanzen"** ist fertig (entspricht `07_Finanzen.ipynb`): Gesamtvolumen der
+  Zahlungsansprüche + Ø je BG, Struktur nach Regelbedarf/KdU/Sozialversicherung — ebenfalls
+  mit eigenem Zeitfenster (Okt 2024 – Mär 2026)
+- Tab **"Förderung"** ist fertig (entspricht `08_Foerderung.ipynb`): Eintritte + Bestand an
+  Fördermaßnahmen, Aktivierungsquote AQ1/AQ2a, Struktur nach Geschlecht/LZA-Vorgeschichte —
+  ebenfalls mit eigenem Zeitfenster (Okt 2024 – Mär 2026)
+- Nur noch **ein** Tab ist Platzhalter: "Bezugsdauer" (nachrangig, nicht in der
+  Priorisierungsliste) — zeigt bereits Datenquelle und geplante Diagramme
+- Tab **"Glossar"** erklärt alle im Dashboard verwendeten Fachbegriffe (Grundbegriffe,
+  Personengruppen wie ELB/RLB/NEF, Kennzahlen, Aufstocker-Einkommen, Zahlungsansprüche,
+  Datenbesonderheiten wie die Wartezeit-Problematik) — gruppiert in aufklappbaren
+  Abschnitten
 - Zeitraum-Filter (Slider) und Berichtsmonat-Auswahl in der Sidebar, wirken auf alle
-  Zeitreihen-Charts bzw. Momentaufnahmen
+  Zeitreihen-Charts bzw. Momentaufnahmen mit gemeinsamem Zeitfenster (nicht auf die Tabs
+  Erwerbstätigkeit, Finanzen und Förderung, siehe oben)
 - Datenbasis: die aufbereiteten CSVs aus `Data/processed/`
   (`eckwerte_long.csv`, `kennzahlen_sgb2.csv`, `fluktuation_sgb2.csv`,
-  `demografie_sgb2.csv`) — kein erneutes Excel-Parsing nötig
+  `demografie_sgb2.csv`, `erwerbstaetigkeit_sgb2.csv`, `finanzen_sgb2.csv`,
+  `foerderung_sgb2.csv`) — kein erneutes Excel-Parsing nötig
 - Alle Charts interaktiv (Plotly, `hovermode="x unified"`)
 
-Nächster Schritt: die vier verbleibenden Platzhalter-Tabs nacheinander mit echten Charts
-befüllen, in der oben genannten Prioritätsreihenfolge.
+Nächster Schritt: bei Bedarf den verbleibenden Platzhalter-Tab "Bezugsdauer" mit echten
+Charts befüllen (nachrangig, siehe oben).
