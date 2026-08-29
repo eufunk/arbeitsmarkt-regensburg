@@ -26,9 +26,11 @@ def load_data():
     erwerbstaetigkeit_path = PROCESSED_DIR / "erwerbstaetigkeit_sgb2.csv"
     finanzen_path = PROCESSED_DIR / "finanzen_sgb2.csv"
     foerderung_path = PROCESSED_DIR / "foerderung_sgb2.csv"
+    bezugsdauer_path = PROCESSED_DIR / "bezugsdauer_sgb2.csv"
+    rechtskreis_path = PROCESSED_DIR / "rechtskreisvergleich_sgb2.csv"
 
     if not long_path.exists() or not wide_path.exists():
-        return None, None, None, None, None, None, None
+        return None, None, None, None, None, None, None, None, None
 
     df_long = pd.read_csv(long_path)
     df_long["period"] = pd.PeriodIndex(df_long["period"], freq="M").to_timestamp()
@@ -61,10 +63,20 @@ def load_data():
         foerderung = pd.read_csv(foerderung_path, index_col="period", parse_dates=["period"])
         foerderung = foerderung.sort_index()
 
-    return df_long, kennzahlen, fluktuation, demografie, erwerbstaetigkeit, finanzen, foerderung
+    bezugsdauer = None
+    if bezugsdauer_path.exists():
+        bezugsdauer = pd.read_csv(bezugsdauer_path, index_col="period", parse_dates=["period"])
+        bezugsdauer = bezugsdauer.sort_index()
+
+    rechtskreis = None
+    if rechtskreis_path.exists():
+        rechtskreis = pd.read_csv(rechtskreis_path, index_col="period", parse_dates=["period"])
+        rechtskreis = rechtskreis.sort_index()
+
+    return df_long, kennzahlen, fluktuation, demografie, erwerbstaetigkeit, finanzen, foerderung, bezugsdauer, rechtskreis
 
 
-df_long, kennzahlen, fluktuation, demografie, erwerbstaetigkeit, finanzen, foerderung = load_data()
+df_long, kennzahlen, fluktuation, demografie, erwerbstaetigkeit, finanzen, foerderung, bezugsdauer, rechtskreis = load_data()
 
 if kennzahlen is None:
     st.error(
@@ -125,6 +137,11 @@ if demografie is not None:
     demo_mask = (demografie.index >= date_range[0]) & (demografie.index <= date_range[1])
     demo_view = demografie.loc[demo_mask]
 
+rechtskreis_view = None
+if rechtskreis is not None:
+    rechtskreis_mask = (rechtskreis.index >= date_range[0]) & (rechtskreis.index <= date_range[1])
+    rechtskreis_view = rechtskreis.loc[rechtskreis_mask]
+
 if view.empty:
     st.warning("Kein Berichtsmonat im gewählten Zeitraum.")
     st.stop()
@@ -169,9 +186,10 @@ def geplant(beschreibung: str, datenquelle: str, ideen: list[str], prioritaet: s
 
 
 # --- Navigation: Menü-Tabs ------------------------------------------------------
-tab_uebersicht, tab_fluktuation, tab_demografie, tab_erwerbstaetigkeit, tab_bezugsdauer, tab_finanzen, tab_foerderung, tab_glossar = st.tabs(
+tab_uebersicht, tab_rechtskreis, tab_fluktuation, tab_demografie, tab_erwerbstaetigkeit, tab_bezugsdauer, tab_finanzen, tab_foerderung, tab_glossar = st.tabs(
     [
         "📊 SGB II Übersicht",
+        "⚖️ SGB II vs. SGB III",
         "🔄 Fluktuation",
         "👥 Demografie",
         "💼 Erwerbstätigkeit",
@@ -460,6 +478,105 @@ with tab_uebersicht:
             f'{styler.to_html()}'
             '</div>',
             unsafe_allow_html=True,
+        )
+
+# =================================================================================
+# Tab 1b: SGB II vs. SGB III (Rechtskreisvergleich)
+# =================================================================================
+with tab_rechtskreis:
+    st.subheader("Jobcenter-Anteil an der Arbeitslosigkeit insgesamt")
+
+    if rechtskreis_view is None or rechtskreis_view.empty:
+        st.warning(
+            "Keine Rechtskreisvergleich-Daten gefunden. Bitte zuerst "
+            "`Notebooks/10_Rechtskreisvergleich.ipynb` einmal komplett ausführen, damit "
+            "`Data/processed/rechtskreisvergleich_sgb2.csv` entsteht."
+        )
+    else:
+        st.caption(
+            "Alle übrigen Tabs zeigen ausschließlich den **Rechtskreis SGB II** "
+            "(Jobcenter-Zuständigkeit). Dieser Tab setzt das ins Verhältnis zur "
+            "**gesamten** Arbeitslosigkeit in Regensburg (SGB II + SGB III) — die "
+            "Differenz fällt in die Zuständigkeit der **Agentur für Arbeit** (SGB III, "
+            "z. B. Arbeitslosengeld I)."
+        )
+
+        st.markdown("#### Arbeitslose (Bestand): SGB II vs. SGB III")
+        fig = go.Figure()
+        fig.add_trace(go.Scatter(
+            x=rechtskreis_view.index, y=rechtskreis_view["Arbeitslose (Bestand): SGB II"], name="SGB II (Jobcenter)",
+            mode="lines", stackgroup="bestand", line=dict(color="#2563eb", width=0.5),
+        ))
+        fig.add_trace(go.Scatter(
+            x=rechtskreis_view.index, y=rechtskreis_view["Arbeitslose (Bestand): SGB III"], name="SGB III (Agentur für Arbeit)",
+            mode="lines", stackgroup="bestand", line=dict(color="#7c3aed", width=0.5),
+        ))
+        fig.add_trace(go.Scatter(
+            x=rechtskreis_view.index, y=rechtskreis_view["Arbeitslose (Bestand): Jobcenter-Anteil (%)"], name="Jobcenter-Anteil (%)",
+            mode="lines+markers", line=dict(color="#f59e0b", dash="dot"), marker=dict(size=5), yaxis="y2",
+        ))
+        fig.update_layout(
+            yaxis=dict(title="Personen"),
+            yaxis2=dict(title="Jobcenter-Anteil (%)", overlaying="y", side="right", ticksuffix="%"),
+            xaxis_title="Monat", hovermode="x unified", legend=dict(orientation="h", y=1.15), height=440,
+        )
+        st.plotly_chart(fig, width="stretch")
+        st.caption(
+            "Der Jobcenter-Anteil an allen Arbeitslosen liegt stabil bei rund 40 % — "
+            "die Mehrheit der Arbeitslosen (≈ 60 %) fällt in die Zuständigkeit der "
+            "Agentur für Arbeit, nicht des Jobcenters."
+        )
+
+        st.markdown("#### Langzeitarbeitslose: SGB II vs. SGB III")
+        with st.expander("Warum ist der Jobcenter-Anteil hier so viel höher?"):
+            st.markdown(
+                "Arbeitslosengeld I (SGB III) ist zeitlich befristet (i. d. R. "
+                "12–24 Monate). Wer danach weiterhin arbeitslos ist, wechselt in den "
+                "SGB-II-Bezug (Bürgergeld) — Langzeitarbeitslosigkeit konzentriert sich "
+                "dadurch strukturell im SGB II."
+            )
+        fig = go.Figure()
+        fig.add_trace(go.Scatter(
+            x=rechtskreis_view.index, y=rechtskreis_view["Langzeitarbeitslose: SGB II"], name="SGB II (Jobcenter)",
+            mode="lines", stackgroup="lza", line=dict(color="#2563eb", width=0.5),
+        ))
+        fig.add_trace(go.Scatter(
+            x=rechtskreis_view.index, y=rechtskreis_view["Langzeitarbeitslose: SGB III"], name="SGB III (Agentur für Arbeit)",
+            mode="lines", stackgroup="lza", line=dict(color="#7c3aed", width=0.5),
+        ))
+        fig.add_trace(go.Scatter(
+            x=rechtskreis_view.index, y=rechtskreis_view["Langzeitarbeitslose: Jobcenter-Anteil (%)"], name="Jobcenter-Anteil (%)",
+            mode="lines+markers", line=dict(color="#f59e0b", dash="dot"), marker=dict(size=5), yaxis="y2",
+        ))
+        fig.update_layout(
+            yaxis=dict(title="Personen"),
+            yaxis2=dict(title="Jobcenter-Anteil (%)", overlaying="y", side="right", ticksuffix="%"),
+            xaxis_title="Monat", hovermode="x unified", legend=dict(orientation="h", y=1.15), height=440,
+        )
+        st.plotly_chart(fig, width="stretch")
+        st.caption(
+            "Rund 72 % aller Langzeitarbeitslosen in Regensburg fallen in die "
+            "Zuständigkeit des Jobcenters — deutlich mehr als beim Bestand insgesamt "
+            "(≈ 40 %). Die SGB-III-Langzeitarbeitslosigkeit wächst dabei sogar noch "
+            "stärker (+ 55 %) als die SGB-II-Zahl (+ 41 %, siehe Tab „📊 SGB II "
+            "Übersicht“)."
+        )
+
+        st.markdown("#### Quoten im Vergleich")
+        fig = go.Figure()
+        fig.add_trace(go.Scatter(x=rechtskreis_view.index, y=rechtskreis_view["Arbeitslosenquote (%): Insgesamt"], name="Arbeitslosenquote: Insgesamt", mode="lines+markers", line=dict(color="#374151"), marker=dict(size=5)))
+        fig.add_trace(go.Scatter(x=rechtskreis_view.index, y=rechtskreis_view["Arbeitslosenquote (%): SGB II"], name="Arbeitslosenquote: SGB II-Anteil", mode="lines+markers", line=dict(color="#2563eb"), marker=dict(size=5)))
+        fig.add_trace(go.Scatter(x=rechtskreis_view.index, y=rechtskreis_view["Unterbeschäftigungsquote (%): Insgesamt"], name="Unterbeschäftigungsquote: Insgesamt", mode="lines+markers", line=dict(color="#6b7280", dash="dash"), marker=dict(size=5)))
+        fig.add_trace(go.Scatter(x=rechtskreis_view.index, y=rechtskreis_view["Unterbeschäftigungsquote (%): SGB II"], name="Unterbeschäftigungsquote: SGB II-Anteil", mode="lines+markers", line=dict(color="#7c3aed", dash="dash"), marker=dict(size=5)))
+        fig.update_layout(
+            yaxis_title="Prozent", yaxis_ticksuffix="%",
+            xaxis_title="Monat", hovermode="x unified", legend=dict(orientation="h", y=1.15), height=440,
+        )
+        st.plotly_chart(fig, width="stretch")
+        st.caption(
+            "Arbeitslosen- und Unterbeschäftigungsquote bestätigen dasselbe Bild: "
+            "SGB-II-Anteil an der Arbeitslosenquote ≈ 40 %, an der "
+            "Unterbeschäftigungsquote ≈ 46 % (leicht rückläufig)."
         )
 
 # =================================================================================
@@ -828,25 +945,107 @@ with tab_erwerbstaetigkeit:
 # =================================================================================
 with tab_bezugsdauer:
     st.subheader("Wie lange dauert der Leistungsbezug?")
-    geplant(
-        beschreibung=(
-            "Langzeitarbeitslosigkeit (LZA) und Langzeitleistungsbezug (LZB) sind unterschiedliche "
-            "Kennzahlen — Bürgergeld kann auch ohne Arbeitslosigkeit bezogen werden (z. B. bei "
-            "Aufstockern). Ergänzt außerdem, wie oft Personen den Leistungsbezug wiederholt "
-            "verlassen und erneut beginnen (\"Drehtür-Effekt\"), sowie die Haushaltsgrößenstruktur "
-            "der Bedarfsgemeinschaften."
-        ),
-        datenquelle="Blatt „3.4 Langzeitleistungsbezug“ (LZB: mind. 21 von 24 Monaten im Bezug), "
-        "Blatt „3.5 Bewegungen Personen“ (Zu-/Abgänge Regelleistungsbezug inkl. "
-        "Vorbezugs-Historie), Blatt „3.1 Bedarfsgemeinschaften“ (Struktur nach Haushaltsgröße).",
-        ideen=[
-            "LZB vs. LZA im Liniendiagramm vergleichen",
-            "Anteil der Wiederholungsfälle (erneuter Bezug innerhalb 12 Monaten) als Zeitreihe",
-            "Balkendiagramm der Haushaltsgrößenverteilung (1, 2, 3, 4+ Personen)",
-        ],
-        prioritaet="nachrangig",
-        wartezeit=True,
-    )
+
+    if bezugsdauer is None or bezugsdauer.empty:
+        st.warning(
+            "Keine Bezugsdauer-Daten gefunden. Bitte zuerst "
+            "`Notebooks/09_Bezugsdauer.ipynb` einmal komplett ausführen, damit "
+            "`Data/processed/bezugsdauer_sgb2.csv` entsteht."
+        )
+    else:
+        st.caption(
+            "Wie lange und in welcher Haushaltskonstellation Menschen im SGB-II-Bezug "
+            "stehen — Haushaltsstruktur, Langzeitleistungsbezug (LZB) und "
+            "Bewegungsdynamik (\"Drehtür-Effekt\")."
+        )
+        st.info(
+            "⚠️ Die zugrunde liegenden Tabellenblätter melden nur Werte mit **3 Monaten "
+            "Wartezeit**. Die hier gezeigte Zeitreihe (Oktober 2024 – März 2026) liegt "
+            "daher 3 Monate früher als der übrige Berichtszeitraum (Januar 2025 – Juni "
+            "2026) und wird **nicht** vom Zeitraum-Filter der Sidebar beeinflusst."
+        )
+
+        st.markdown("#### Struktur der Bedarfsgemeinschaften: Größe und Typ")
+        col_a, col_b = st.columns(2)
+        with col_a:
+            bg_groessen = ["BG 1 Person", "BG 2 Personen", "BG 3 Personen", "BG 4 Personen", "BG 5+ Personen"]
+            fig = go.Figure()
+            for spalte in bg_groessen:
+                fig.add_trace(go.Scatter(
+                    x=bezugsdauer.index, y=bezugsdauer[spalte], name=spalte,
+                    mode="lines", stackgroup="groesse", line=dict(width=0.5),
+                ))
+            fig.update_layout(
+                yaxis_title="Anzahl Bedarfsgemeinschaften", xaxis_title="Monat",
+                hovermode="x unified", legend=dict(orientation="h", y=1.2), height=400,
+            )
+            st.plotly_chart(fig, width="stretch")
+            st.caption("Nach Haushaltsgröße (gestapelt = Gesamtzahl BG).")
+        with col_b:
+            bg_typen = ["Single-BG", "Alleinerziehende-BG", "Partner-BG ohne Kinder", "Partner-BG mit Kindern"]
+            fig = go.Figure()
+            for spalte in bg_typen:
+                fig.add_trace(go.Scatter(
+                    x=bezugsdauer.index, y=bezugsdauer[spalte], name=spalte,
+                    mode="lines+markers", marker=dict(size=5),
+                ))
+            fig.update_layout(
+                yaxis_title="Anzahl Bedarfsgemeinschaften", xaxis_title="Monat",
+                hovermode="x unified", legend=dict(orientation="h", y=1.2), height=400,
+            )
+            st.plotly_chart(fig, width="stretch")
+            st.caption("Nach BG-Typ.")
+        st.caption(
+            "Single-Bedarfsgemeinschaften nehmen relativ zu (Anteil 57,0 % → 59,3 %), "
+            "während Alleinerziehende- und Partner-BG zurückgehen — der SGB-II-Bezug "
+            "wird zunehmend von Einpersonenhaushalten geprägt."
+        )
+
+        st.markdown("#### Langzeitleistungsbezug (LZB) vs. Langzeitarbeitslosigkeit (LZA)")
+        with st.expander("Was ist der Unterschied zwischen LZB und LZA?"):
+            st.markdown(
+                "**Langzeitleistungsbeziehende (LZB)** sind erwerbsfähige "
+                "Leistungsberechtigte, die in den vergangenen 24 Monaten mindestens "
+                "21 Monate leistungsberechtigt waren. Das ist ein anderes Konzept als "
+                "**Langzeitarbeitslose (LZA)**: Bürgergeld kann auch ohne "
+                "Arbeitslosigkeit bezogen werden — z. B. bei Erwerbstätigkeit mit zu "
+                "geringem Einkommen (siehe Tab „💼 Erwerbstätigkeit“)."
+            )
+        anteil_lzb = (bezugsdauer["LZB"] / bezugsdauer["ELB Insgesamt"] * 100).round(1)
+        fig = go.Figure()
+        fig.add_trace(go.Scatter(x=bezugsdauer.index, y=bezugsdauer["LZB"], name="LZB (absolut)", mode="lines+markers", line=dict(color="#2563eb"), marker=dict(size=5), yaxis="y1"))
+        fig.add_trace(go.Scatter(x=bezugsdauer.index, y=anteil_lzb, name="Anteil LZB an allen ELB (%)", mode="lines+markers", line=dict(color="#f59e0b", dash="dot"), marker=dict(size=5), yaxis="y2"))
+        fig.add_trace(go.Scatter(x=bezugsdauer.index, y=bezugsdauer["LZA (3.4)"], name="LZA (zum Vergleich)", mode="lines+markers", line=dict(color="#dc2626"), marker=dict(size=5), yaxis="y1"))
+        fig.update_layout(
+            yaxis=dict(title="Personen"),
+            yaxis2=dict(title="Anteil LZB an ELB (%)", overlaying="y", side="right", ticksuffix="%"),
+            xaxis_title="Monat", hovermode="x unified", legend=dict(orientation="h", y=1.15), height=440,
+        )
+        st.plotly_chart(fig, width="stretch")
+        st.caption(
+            "Der LZB-Anteil steigt deutlich von 48,9 % auf 55,1 % — über die Hälfte "
+            "aller ELB bezieht mittlerweile seit mindestens 21 der letzten 24 Monate "
+            "Leistungen. Die (separat erfasste) Langzeitarbeitslosigkeit steigt im "
+            "selben Zeitraum noch deutlicher — beide Kennzahlen zeigen unabhängig "
+            "voneinander dieselbe Verfestigungstendenz."
+        )
+
+        st.markdown("#### Bewegungsdynamik: der „Drehtür-Effekt“")
+        fig = go.Figure()
+        fig.add_trace(go.Scatter(x=bezugsdauer.index, y=bezugsdauer["Anteil Zugang mit Vorbezug (%)"], name="Zugang mit Vorbezug (%)", mode="lines+markers", line=dict(color="#7c3aed"), marker=dict(size=5)))
+        fig.add_trace(go.Scatter(x=bezugsdauer.index, y=bezugsdauer["Drehtür-Quote (%)"], name="Drehtür-Quote: erneuter Bezug binnen 3 Monaten (%)", mode="lines+markers", line=dict(color="#dc2626"), marker=dict(size=5)))
+        fig.update_layout(
+            yaxis_title="Prozent", yaxis_ticksuffix="%",
+            xaxis_title="Monat", hovermode="x unified", legend=dict(orientation="h", y=1.15), height=420,
+        )
+        st.plotly_chart(fig, width="stretch")
+        st.caption(
+            "Der Anteil der Zugänge mit Vorbezug steigt deutlich (56,1 % → 73,4 %) — "
+            "echte Erstzugänge werden seltener. Die Drehtür-Quote (Anteil der Abgänge, "
+            "die binnen 3 Monaten zurückkehren) schwankt stark (Ø 25,6 %) ohne klaren "
+            "Trend — im Schnitt kehrt etwa jede vierte Person innerhalb eines "
+            "Vierteljahres zurück."
+        )
 
 # =================================================================================
 # Tab 6: Finanzen (Zahlungsansprüche)
@@ -1049,7 +1248,13 @@ with tab_glossar:
             "- **Rechtskreis**: gibt an, ob eine Person dem SGB II (Jobcenter) oder SGB III "
             "(Agentur für Arbeit) zugeordnet ist. Alle Kennzahlen in diesem Dashboard "
             "beziehen sich — sofern nicht anders angegeben — ausschließlich auf den "
-            "**Rechtskreis SGB II**.\n"
+            "**Rechtskreis SGB II** (Ausnahme: Tab „⚖️ SGB II vs. SGB III“, der beide "
+            "Rechtskreise vergleicht).\n"
+            "- **Arbeitslosengeld I (ALG I)**: Versicherungsleistung nach SGB III, "
+            "zeitlich befristet (i. d. R. 12–24 Monate), Voraussetzung ist eine "
+            "vorherige sozialversicherungspflichtige Beschäftigung. Abzugrenzen vom "
+            "Bürgergeld (SGB II), das bedürftigkeitsabhängig und zeitlich "
+            "unbefristet ist.\n"
             "- **Bürgergeld**: umgangssprachlicher Name für die Geldleistung nach SGB II.\n"
             "- **Jobcenter**: die Behörde, die SGB-II-Leistungen verwaltet und in "
             "Arbeit vermittelt — hier: Jobcenter Regensburg."
@@ -1075,7 +1280,13 @@ with tab_glossar:
             "erwerbsfähig sind — vor allem Kinder unter 15 Jahren und dauerhaft "
             "erwerbsunfähige Angehörige.\n"
             "- **Erwerbstätige ELB / „Aufstocker“**: ELB, die zusätzlich zum Bürgergeld "
-            "eigenes Einkommen aus abhängiger oder selbständiger Erwerbstätigkeit haben."
+            "eigenes Einkommen aus abhängiger oder selbständiger Erwerbstätigkeit haben.\n"
+            "- **Langzeitleistungsbeziehende (LZB)**: ELB, die in den vergangenen "
+            "24 Monaten mindestens 21 Monate leistungsberechtigt waren — ein anderes "
+            "Konzept als Langzeitarbeitslose (LZA), da Bürgergeld auch ohne "
+            "Arbeitslosigkeit bezogen werden kann.\n"
+            "- **Drehtür-Effekt**: wenn Personen den Leistungsbezug verlassen und kurz "
+            "danach (in diesem Dashboard: binnen 3 Monaten) erneut Leistungen beziehen."
         )
 
     with st.expander("Kennzahlen (Quoten)"):

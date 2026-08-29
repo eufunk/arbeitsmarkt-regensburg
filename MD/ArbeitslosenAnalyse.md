@@ -7,9 +7,10 @@ Rohdaten noch steckt, aber bislang nicht analysiert wurde.
 Rohdaten: `Data/RegensburgJCData/*.xlsx` (18 Monatsberichte "Eckwerte für Jobcenter").
 Kernanalyse basiert auf dem Tabellenblatt **"1.1 Eckwerte"** (Spalte B = Insgesamt
 SGB II+SGB III, Spalte G = Rechtskreis SGB II je Berichtsmonat); ergänzend werden die
-Blätter **"3.3 Erwerbstätigkeit"**, **"3.6 Zahlungsansprüche"**, **"4.1 Förderung"** und
-**"4.2 Förderung Strukturen"** ausgewertet (jeweils direkt aus den Excel-Rohdaten, ⚠️ mit
-3 Monaten Wartezeit).
+Blätter **"3.1 Bedarfsgemeinschaften"**, **"3.3 Erwerbstätigkeit"**, **"3.4
+Langzeitleistungsbezug"**, **"3.5 Bewegungen Personen"**, **"3.6 Zahlungsansprüche"**,
+**"4.1 Förderung"** und **"4.2 Förderung Strukturen"** ausgewertet (jeweils direkt aus den
+Excel-Rohdaten, ⚠️ mit 3 Monaten Wartezeit).
 
 ## ✅ Bereits analysiert
 
@@ -57,6 +58,20 @@ Blätter **"3.3 Erwerbstätigkeit"**, **"3.6 Zahlungsansprüche"**, **"4.1 Förd
   250 gesunken; Aktivierungsquoten AQ1/AQ2a rückläufig; Anteil zuvor langzeitarbeitsloser
   Teilnehmender steigt deutlich (16,2 % → 23,6 %) — passt zur steigenden
   Langzeitarbeitslosigkeit (siehe [`08_Foerderung.ipynb`](../Notebooks/08_Foerderung.ipynb))
+- **Bezugsdauer** (Haushaltsstruktur, Langzeitleistungsbezug, Drehtür-Effekt) — erstmals
+  Blätter „3.1 Bedarfsgemeinschaften“, „3.4 Langzeitleistungsbezug“ und „3.5 Bewegungen
+  Personen“ kombiniert ausgewertet (⚠️ 3 Monate Wartezeit, Zeitreihe daher Okt 2024 – Mär
+  2026): Single-Bedarfsgemeinschaften nehmen relativ zu (57,0 % → 59,3 %); über die Hälfte
+  aller ELB ist inzwischen langzeitleistungsbeziehend (LZB-Anteil 48,9 % → 55,1 %); Anteil
+  der Zugänge mit Vorbezug steigt deutlich (56,1 % → 73,4 %) — echte Erstzugänge werden
+  seltener (siehe [`09_Bezugsdauer.ipynb`](../Notebooks/09_Bezugsdauer.ipynb))
+- **Vergleich "Insgesamt (SGB II+SGB III)" vs. "SGB II"** (Rechtskreisvergleich) — der
+  Jobcenter-Anteil an allen Arbeitslosen liegt stabil bei nur Ø 39,8 % (Mehrheit ≈ 60 %
+  fällt in die Zuständigkeit der Agentur für Arbeit); bei Langzeitarbeitslosen liegt der
+  Jobcenter-Anteil dagegen bei Ø 72,3 % — plausibel durch die zeitliche Befristung von
+  Arbeitslosengeld I (SGB III); SGB-III-Langzeitarbeitslosigkeit wächst sogar noch stärker
+  (+ 55 %) als die SGB-II-Zahl (+ 41 %) (siehe
+  [`10_Rechtskreisvergleich.ipynb`](../Notebooks/10_Rechtskreisvergleich.ipynb))
 
 ## 🔲 In den Rohdaten vorhanden, aber noch nicht analysiert
 
@@ -69,8 +84,6 @@ Blätter **"3.3 Erwerbstätigkeit"**, **"3.6 Zahlungsansprüche"**, **"4.1 Förd
   Leistungsberechtigte (NEF)** — Struktur innerhalb der Bedarfsgemeinschaften
 - **sozialversicherungspflichtige und geringfügig entlohnte Beschäftigung** (nach Arbeits-
   und Wohnort) — Beschäftigungsentwicklung als Gegenstück zur Arbeitslosigkeit
-- **Vergleich "Insgesamt (SGB II+SGB III)" vs. "SGB II"** — wie hoch ist der Jobcenter-Anteil
-  an der gesamten Arbeitslosigkeit, und verändert er sich über die Zeit?
 
 ### Noch ungenutzte Tabellenblätter
 
@@ -100,15 +113,7 @@ aus dem Dateinamen abgeleitet werden.
 - **2.5 Unterbeschäftigung** — feinere Komponenten der Unterbeschäftigungs-Lücke (z. B.
   "Aktivierung und berufliche Eingliederung", "Sonderregelung für Ältere"). Idee: gestapeltes
   Flächendiagramm der Komponenten.
-- **3.1 Bedarfsgemeinschaften** — Struktur nach **Haushaltsgröße** (1, 2, 3, 4+ Personen), nicht
-  nach BG-Typ wie ursprünglich vermutet. Idee: Balkendiagramm der Haushaltsgrößenverteilung,
-  Zeitreihe des Single-Haushalt-Anteils.
 - **3.2 Personen in BG** — Aufschlüsselung nach Geschlecht plus Teilmenge ELB.
-- **3.4 Langzeitleistungsbezug** — neue Kennzahl **Langzeitleistungsbeziehende (LZB)**: mind.
-  21 von 24 Monaten im Bezug — nicht identisch mit Langzeitarbeitslosen, da Bürgergeld auch
-  ohne Arbeitslosigkeit bezogen werden kann. Idee: LZB vs. LZA im Vergleich.
-- **3.5 Bewegungen Personen** — Zu-/Abgänge im Regelleistungsbezug (ELB-Ebene) inkl.
-  Vorbezugs-Historie (Hinweis auf "Drehtür-Effekt": erneuter Bezug innerhalb 12 Monaten).
 
 Nicht nutzbar (reine Metadaten/Links, keine Zahlen): Deckblatt, Impressum, Inhaltsverzeichnis
 (nützlich nur als Zeichenerklärung-Nachschlagewerk), Grafik (nur eingebettete Bilder), Linkliste,
@@ -127,10 +132,15 @@ Statistik-Infoseite.
 5. ~~Förderung (4.1/4.2)~~ — ✅ erledigt, siehe
    [`08_Foerderung.ipynb`](../Notebooks/08_Foerderung.ipynb)
 
-**Damit ist die ursprüngliche Priorisierungsliste vollständig abgearbeitet.** Als
-nachrangiges, nicht priorisiertes Thema bleibt Bezugsdauer (Langzeitleistungsbezug,
-Drehtür-Effekt, Haushaltsgrößenstruktur; Blätter 3.1, 3.4, 3.5) offen — siehe Abschnitt
-"Noch ungenutzte Tabellenblätter" oben.
+**Damit ist die ursprüngliche Priorisierungsliste vollständig abgearbeitet.** Auch die
+beiden nachrangigen, nicht priorisierten Themen wurden inzwischen ergänzt: Bezugsdauer
+(Langzeitleistungsbezug, Drehtür-Effekt, Haushaltsgrößenstruktur; Blätter 3.1, 3.4, 3.5,
+siehe [`09_Bezugsdauer.ipynb`](../Notebooks/09_Bezugsdauer.ipynb)) und der Vergleich
+"Insgesamt (SGB II+SGB III)" vs. "SGB II" (siehe
+[`10_Rechtskreisvergleich.ipynb`](../Notebooks/10_Rechtskreisvergleich.ipynb)). Alle in
+diesem Dokument gelisteten Auswertungswünsche sind damit abgedeckt — offen bleiben nur
+noch die in "Noch ungenutzte Zeilen"/"Noch ungenutzte Tabellenblätter" gelisteten,
+bislang nicht nachgefragten Erweiterungsideen.
 
 ## 📊 Dashboard
 
@@ -140,6 +150,9 @@ Details: [`Dashboard/README.md`](../Dashboard/README.md).
 
 - Tab **"SGB II Übersicht"** enthält alle bisher fertigen Charts (entspricht inhaltlich
   `02_Analyse_SGBII.ipynb`, plus Trichter-Grafik und formatierte Kennzahlen-Tabelle)
+- Tab **"SGB II vs. SGB III"** ist fertig (entspricht `10_Rechtskreisvergleich.ipynb`):
+  Jobcenter-Anteil an Arbeitslosen-Bestand, Langzeitarbeitslosen und Quoten — nutzt die
+  volle 18-Monats-Zeitreihe (Jan 2025 – Jun 2026), reagiert auf den Sidebar-Zeitraum-Filter
 - Tab **"Fluktuation"** ist fertig (entspricht `04_Fluktuation.ipynb`): Zugang/Abgang im
   Monatsverlauf, Netto-Fluktuation vs. Bestandsänderung, 12-Monatssummen
 - Tab **"Demografie"** ist fertig (entspricht `05_Demografie.ipynb`): Altersstruktur und
@@ -153,20 +166,23 @@ Details: [`Dashboard/README.md`](../Dashboard/README.md).
 - Tab **"Förderung"** ist fertig (entspricht `08_Foerderung.ipynb`): Eintritte + Bestand an
   Fördermaßnahmen, Aktivierungsquote AQ1/AQ2a, Struktur nach Geschlecht/LZA-Vorgeschichte —
   ebenfalls mit eigenem Zeitfenster (Okt 2024 – Mär 2026)
-- Nur noch **ein** Tab ist Platzhalter: "Bezugsdauer" (nachrangig, nicht in der
-  Priorisierungsliste) — zeigt bereits Datenquelle und geplante Diagramme
+- Tab **"Bezugsdauer"** ist fertig (entspricht `09_Bezugsdauer.ipynb`): BG-Struktur nach
+  Größe/Typ, LZB vs. LZA, Drehtür-Effekt — ebenfalls mit eigenem Zeitfenster (Okt 2024 –
+  Mär 2026)
 - Tab **"Glossar"** erklärt alle im Dashboard verwendeten Fachbegriffe (Grundbegriffe,
   Personengruppen wie ELB/RLB/NEF, Kennzahlen, Aufstocker-Einkommen, Zahlungsansprüche,
   Datenbesonderheiten wie die Wartezeit-Problematik) — gruppiert in aufklappbaren
   Abschnitten
 - Zeitraum-Filter (Slider) und Berichtsmonat-Auswahl in der Sidebar, wirken auf alle
   Zeitreihen-Charts bzw. Momentaufnahmen mit gemeinsamem Zeitfenster (nicht auf die Tabs
-  Erwerbstätigkeit, Finanzen und Förderung, siehe oben)
+  Erwerbstätigkeit, Finanzen, Förderung und Bezugsdauer, siehe oben)
 - Datenbasis: die aufbereiteten CSVs aus `Data/processed/`
   (`eckwerte_long.csv`, `kennzahlen_sgb2.csv`, `fluktuation_sgb2.csv`,
   `demografie_sgb2.csv`, `erwerbstaetigkeit_sgb2.csv`, `finanzen_sgb2.csv`,
-  `foerderung_sgb2.csv`) — kein erneutes Excel-Parsing nötig
+  `foerderung_sgb2.csv`, `bezugsdauer_sgb2.csv`, `rechtskreisvergleich_sgb2.csv`) — kein
+  erneutes Excel-Parsing nötig
 - Alle Charts interaktiv (Plotly, `hovermode="x unified"`)
 
-Nächster Schritt: bei Bedarf den verbleibenden Platzhalter-Tab "Bezugsdauer" mit echten
-Charts befüllen (nachrangig, siehe oben).
+**Alle acht inhaltlichen Tabs sind jetzt vollständig befüllt** — nur der Tab "Glossar" ist
+naturgemäß kein Chart-Tab. Damit ist die Themenliste aus diesem Dokument vollständig im
+Dashboard umgesetzt.

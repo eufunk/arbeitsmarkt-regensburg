@@ -3,19 +3,22 @@
 Abgleich der Notebooks `Notebooks/01_Exploration.ipynb`, `Notebooks/02_Analyse_SGBII.ipynb`,
 `Notebooks/03_Statistik.ipynb`, `Notebooks/04_Fluktuation.ipynb`,
 `Notebooks/05_Demografie.ipynb`, `Notebooks/06_Erwerbstaetigkeit.ipynb`,
-`Notebooks/07_Finanzen.ipynb` und `Notebooks/08_Foerderung.ipynb` gegen Abschnitt 2
-„Datenanalyse mit Pandas & NumPy“ aus [`DatenanalysePython.md`](../DatenanalysePython.md).
+`Notebooks/07_Finanzen.ipynb`, `Notebooks/08_Foerderung.ipynb`,
+`Notebooks/09_Bezugsdauer.ipynb` und `Notebooks/10_Rechtskreisvergleich.ipynb` gegen
+Abschnitt 2 „Datenanalyse mit Pandas & NumPy“ aus
+[`DatenanalysePython.md`](../DatenanalysePython.md).
 
 Stand: nach Aufteilung in Exploration (Einlesen/Bereinigen/Aufbereiten/Export), Analyse
 (Visualisierung/Auswertung), Statistik (deskriptive Statistik, Korrelation,
 Inferenzstatistik, Regression), Fluktuation (Zugang/Abgang, Netto-Fluktuation,
 12-Monatssummen), Demografie (Altersstruktur, Geschlecht, Ausländer, Schwerbehinderte als
 Zeitreihe), Erwerbstätigkeit (Aufstockerquote, Erwerbsform, Einkommensstruktur), Finanzen
-(Zahlungsansprüche in Euro, Ø je Bedarfsgemeinschaft, Struktur) und Förderung
-(Eintritte/Bestand an Fördermaßnahmen, Aktivierungsquote AQ1/AQ2a) — damit ist die
-Priorisierungsliste aus `ArbeitslosenAnalyse.md` vollständig abgearbeitet — inkl.
-Streamlit-Dashboard (`Dashboard/app.py`) als weiterem Baustein für Abschnitt 4
-„Datenvisualisierung“.
+(Zahlungsansprüche in Euro, Ø je Bedarfsgemeinschaft, Struktur), Förderung
+(Eintritte/Bestand an Fördermaßnahmen, Aktivierungsquote AQ1/AQ2a), Bezugsdauer
+(BG-Struktur, Langzeitleistungsbezug, Drehtür-Effekt) und Rechtskreisvergleich
+(Jobcenter-Anteil SGB II vs. SGB III) — damit ist die komplette Themenliste aus
+`ArbeitslosenAnalyse.md` abgearbeitet — inkl. Streamlit-Dashboard (`Dashboard/app.py`) als
+weiterem Baustein für Abschnitt 4 „Datenvisualisierung“.
 
 ## Abschnitt 2: Datenanalyse mit Pandas & NumPy
 
@@ -67,7 +70,7 @@ Streamlit-Dashboard (`Dashboard/app.py`) als weiterem Baustein für Abschnitt 4
 | Pieplot / Donut | ❌ fehlt |
 | Funnel-Chart | ✅ (Dashboard, Trichter-Grafik RLB/ELB) |
 | Heatmap | ✅ (03_Statistik, Korrelationsmatrix) |
-| Plotly (interaktiv) | ✅ (02_Analyse_SGBII: 4 von 5 Charts; 03_Statistik: alle 5 Charts; 04_Fluktuation: alle 3 Charts; 05_Demografie: alle 4 Charts; 06_Erwerbstaetigkeit: alle 3 Charts; 07_Finanzen: alle 2 Charts; 08_Foerderung: alle 3 Charts; Dashboard: alle Charts, `hovermode="x unified"`) |
+| Plotly (interaktiv) | ✅ (02_Analyse_SGBII: 4 von 5 Charts; 03_Statistik: alle 5 Charts; 04_Fluktuation: alle 3 Charts; 05_Demografie: alle 4 Charts; 06_Erwerbstaetigkeit: alle 3 Charts; 07_Finanzen: alle 2 Charts; 08_Foerderung: alle 3 Charts; 09_Bezugsdauer: alle 4 Charts; 10_Rechtskreisvergleich: alle 3 Charts; Dashboard: alle Charts, `hovermode="x unified"`) |
 
 ## Offene Punkte für spätere Ergänzung
 

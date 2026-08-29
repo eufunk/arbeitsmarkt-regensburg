@@ -30,6 +30,8 @@ Notebooks/
   06_Erwerbstaetigkeit.ipynb Aufstockerquote, Erwerbsform, Einkommensstruktur
   07_Finanzen.ipynb          Zahlungsansprüche in Euro, Ø je Bedarfsgemeinschaft, Struktur
   08_Foerderung.ipynb        Eintritte/Bestand an Fördermaßnahmen, Aktivierungsquote
+  09_Bezugsdauer.ipynb       BG-Struktur, Langzeitleistungsbezug, Drehtür-Effekt
+  10_Rechtskreisvergleich.ipynb  Jobcenter-Anteil an der Arbeitslosigkeit (SGB II vs. SGB III)
 Dashboard/
   app.py                    interaktives Streamlit-Dashboard
 Dok/
@@ -46,6 +48,8 @@ MD/
   06_Erwerbstaetigkeit.md    Dokumentation zu 06_Erwerbstaetigkeit.ipynb
   07_Finanzen.md             Dokumentation zu 07_Finanzen.ipynb
   08_Foerderung.md           Dokumentation zu 08_Foerderung.ipynb
+  09_Bezugsdauer.md          Dokumentation zu 09_Bezugsdauer.ipynb
+  10_Rechtskreisvergleich.md Dokumentation zu 10_Rechtskreisvergleich.ipynb
 ```
 
 ## Lokal ausführen
@@ -65,7 +69,13 @@ MD/
 8. `Notebooks/08_Foerderung.ipynb` für Eintritte/Bestand an Fördermaßnahmen und
    Aktivierungsquote (liest direkt aus den Excel-Rohdaten, Blätter „4.1 Förderung“ und
    „4.2 Förderung Strukturen“).
-9. Dashboard starten:
+9. `Notebooks/09_Bezugsdauer.ipynb` für Haushaltsstruktur, Langzeitleistungsbezug und
+   Drehtür-Effekt (liest direkt aus den Excel-Rohdaten, Blätter „3.1 Bedarfsgemeinschaften“,
+   „3.4 Langzeitleistungsbezug“, „3.5 Bewegungen Personen“).
+10. `Notebooks/10_Rechtskreisvergleich.ipynb` für den Jobcenter-Anteil an der
+    Arbeitslosigkeit (SGB II vs. SGB III) — liest nur `Data/processed/eckwerte_long.csv`,
+    keine neuen Rohdaten nötig.
+11. Dashboard starten:
    ```
    pip install -r Dashboard/requirements.txt
    streamlit run Dashboard/app.py
