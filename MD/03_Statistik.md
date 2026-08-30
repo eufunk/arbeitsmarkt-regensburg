@@ -20,8 +20,10 @@ Alle Tests und die Regression sind entsprechend vorsichtig zu interpretieren.
 
 ## Output
 
-Keine Datei-Exporte — reine Auswertung innerhalb von Jupyter (Diagramme, Tabellen und
-Text-Ausgaben als Zell-Output).
+- `Dok/Abbildungen/abb32_verteilung_boxstrip.png` (Boxplot mit Einzelpunkten, für die
+  Projektpräsentation)
+- Ansonsten keine weiteren Datei-Exporte — reine Auswertung innerhalb von Jupyter
+  (Diagramme, Tabellen und Text-Ausgaben als Zell-Output).
 
 ## Ablauf (Zellen) und Kernbefunde
 
@@ -51,6 +53,11 @@ Text-Ausgaben als Zell-Output).
    - Histogramm und Boxplot (`boxmean=True`) des Arbeitslosenbestands über die 18 Monate.
    - **Befund:** keine auffälligen Ausreißer, leicht linksschiefe Verteilung (Median knapp
      über dem Mittelwert).
+   - Zusätzlich eine alternative Darstellung als Boxplot mit allen 18 Einzelpunkten
+     (`boxpoints="all"`, Jitter) — vermeidet die bei so kleinen Stichproben leicht
+     missverständliche Bin-Häufigkeits-Achse eines Histogramms. Wird exportiert nach
+     `Dok/Abbildungen/abb32_verteilung_boxstrip.png` und in der Projektpräsentation
+     (Folie 22) verwendet.
 6. **4. Inferenzstatistik: Hypothesentest**
    - Fragestellung: Unterscheidet sich die durchschnittliche Zahl der Langzeitarbeitslosen
      zwischen erster (n=9) und zweiter (n=9) Hälfte des Beobachtungszeitraums signifikant?
@@ -74,7 +81,7 @@ Text-Ausgaben als Zell-Output).
    in den Gesamtkontext ein: Die Verschärfung der Langzeitarbeitslosigkeit ist statistisch
    der am stärksten abgesicherte Trend im Datensatz.
 
-## Enthaltene Diagramme (5 insgesamt)
+## Enthaltene Diagramme (6 insgesamt)
 
 | # | Diagrammtyp | Interaktiv? | Inhalt |
 |---|---|---|---|
@@ -82,7 +89,8 @@ Text-Ausgaben als Zell-Output).
 | 2 | Scatterplot + Trendlinie | ✅ Plotly | Langzeitarbeitslose vs. Bedarfsgemeinschaften |
 | 3 | Histogramm | ✅ Plotly | Verteilung Arbeitslose (Bestand) |
 | 4 | Boxplot | ✅ Plotly | Verteilung Arbeitslose (Bestand) |
-| 5 | Scatter + Regressionsgerade + Prognose | ✅ Plotly | Langzeitarbeitslose: linearer Trend |
+| 5 | Boxplot mit Einzelpunkten | ✅ Plotly | Verteilung Arbeitslose (Bestand) — Export für Präsentation (Folie 22) |
+| 6 | Scatter + Regressionsgerade + Prognose | ✅ Plotly | Langzeitarbeitslose: linearer Trend |
 
 Damit sind gegenüber `ThemenCheck.md` zusätzlich abgedeckt: Scatterplot, Histogramm, Boxplot,
 Heatmap, Korrelationskoeffizient, Konfidenzintervalle, Hypothesentest (t-Test) und einfache
