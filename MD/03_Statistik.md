@@ -20,7 +20,7 @@ Alle Tests und die Regression sind entsprechend vorsichtig zu interpretieren.
 
 ## Output
 
-- `Dok/Abbildungen/abb32_verteilung_boxstrip.png` (Boxplot mit Einzelpunkten, für die
+- `Docs/Abbildungen/abb32_verteilung_boxstrip.png` (Boxplot mit Einzelpunkten, für die
   Projektpräsentation)
 - Ansonsten keine weiteren Datei-Exporte — reine Auswertung innerhalb von Jupyter
   (Diagramme, Tabellen und Text-Ausgaben als Zell-Output).
@@ -56,7 +56,7 @@ Alle Tests und die Regression sind entsprechend vorsichtig zu interpretieren.
    - Zusätzlich eine alternative Darstellung als Boxplot mit allen 18 Einzelpunkten
      (`boxpoints="all"`, Jitter) — vermeidet die bei so kleinen Stichproben leicht
      missverständliche Bin-Häufigkeits-Achse eines Histogramms. Wird exportiert nach
-     `Dok/Abbildungen/abb32_verteilung_boxstrip.png` und in der Projektpräsentation
+     `Docs/Abbildungen/abb32_verteilung_boxstrip.png` und in der Projektpräsentation
      (Folie 22) verwendet.
 6. **4. Inferenzstatistik: Hypothesentest**
    - Fragestellung: Unterscheidet sich die durchschnittliche Zahl der Langzeitarbeitslosen

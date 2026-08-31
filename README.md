@@ -34,7 +34,7 @@ Notebooks/
   10_Rechtskreisvergleich.ipynb  Jobcenter-Anteil an der Arbeitslosigkeit (SGB II vs. SGB III)
 Dashboard/
   app.py                    interaktives Streamlit-Dashboard
-Dok/
+Docs/
   Projektdokumentation.docx projektbegleitende Dokumentation (Word)
   Projektpraesentation.pptx Projektpräsentation (PowerPoint)
 MD/
