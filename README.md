@@ -32,6 +32,10 @@ Notebooks/
   08_Foerderung.ipynb        Eintritte/Bestand an Fördermaßnahmen, Aktivierungsquote
   09_Bezugsdauer.ipynb       BG-Struktur, Langzeitleistungsbezug, Drehtür-Effekt
   10_Rechtskreisvergleich.ipynb  Jobcenter-Anteil an der Arbeitslosigkeit (SGB II vs. SGB III)
+  11_Arbeitsstellen.ipynb   Gemeldete Arbeitsstellen (Nachfrageseite), Angebot-Nachfrage-Relation
+  12_Unterbeschaeftigung.ipynb  Unterbeschäftigung im engeren Sinne/ohne Kurzarbeit, SGB-II-Anteil
+  13_RLB_ELB_NEF.ipynb      RLB/ELB/NEF-Struktur der Bedarfsgemeinschaften als Zeitreihe
+  14_Beschaeftigung.ipynb   Sozialversicherungspflichtige/geringfügige Beschäftigung, Pendlersaldo
 Dashboard/
   app.py                    interaktives Streamlit-Dashboard
 Docs/
@@ -50,6 +54,10 @@ MD/
   08_Foerderung.md           Dokumentation zu 08_Foerderung.ipynb
   09_Bezugsdauer.md          Dokumentation zu 09_Bezugsdauer.ipynb
   10_Rechtskreisvergleich.md Dokumentation zu 10_Rechtskreisvergleich.ipynb
+  11_Arbeitsstellen.md      Dokumentation zu 11_Arbeitsstellen.ipynb
+  12_Unterbeschaeftigung.md Dokumentation zu 12_Unterbeschaeftigung.ipynb
+  13_RLB_ELB_NEF.md         Dokumentation zu 13_RLB_ELB_NEF.ipynb
+  14_Beschaeftigung.md      Dokumentation zu 14_Beschaeftigung.ipynb
 ```
 
 ## Lokal ausführen
@@ -75,7 +83,17 @@ MD/
 10. `Notebooks/10_Rechtskreisvergleich.ipynb` für den Jobcenter-Anteil an der
     Arbeitslosigkeit (SGB II vs. SGB III) — liest nur `Data/processed/eckwerte_long.csv`,
     keine neuen Rohdaten nötig.
-11. Dashboard starten:
+11. `Notebooks/11_Arbeitsstellen.ipynb` für gemeldete Arbeitsstellen (Nachfrageseite) und die
+    Angebot-Nachfrage-Relation — liest direkt aus den Excel-Rohdaten, Blatt „1.1 Eckwerte“.
+12. `Notebooks/12_Unterbeschaeftigung.ipynb` für Unterbeschäftigung im engeren Sinne/ohne
+    Kurzarbeit und den SGB-II-Anteil im Vergleich — liest nur `Data/processed/eckwerte_long.csv`,
+    keine neuen Rohdaten nötig.
+13. `Notebooks/13_RLB_ELB_NEF.ipynb` für die RLB/ELB/NEF-Struktur der Bedarfsgemeinschaften
+    als Zeitreihe — liest nur `Data/processed/eckwerte_long.csv`, keine neuen Rohdaten nötig.
+14. `Notebooks/14_Beschaeftigung.ipynb` für sozialversicherungspflichtige/geringfügige
+    Beschäftigung und den Pendlersaldo — liest direkt aus den Excel-Rohdaten, Blatt
+    „1.1 Eckwerte“ (quartalsweiser Block, Zeilen 49–58).
+15. Dashboard starten:
    ```
    pip install -r Dashboard/requirements.txt
    streamlit run Dashboard/app.py

@@ -28,9 +28,13 @@ def load_data():
     foerderung_path = PROCESSED_DIR / "foerderung_sgb2.csv"
     bezugsdauer_path = PROCESSED_DIR / "bezugsdauer_sgb2.csv"
     rechtskreis_path = PROCESSED_DIR / "rechtskreisvergleich_sgb2.csv"
+    arbeitsstellen_path = PROCESSED_DIR / "arbeitsstellen.csv"
+    unterbeschaeftigung_path = PROCESSED_DIR / "unterbeschaeftigung_sgb2.csv"
+    rlb_elb_nef_path = PROCESSED_DIR / "rlb_elb_nef_sgb2.csv"
+    beschaeftigung_path = PROCESSED_DIR / "beschaeftigung_quartal.csv"
 
     if not long_path.exists() or not wide_path.exists():
-        return None, None, None, None, None, None, None, None, None
+        return None, None, None, None, None, None, None, None, None, None, None, None, None
 
     df_long = pd.read_csv(long_path)
     df_long["period"] = pd.PeriodIndex(df_long["period"], freq="M").to_timestamp()
@@ -73,10 +77,30 @@ def load_data():
         rechtskreis = pd.read_csv(rechtskreis_path, index_col="period", parse_dates=["period"])
         rechtskreis = rechtskreis.sort_index()
 
-    return df_long, kennzahlen, fluktuation, demografie, erwerbstaetigkeit, finanzen, foerderung, bezugsdauer, rechtskreis
+    arbeitsstellen = None
+    if arbeitsstellen_path.exists():
+        arbeitsstellen = pd.read_csv(arbeitsstellen_path, index_col="period", parse_dates=["period"])
+        arbeitsstellen = arbeitsstellen.sort_index()
+
+    unterbeschaeftigung = None
+    if unterbeschaeftigung_path.exists():
+        unterbeschaeftigung = pd.read_csv(unterbeschaeftigung_path, index_col="period", parse_dates=["period"])
+        unterbeschaeftigung = unterbeschaeftigung.sort_index()
+
+    rlb_elb_nef = None
+    if rlb_elb_nef_path.exists():
+        rlb_elb_nef = pd.read_csv(rlb_elb_nef_path, index_col="period", parse_dates=["period"])
+        rlb_elb_nef = rlb_elb_nef.sort_index()
+
+    beschaeftigung = None
+    if beschaeftigung_path.exists():
+        beschaeftigung = pd.read_csv(beschaeftigung_path, index_col="quartal", parse_dates=["quartal"])
+        beschaeftigung = beschaeftigung.sort_index()
+
+    return df_long, kennzahlen, fluktuation, demografie, erwerbstaetigkeit, finanzen, foerderung, bezugsdauer, rechtskreis, arbeitsstellen, unterbeschaeftigung, rlb_elb_nef, beschaeftigung
 
 
-df_long, kennzahlen, fluktuation, demografie, erwerbstaetigkeit, finanzen, foerderung, bezugsdauer, rechtskreis = load_data()
+df_long, kennzahlen, fluktuation, demografie, erwerbstaetigkeit, finanzen, foerderung, bezugsdauer, rechtskreis, arbeitsstellen, unterbeschaeftigung, rlb_elb_nef, beschaeftigung = load_data()
 
 if kennzahlen is None:
     st.error(
@@ -142,6 +166,21 @@ if rechtskreis is not None:
     rechtskreis_mask = (rechtskreis.index >= date_range[0]) & (rechtskreis.index <= date_range[1])
     rechtskreis_view = rechtskreis.loc[rechtskreis_mask]
 
+arbeitsstellen_view = None
+if arbeitsstellen is not None:
+    arbeitsstellen_mask = (arbeitsstellen.index >= date_range[0]) & (arbeitsstellen.index <= date_range[1])
+    arbeitsstellen_view = arbeitsstellen.loc[arbeitsstellen_mask]
+
+unterbeschaeftigung_view = None
+if unterbeschaeftigung is not None:
+    unterbeschaeftigung_mask = (unterbeschaeftigung.index >= date_range[0]) & (unterbeschaeftigung.index <= date_range[1])
+    unterbeschaeftigung_view = unterbeschaeftigung.loc[unterbeschaeftigung_mask]
+
+rlb_elb_nef_view = None
+if rlb_elb_nef is not None:
+    rlb_elb_nef_mask = (rlb_elb_nef.index >= date_range[0]) & (rlb_elb_nef.index <= date_range[1])
+    rlb_elb_nef_view = rlb_elb_nef.loc[rlb_elb_nef_mask]
+
 if view.empty:
     st.warning("Kein Berichtsmonat im gewählten Zeitraum.")
     st.stop()
@@ -186,7 +225,7 @@ def geplant(beschreibung: str, datenquelle: str, ideen: list[str], prioritaet: s
 
 
 # --- Navigation: Menü-Tabs ------------------------------------------------------
-tab_uebersicht, tab_rechtskreis, tab_fluktuation, tab_demografie, tab_erwerbstaetigkeit, tab_bezugsdauer, tab_finanzen, tab_foerderung, tab_glossar = st.tabs(
+tab_uebersicht, tab_rechtskreis, tab_fluktuation, tab_demografie, tab_erwerbstaetigkeit, tab_bezugsdauer, tab_finanzen, tab_foerderung, tab_arbeitsstellen, tab_unterbeschaeftigung, tab_rlb_elb_nef, tab_beschaeftigung, tab_glossar = st.tabs(
     [
         "📊 SGB II Übersicht",
         "⚖️ SGB II vs. SGB III",
@@ -196,6 +235,10 @@ tab_uebersicht, tab_rechtskreis, tab_fluktuation, tab_demografie, tab_erwerbstae
         "⏳ Bezugsdauer",
         "💶 Finanzen",
         "🎯 Förderung",
+        "📋 Arbeitsstellen",
+        "📉 Unterbeschäftigung",
+        "🧩 RLB/ELB/NEF",
+        "🚗 Beschäftigung",
         "📖 Glossar",
     ]
 )
@@ -1226,6 +1269,297 @@ with tab_foerderung:
             "zuvor langzeitarbeitsloser Teilnehmender steigt deutlich (16,2 % → 23,6 %) "
             "— passend zur insgesamt steigenden Langzeitarbeitslosigkeit im Datensatz "
             "(siehe Tab „SGB II Übersicht“)."
+        )
+
+# =================================================================================
+# Tab: Arbeitsstellen (Nachfrageseite)
+# =================================================================================
+with tab_arbeitsstellen:
+    st.subheader("Gemeldete Arbeitsstellen — die Nachfrageseite des Arbeitsmarkts")
+
+    if arbeitsstellen_view is None or arbeitsstellen_view.empty:
+        st.warning(
+            "Keine Arbeitsstellen-Daten gefunden. Bitte zuerst "
+            "`Notebooks/11_Arbeitsstellen.ipynb` einmal komplett ausführen, damit "
+            "`Data/processed/arbeitsstellen.csv` entsteht."
+        )
+    else:
+        st.caption(
+            "Alle übrigen Tabs zeigen ausschließlich die **Angebotsseite** (Arbeitslose). "
+            "Dieser Tab ergänzt die **Nachfrageseite**: gemeldete offene Arbeitsstellen. "
+            "⚠️ Diese Zahlen werden von der Bundesagentur **nicht nach Rechtskreis** "
+            "differenziert ausgewiesen — nur ein „Insgesamt“-Wert, kein eigener SGB-II-Wert."
+        )
+
+        st.markdown("#### Zugang und Bestand gemeldeter Arbeitsstellen")
+        fig = go.Figure()
+        fig.add_trace(go.Bar(
+            x=arbeitsstellen_view.index, y=arbeitsstellen_view["zugang_im_monat"],
+            name="Zugang (im Monat)", marker_color="#93c5fd", opacity=0.75,
+        ))
+        fig.add_trace(go.Scatter(
+            x=arbeitsstellen_view.index, y=arbeitsstellen_view["bestand"],
+            name="Bestand (Monatsende)", mode="lines+markers", line=dict(color="#dc2626", width=2.5),
+        ))
+        fig.update_layout(
+            yaxis_title="Anzahl", xaxis_title="Monat", hovermode="x unified",
+            legend=dict(orientation="h", y=1.15), height=420,
+        )
+        st.plotly_chart(fig, width="stretch")
+        st.caption(
+            "Der Bestand gemeldeter Arbeitsstellen sinkt über den Beobachtungszeitraum "
+            "deutlich von 1.571 auf 1.192 Stellen (≈ −24 %) — ein zusätzliches, von den "
+            "Arbeitslosenzahlen unabhängiges Signal für eine sich eintrübende "
+            "Arbeitsmarktlage."
+        )
+
+        st.markdown("#### Angebot vs. Nachfrage: Arbeitsstellen je 100 Arbeitslose")
+        angebot_nachfrage = arbeitsstellen_view[["bestand"]].rename(
+            columns={"bestand": "arbeitsstellen_bestand"}
+        ).merge(view[["Arbeitslose (Bestand)"]], left_index=True, right_index=True, how="inner")
+        angebot_nachfrage["ratio"] = (
+            angebot_nachfrage["arbeitsstellen_bestand"] / angebot_nachfrage["Arbeitslose (Bestand)"] * 100
+        )
+        fig = go.Figure()
+        fig.add_trace(go.Scatter(
+            x=angebot_nachfrage.index, y=angebot_nachfrage["ratio"],
+            mode="lines+markers", line=dict(color="#059669", width=2.5), name="Arbeitsstellen je 100 Arbeitslose",
+        ))
+        fig.add_hline(y=100, line_dash="dot", line_color="#9ca3af", annotation_text="Gleichstand (100)")
+        fig.update_layout(
+            yaxis_title="Arbeitsstellen je 100 Arbeitslose", xaxis_title="Monat",
+            hovermode="x unified", height=420,
+        )
+        st.plotly_chart(fig, width="stretch")
+        st.caption(
+            "Zu Jahresbeginn 2025 kamen auf 100 Arbeitslose noch rund 107 gemeldete "
+            "Stellen — mehr offene Stellen als Arbeitslose. Bis Juni 2026 fällt diese "
+            "Relation auf rund 80 und damit deutlich unter 100."
+        )
+
+        st.markdown(f"#### Struktur des Stellenbestands — {pd.Timestamp(gewaehlter_monat):%B %Y}")
+        if gewaehlter_monat in arbeitsstellen.index:
+            bestand_gesamt = arbeitsstellen.loc[gewaehlter_monat, "bestand"]
+            bestand_svp = arbeitsstellen.loc[gewaehlter_monat, "bestand_sozialversicherungspflichtig"]
+            fig = go.Figure(go.Pie(
+                labels=["sozialversicherungspflichtig", "sonstige Beschäftigungsform"],
+                values=[bestand_svp, bestand_gesamt - bestand_svp],
+                hole=0.55, marker=dict(colors=["#2563eb", "#cbd5e1"]),
+            ))
+            fig.update_layout(height=380)
+            st.plotly_chart(fig, width="stretch")
+            st.caption(
+                f"{bestand_svp / bestand_gesamt * 100:.1f} % des Stellenbestands im gewählten "
+                "Berichtsmonat sind sozialversicherungspflichtig — der weit überwiegende Teil."
+            )
+        else:
+            st.info("Für den gewählten Berichtsmonat liegen keine Arbeitsstellen-Daten vor.")
+
+# =================================================================================
+# Tab: Unterbeschäftigung
+# =================================================================================
+with tab_unterbeschaeftigung:
+    st.subheader("Unterbeschäftigung — mehr als nur Arbeitslosigkeit")
+
+    if unterbeschaeftigung_view is None or unterbeschaeftigung_view.empty:
+        st.warning(
+            "Keine Unterbeschäftigungs-Daten gefunden. Bitte zuerst "
+            "`Notebooks/12_Unterbeschaeftigung.ipynb` einmal komplett ausführen, damit "
+            "`Data/processed/unterbeschaeftigung_sgb2.csv` entsteht."
+        )
+    else:
+        st.caption(
+            "Die Unterbeschäftigungsquote (Tab „📊 SGB II Übersicht“) beruht auf drei "
+            "absoluten Kennzahlen, die hier erstmals als eigene Zeitreihe gezeigt werden — "
+            "alle bereits mit vollständigem SGB-II-Wert (anders als bei den gemeldeten "
+            "Arbeitsstellen)."
+        )
+
+        st.markdown("#### Drei Abgrenzungen im Vergleich (SGB II)")
+        fig = go.Figure()
+        farben = {
+            "arbeitslosigkeit_weiterer_sinn": ("Arbeitslosigkeit im weiteren Sinne", "#2563eb"),
+            "unterbeschaeftigung_engerer_sinn": ("Unterbeschäftigung im engeren Sinne", "#7c3aed"),
+            "unterbeschaeftigung_ohne_kurzarbeit": ("Unterbeschäftigung (ohne Kurzarbeit)", "#dc2626"),
+        }
+        for spalte, (label, farbe) in farben.items():
+            fig.add_trace(go.Scatter(
+                x=unterbeschaeftigung_view.index, y=unterbeschaeftigung_view[spalte], name=label,
+                mode="lines+markers", line=dict(color=farbe, width=2), marker=dict(size=5),
+            ))
+        fig.update_layout(
+            yaxis_title="Personen", xaxis_title="Monat", hovermode="x unified",
+            legend=dict(orientation="h", y=1.15), height=440,
+        )
+        st.plotly_chart(fig, width="stretch")
+        st.caption(
+            "Die Kurzarbeiter-Komponente (Differenz zwischen den beiden oberen Linien) ist "
+            "verschwindend gering (Ø 2,6 Personen) — Kurzarbeit spielt im SGB-II-Kontext "
+            "praktisch keine Rolle. Die Maßnahmen-Komponente (Differenz zur Arbeitslosigkeit "
+            "im weiteren Sinne) ist mit Ø 399 Personen deutlich substanzieller."
+        )
+
+        st.markdown("#### SGB-II-Anteil im Vergleich")
+        anteil = (
+            unterbeschaeftigung_view["unterbeschaeftigung_engerer_sinn"]
+            / unterbeschaeftigung_view["unterbeschaeftigung_engerer_sinn_insgesamt"] * 100
+        )
+        fig = go.Figure()
+        fig.add_trace(go.Scatter(
+            x=unterbeschaeftigung_view.index, y=anteil, mode="lines+markers",
+            name="SGB-II-Anteil: Unterbeschäftigung (engere Sinne)", line=dict(color="#059669", width=2.5),
+        ))
+        fig.add_hline(y=39.8, line_dash="dot", line_color="#2563eb", annotation_text="Ø Anteil am Bestand (≈ 39,8 %)")
+        fig.add_hline(y=72.3, line_dash="dot", line_color="#dc2626", annotation_text="Ø Anteil an LZA (≈ 72,3 %)")
+        fig.update_layout(
+            yaxis_title="Anteil (%)", yaxis_ticksuffix="%", xaxis_title="Monat", height=420,
+        )
+        st.plotly_chart(fig, width="stretch")
+        st.caption(
+            "Der SGB-II-Anteil an der Unterbeschäftigung im engeren Sinne (41–50 %) liegt "
+            "zwischen dem Anteil am Arbeitslosenbestand (≈ 40 %) und dem deutlich höheren "
+            "Anteil an der Langzeitarbeitslosigkeit (≈ 72 %, siehe Tab „⚖️ SGB II vs. SGB "
+            "III“)."
+        )
+
+# =================================================================================
+# Tab: RLB/ELB/NEF-Struktur
+# =================================================================================
+with tab_rlb_elb_nef:
+    st.subheader("Regelleistungsberechtigte: Struktur der Bedarfsgemeinschaften")
+
+    if rlb_elb_nef_view is None or rlb_elb_nef_view.empty:
+        st.warning(
+            "Keine RLB/ELB/NEF-Daten gefunden. Bitte zuerst "
+            "`Notebooks/13_RLB_ELB_NEF.ipynb` einmal komplett ausführen, damit "
+            "`Data/processed/rlb_elb_nef_sgb2.csv` entsteht."
+        )
+    else:
+        st.caption(
+            "Die Trichter-Grafik im Tab „📊 SGB II Übersicht“ zeigt RLB/ELB/NEF nur als "
+            "Momentaufnahme des letzten Berichtsmonats. Dieser Tab zeigt dieselbe Struktur "
+            "als Zeitreihe über alle 18 Monate."
+        )
+
+        st.markdown("#### RLB, ELB und NEF im Vergleich")
+        fig = go.Figure()
+        for spalte, name, farbe in [
+            ("rlb", "Regelleistungsberechtigte (RLB)", "#1e3a8a"),
+            ("elb", "davon erwerbsfähig (ELB)", "#2563eb"),
+            ("nef", "nicht erwerbsfähig (NEF)", "#dc2626"),
+        ]:
+            fig.add_trace(go.Scatter(
+                x=rlb_elb_nef_view.index, y=rlb_elb_nef_view[spalte], name=name,
+                mode="lines+markers", line=dict(width=2.5), marker=dict(size=5),
+            ))
+        fig.update_layout(
+            yaxis_title="Personen", xaxis_title="Monat", hovermode="x unified",
+            legend=dict(orientation="h", y=1.15), height=440,
+        )
+        st.plotly_chart(fig, width="stretch")
+        st.caption(
+            "Alle drei Kennzahlen sind rückläufig — RLB um 6,9 %, ELB um 5,5 %, NEF (im "
+            "Wesentlichen Kinder in der Bedarfsgemeinschaft) mit 10,5 % am stärksten."
+        )
+
+        st.markdown("#### Nicht leistungsberechtigte Haushaltsmitglieder (PERS − RLB)")
+        differenz = rlb_elb_nef_view["pers"] - rlb_elb_nef_view["rlb"]
+        differenz_anteil = (differenz / rlb_elb_nef_view["pers"] * 100)
+        fig = go.Figure()
+        fig.add_trace(go.Bar(
+            x=rlb_elb_nef_view.index, y=differenz, name="PERS − RLB",
+            marker_color="#f59e0b", opacity=0.75,
+        ))
+        fig.add_trace(go.Scatter(
+            x=rlb_elb_nef_view.index, y=differenz_anteil, name="Anteil an PERS (%)",
+            mode="lines+markers", line=dict(color="#b45309", width=2.5), yaxis="y2",
+        ))
+        fig.update_layout(
+            yaxis=dict(title="Personen"),
+            yaxis2=dict(title="Anteil an PERS (%)", overlaying="y", side="right", ticksuffix="%"),
+            xaxis_title="Monat", hovermode="x unified", legend=dict(orientation="h", y=1.15), height=440,
+        )
+        st.plotly_chart(fig, width="stretch")
+        st.caption(
+            "Gegenläufiger Trend: Während Bedarfsgemeinschaften, Personen in BG und RLB "
+            "insgesamt sinken, steigt die Zahl der nicht leistungsberechtigten "
+            "Haushaltsmitglieder von 286 auf 309 Personen — ihr Anteil an allen Personen in "
+            "BG von 5,2 % auf 6,0 %."
+        )
+
+# =================================================================================
+# Tab: Beschäftigung (sozialversicherungspflichtig/geringfügig, Pendlersaldo)
+# =================================================================================
+with tab_beschaeftigung:
+    st.subheader("Beschäftigung: das Gegenstück zur Arbeitslosigkeit")
+
+    if beschaeftigung is None or beschaeftigung.empty:
+        st.warning(
+            "Keine Beschäftigungsdaten gefunden. Bitte zuerst "
+            "`Notebooks/14_Beschaeftigung.ipynb` einmal komplett ausführen, damit "
+            "`Data/processed/beschaeftigung_quartal.csv` entsteht."
+        )
+    else:
+        st.caption(
+            "⚠️ Dieser Tab hat ein eigenes Zeitfenster und reagiert **nicht** auf den "
+            "Sidebar-Zeitraum-Filter: Die zugrunde liegenden Daten sind **quartalsweise** "
+            "(nicht monatlich) mit 6 Monaten Wartezeit gemeldet und decken daher Juni 2024 – "
+            "Dezember 2025 ab, statt Januar 2025 – Juni 2026 wie die übrigen Tabs."
+        )
+
+        st.markdown("#### Sozialversicherungspflichtige Beschäftigung: Arbeitsort vs. Wohnort")
+        with st.expander("Was bedeutet Arbeitsort (AO) vs. Wohnort (WO)?"):
+            st.markdown(
+                "**Arbeitsort (AO)** zählt Beschäftigungsverhältnisse, deren Arbeitsplatz in "
+                "Regensburg liegt. **Wohnort (WO)** zählt Personen, die in Regensburg wohnen, "
+                "unabhängig vom Arbeitsort. Die Differenz WO − AO ist der **Pendlersaldo**."
+            )
+        fig = go.Figure()
+        fig.add_trace(go.Scatter(
+            x=beschaeftigung.index, y=beschaeftigung["ao_svp"], name="Arbeitsort (AO)",
+            mode="lines+markers", line=dict(color="#2563eb", width=2.5), marker=dict(size=7),
+        ))
+        fig.add_trace(go.Scatter(
+            x=beschaeftigung.index, y=beschaeftigung["wo_svp"], name="Wohnort (WO)",
+            mode="lines+markers", line=dict(color="#7c3aed", width=2.5), marker=dict(size=7),
+        ))
+        fig.update_layout(
+            yaxis_title="Personen", xaxis_title="Quartal", hovermode="x unified",
+            legend=dict(orientation="h", y=1.15), height=440,
+        )
+        st.plotly_chart(fig, width="stretch")
+
+        st.markdown("#### Pendlersaldo (WO − AO)")
+        pendlersaldo = beschaeftigung["wo_svp"] - beschaeftigung["ao_svp"]
+        fig = go.Figure()
+        fig.add_trace(go.Bar(
+            x=beschaeftigung.index, y=pendlersaldo, marker_color="#059669", opacity=0.8,
+        ))
+        fig.update_layout(
+            yaxis_title="Personen", xaxis_title="Quartal", height=400, showlegend=False,
+        )
+        st.plotly_chart(fig, width="stretch")
+        st.caption(
+            "Außergewöhnlich stabiler Auspendlerüberschuss von 33.739 bis 34.069 Personen "
+            "(Ø ≈ 33.929) über alle 7 verfügbaren Quartale — es pendeln durchgehend rund "
+            "34.000 mehr Regensburger aus, als von auswärts einpendeln."
+        )
+
+        st.markdown("#### Anteil geringfügiger Beschäftigung an der Gesamtbeschäftigung")
+        anteil_ao = beschaeftigung["ao_geringfuegig"] / (beschaeftigung["ao_geringfuegig"] + beschaeftigung["ao_svp"]) * 100
+        anteil_wo = beschaeftigung["wo_geringfuegig"] / (beschaeftigung["wo_geringfuegig"] + beschaeftigung["wo_svp"]) * 100
+        fig = go.Figure()
+        fig.add_trace(go.Scatter(x=beschaeftigung.index, y=anteil_ao, name="Arbeitsort (AO)", mode="lines+markers", line=dict(color="#f59e0b", width=2.5)))
+        fig.add_trace(go.Scatter(x=beschaeftigung.index, y=anteil_wo, name="Wohnort (WO)", mode="lines+markers", line=dict(color="#db2777", width=2.5)))
+        fig.update_layout(
+            yaxis_title="Anteil (%)", yaxis_ticksuffix="%", xaxis_title="Quartal",
+            hovermode="x unified", legend=dict(orientation="h", y=1.15), height=420,
+        )
+        st.plotly_chart(fig, width="stretch")
+        st.caption(
+            "Der Anteil geringfügiger Beschäftigung sinkt leicht (AO: 13,3 % → 13,0 %, WO: "
+            "10,8 % → 10,5 %) — passend zur in Tab „💼 Erwerbstätigkeit“ beobachteten "
+            "leichten Verschiebung zu höheren Einkommen bei den Aufstockern."
         )
 
 # =================================================================================

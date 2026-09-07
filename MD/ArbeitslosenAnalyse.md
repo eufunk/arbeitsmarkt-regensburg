@@ -72,18 +72,37 @@ Excel-Rohdaten, ⚠️ mit 3 Monaten Wartezeit).
   Arbeitslosengeld I (SGB III); SGB-III-Langzeitarbeitslosigkeit wächst sogar noch stärker
   (+ 55 %) als die SGB-II-Zahl (+ 41 %) (siehe
   [`10_Rechtskreisvergleich.ipynb`](../Notebooks/10_Rechtskreisvergleich.ipynb))
+- **Gemeldete Arbeitsstellen** (Nachfrageseite des Arbeitsmarkts) — erstmals den Block
+  „gemeldete Arbeitsstellen“ aus „1.1 Eckwerte“ direkt ausgewertet (⚠️ nicht nach Rechtskreis
+  differenziert, nur „Insgesamt“-Wert): Bestand sinkt deutlich von 1.571 auf 1.192 (−24 %);
+  Relation „Arbeitsstellen je 100 Arbeitslose“ fällt von 106,9 auf 79,5 — ein von den
+  Arbeitslosenzahlen unabhängiger Beleg für eine sich eintrübende Arbeitsmarktlage (siehe
+  [`11_Arbeitsstellen.ipynb`](../Notebooks/11_Arbeitsstellen.ipynb))
+- **Unterbeschäftigung im engeren Sinne / ohne Kurzarbeit** — erstmals als eigene Zeitreihe
+  ausgewertet (bisher nur die Quote genutzt): Kurzarbeiter-Komponente im SGB-II-Kontext
+  verschwindend gering (Ø 2,6 Personen), Maßnahmen-Komponente deutlich substanzieller (Ø 399
+  Personen); SGB-II-Anteil an der Unterbeschäftigung (41–50 %) liegt zwischen dem Anteil am
+  Arbeitslosenbestand (≈ 40 %) und dem an der Langzeitarbeitslosigkeit (≈ 72 %) (siehe
+  [`12_Unterbeschaeftigung.ipynb`](../Notebooks/12_Unterbeschaeftigung.ipynb))
+- **Regelleistungsberechtigte (RLB), erwerbsfähige (ELB) vs. nicht erwerbsfähige (NEF)** —
+  Struktur innerhalb der Bedarfsgemeinschaften erstmals als eigene Zeitreihe statt nur
+  Momentaufnahme ausgewertet: alle drei Kennzahlen rückläufig (RLB −6,9 %, ELB −5,5 %, NEF
+  −10,5 %), aber gegenläufiger Trend bei den nicht leistungsberechtigten
+  Haushaltsmitgliedern (PERS − RLB): steigt von 286 auf 309 Personen, Anteil an PERS von
+  5,2 % auf 6,0 % (siehe [`13_RLB_ELB_NEF.ipynb`](../Notebooks/13_RLB_ELB_NEF.ipynb))
+- **Sozialversicherungspflichtige und geringfügig entlohnte Beschäftigung** (nach Arbeits-
+  und Wohnort) — Gegenstück zur Arbeitslosigkeit, erstmals ausgewertet (⚠️ quartalsweise statt
+  monatlich, 6 Monate Wartezeit, Zeitreihe daher Jun 2024 – Dez 2025): beide Beschäftigungsarten
+  bemerkenswert stabil; auffälligster Befund ist der fast unveränderte Pendlersaldo von rund
+  34.000 Personen (Auspendlerüberschuss) über alle 7 verfügbaren Quartale (siehe
+  [`14_Beschaeftigung.ipynb`](../Notebooks/14_Beschaeftigung.ipynb))
+
+Damit ist die priorisierte Themenliste aus diesem Dokument **vollständig abgearbeitet**.
 
 ## 🔲 In den Rohdaten vorhanden, aber noch nicht analysiert
 
-### Noch ungenutzte Zeilen in "1.1 Eckwerte" (gleiches Blatt, das wir schon nutzen)
-- **Gemeldete Arbeitsstellen** (Zugang, Bestand, davon sozialversicherungspflichtig) —
-  Nachfrageseite des Arbeitsmarkts, bisher komplett ausgeklammert
-- **Unterbeschäftigung im engeren Sinne** und **ohne Kurzarbeit** (Detailkomponenten der
-  Unterbeschäftigung, wir nutzen bisher nur "im weiteren Sinne" für die Quote)
-- **Regelleistungsberechtigte (RLB)**, **erwerbsfähige (ELB)** vs. **nicht erwerbsfähige
-  Leistungsberechtigte (NEF)** — Struktur innerhalb der Bedarfsgemeinschaften
-- **sozialversicherungspflichtige und geringfügig entlohnte Beschäftigung** (nach Arbeits-
-  und Wohnort) — Beschäftigungsentwicklung als Gegenstück zur Arbeitslosigkeit
+Keine offenen Punkte mehr aus der ursprünglichen Priorisierung. Verbleibend nur noch
+Erweiterungsideen ohne konkrete Priorisierung (siehe unten).
 
 ### Noch ungenutzte Tabellenblätter
 
@@ -175,7 +194,7 @@ Details: [`Dashboard/README.md`](../Dashboard/README.md).
   Abschnitten
 - Zeitraum-Filter (Slider) und Berichtsmonat-Auswahl in der Sidebar, wirken auf alle
   Zeitreihen-Charts bzw. Momentaufnahmen mit gemeinsamem Zeitfenster (nicht auf die Tabs
-  Erwerbstätigkeit, Finanzen, Förderung und Bezugsdauer, siehe oben)
+  Erwerbstätigkeit, Finanzen, Förderung, Bezugsdauer und Beschäftigung, siehe oben)
 - Datenbasis: die aufbereiteten CSVs aus `Data/processed/`
   (`eckwerte_long.csv`, `kennzahlen_sgb2.csv`, `fluktuation_sgb2.csv`,
   `demografie_sgb2.csv`, `erwerbstaetigkeit_sgb2.csv`, `finanzen_sgb2.csv`,
