@@ -164,14 +164,24 @@ Langzeitarbeitslose). Diese Monate liegen jetzt als Istwerte vor.
 
 ## Phase 8 – Abschluss
 
-- [ ] Gesamtsuche nach veralteten Angaben (siehe Phase 5, letzter Punkt) über Notebooks, MD,
-      Dashboard, Word, PowerPoint.
-- [ ] Notebooks mit Ausgaben gespeichert lassen (wie bisher im Repo).
-- [ ] `git status` prüfen: Rohdaten bleiben unversioniert (`.gitignore`).
-- [ ] Ein Commit mit allen Änderungen, z. B.
-      „Daten um Juli–September 2026 erweitern: Notebooks, Abbildungen, Dashboard und
-      Dokumentation aktualisiert“, danach `git push` auf `main`.
+- [x] Gesamtsuche nach veralteten Angaben über Notebooks, MD, Dashboard, Word und PowerPoint:
+      verbleibende Treffer sind ausschließlich gewollte Vergleiche mit dem alten Stand.
+- [x] Notebooks mit Ausgaben gespeichert (wie bisher im Repo).
+- [x] `git status` geprüft: Rohdaten bleiben unversioniert (`.gitignore`, Regel `Data/*`).
+- [x] Gemäß Entscheidung ein Commit pro Phase (Phase 0–8), danach `git push` auf `main`.
       Das Streamlit-Dashboard zieht die neuen CSVs nach dem Push automatisch.
+
+## Ergebnis in Kürze
+
+- **Datenbasis:** 21 Berichtsmonate (Januar 2025 – September 2026), historische Werte unverändert.
+- **Wichtigste inhaltliche Änderungen durch die drei neuen Monate:** Langzeitarbeitslosigkeit
+  stagniert seit dem Höchststand im Mai 2026 (714) bei 690–698; die damalige lineare Prognose
+  lag 5–7 % zu hoch (neues Kapitel „Prognose vs. Ist“). Förderbestand und Aktivierungsquoten
+  steigen seit April 2026 wieder. Bedarfsgemeinschaften und Personen in BG erreichen im
+  September 2026 ihren Tiefstand.
+- **Methodisch neu:** alle Abbildungen werden jetzt reproduzierbar aus den Notebooks exportiert;
+  fest eingetragene Monatszahlen in Code (Notebooks 03, 11, 12) wurden durch berechnete Werte
+  ersetzt — künftige Erweiterungen sind dadurch weniger aufwendig.
 
 ---
 
