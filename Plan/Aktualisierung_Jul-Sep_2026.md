@@ -129,14 +129,20 @@ Langzeitarbeitslose). Diese Monate liegen jetzt als Istwerte vor.
 ## Phase 6 – Word-Dokumentation (`Docs/Projektdokumentation.docx`)
 
 16 Kapitel, 42 eingebettete Bilder, 1 Tabelle.
-- [ ] Per Skript (python-docx) alle eingebetteten Abbildungen durch die neuen PNGs ersetzen
-      (Zuordnung über die Reihenfolge/Bildunterschrift „Abbildung n“), Formatierung bleibt erhalten.
-- [ ] Texte kapitelweise aktualisieren: 1.3 Datengrundlage (Zeitraum, Anzahl Berichte),
-      alle Befundabsätze mit Zahlen in Kap. 3–15, 16 Fazit und Ausblick.
-- [ ] Kap. 4.5 um „Prognose vs. Ist“ ergänzen (falls bestätigt).
-- [ ] Tabelle (deskriptive Statistik) mit neuen Werten füllen.
-- [ ] Inhaltsverzeichnis: Hinweis, dass es in Word mit F9 aktualisiert werden muss
-      (python-docx kann das Feld nicht neu berechnen).
+- [x] Alle 42 eingebetteten Abbildungen per Hash-Abgleich (`word/media/imageN.png` ↔ alte
+      abb-Dateien) eindeutig zugeordnet und durch die neuen PNGs ersetzt (gleiche Pixelmaße →
+      Layout unverändert).
+- [x] Texte in allen Kapiteln aktualisiert: rund 50 gezielte Textersetzungen und rund 80
+      vollständig neu geschriebene Absätze; die rote Hervorhebung von Schlüsselzahlen bleibt
+      erhalten. Hinweis auf die Datenerweiterung in 1.3, Umbenennung der Förderkategorie in
+      Kap. 9, Ergänzungen in Fazit und Ausblick.
+- [x] **Neues Kapitel 4.6 „Prognose vs. Ist: Out-of-Sample-Test“** mit Abbildung 44,
+      bisheriges 4.6 → 4.7; zusätzlicher Stichpunkt in der Zusammenfassung.
+- [x] Tabelle auf der letzten Seite: Datum 28.10.2026, Projektzeitraum bis September 2026.
+- [x] Inhaltsverzeichnis: neuer Eintrag 4.6 (Lesezeichen `TocLink90`). Seitenzahlen per Word
+      (COM-Automation: `Repaginate()` + `Fields.Update()`) neu berechnet → 57 Seiten.
+- [x] Prüfung: Skill-Validator „All validations PASSED“, PDF-Export gerendert und Seiten
+      mit dem neuen Kapitel visuell geprüft.
 
 ## Phase 7 – Präsentation (`Docs/Projektpraesentation.pptx`)
 
