@@ -10,7 +10,7 @@ Statistik-Nr. t73906-0).
 
 ## Datengrundlage
 
-18 monatliche Excel-Berichte (Januar 2025 – Juni 2026) für das Jobcenter Regensburg, jeweils mit
+21 monatliche Excel-Berichte (Januar 2025 – September 2026) für das Jobcenter Regensburg, jeweils mit
 dem aktuellen Monatswert je Merkmal, getrennt nach *"Insgesamt (SGB II und SGB III)"* und
 *"Rechtskreis SGB II"* (= Jobcenter-Zuständigkeit). Die Rohdaten liegen lokal unter
 `Data/RegensburgJCData/` und sind nicht Teil des Repositories (siehe `.gitignore`).
@@ -24,7 +24,7 @@ Data/
 Notebooks/
   01_Exploration.ipynb      Einlesen, Bereinigen, Aufbereiten, Export nach Data/processed/
   02_Analyse_SGBII.ipynb    Visualisierung und inhaltliche Auswertung (Rechtskreis SGB II)
-  03_Statistik.ipynb        Deskriptive Statistik, Korrelation, Hypothesentest, Regression
+  03_Statistik.ipynb        Deskriptive Statistik, Korrelation, Hypothesentest, Regression, Prognose vs. Ist
   04_Fluktuation.ipynb      Zugang/Abgang, Netto-Fluktuation, 12-Monatssummen
   05_Demografie.ipynb       Altersstruktur, Geschlecht, Ausländer, Schwerbehinderte (Zeitreihe)
   06_Erwerbstaetigkeit.ipynb Aufstockerquote, Erwerbsform, Einkommensstruktur
@@ -39,8 +39,11 @@ Notebooks/
 Dashboard/
   app.py                    interaktives Streamlit-Dashboard
 Docs/
+  Abbildungen/              PNG-Abbildungen (abb1–abb44), von den Notebooks exportiert
   Projektdokumentation.docx projektbegleitende Dokumentation (Word)
   Projektpraesentation.pptx Projektpräsentation (PowerPoint)
+Plan/
+  Aktualisierung_Jul-Sep_2026.md  Plan und Protokoll der Datenerweiterung um Jul–Sep 2026
 MD/
   ArbeitslosenAnalyse.md    inhaltliche Themenübersicht (behandelt / offen)
   ThemenCheck.md             Abgleich gegen den Lernplan (DatenanalysePython.md)
@@ -66,7 +69,7 @@ MD/
    aus den Rohdaten).
 2. `Notebooks/02_Analyse_SGBII.ipynb` für Visualisierung und Auswertung.
 3. `Notebooks/03_Statistik.ipynb` für vertiefte statistische Verfahren (Korrelation,
-   Hypothesentest, Regression).
+   Hypothesentest, Regression, Abgleich der Prognose mit den Istwerten).
 4. `Notebooks/04_Fluktuation.ipynb` für Zugang/Abgang aus Arbeitslosigkeit (Fluktuation).
 5. `Notebooks/05_Demografie.ipynb` für Altersstruktur, Geschlecht, Ausländer und
    Schwerbehinderte als Zeitreihe.
@@ -98,5 +101,8 @@ MD/
    pip install -r Dashboard/requirements.txt
    streamlit run Dashboard/app.py
    ```
+
+Die Notebooks 02–14 schreiben ihre Abbildungen beim Ausführen nach `Docs/Abbildungen/`
+(Plotly-Bildexport, benötigt das Paket `kaleido`).
 
 Details zum Dashboard: [`Dashboard/README.md`](Dashboard/README.md).

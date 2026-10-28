@@ -117,11 +117,14 @@ Langzeitarbeitslose). Diese Monate liegen jetzt als Istwerte vor.
 
 ## Phase 5 – Markdown-Dokumentation
 
-- [ ] `README.md`: „18 monatliche Excel-Berichte (Januar 2025 – Juni 2026)“ → 21 / September 2026.
-- [ ] `MD/01–14_*.md`: parallel zu Phase 1–2 jeweils mitziehen (Zahlen, Zeiträume, Befunde).
-- [ ] `MD/ArbeitslosenAnalyse.md`, `MD/ThemenCheck.md`: Zeitraumangaben anpassen.
-- [ ] Zum Schluss Suche nach Restfundstellen: `18 Monat`, `Juni 2026`, `März 2026`
-      (als Wartezeit-Ende), `Dezember 2025` (als 6-Monats-Ende), `7 Quartale`, `17 =`.
+- [x] `README.md`: 21 Berichte / September 2026; Projektstruktur um `Docs/Abbildungen/` und
+      `Plan/` ergänzt; Hinweis auf Bildexport (kaleido) in „Lokal ausführen“.
+- [x] `MD/01–14_*.md`: in Phase 1–3 mitgezogen (Zahlen, Zeiträume, Befunde, Output-Abbildungen).
+- [x] `MD/ArbeitslosenAnalyse.md` (31 Ersetzungen, inkl. Hinweis auf Prognose vs. Ist),
+      `MD/ThemenCheck.md` (21 Monatsberichte, Regression R² 0,952 + Prognosevalidierung).
+      `MD/DatenanalysePython.md` ist der Lernplan ohne Datenbezug — keine Änderung.
+- [x] Restsuche über README, MD, Dashboard und Notebook-Quellen: verbleibende Treffer sind nur
+      gewollte Vergleiche mit dem alten Stand (z. B. „mit 18 Monaten R² = 0,983“).
 
 ## Phase 6 – Word-Dokumentation (`Docs/Projektdokumentation.docx`)
 

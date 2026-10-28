@@ -42,7 +42,7 @@ RLB/ELB/NEF-Struktur, sozialversicherungspflichtige/geringfügige Beschäftigung
 | Regex-Grundlagen | ✅ (in `normalize_label`) | 01_Exploration |
 | `query()` | ✅ Filter auf überdurchschnittlichen Stellenbestand | 11_Arbeitsstellen |
 | `astype()`, `pd.to_numeric()`, `pd.to_datetime()` | ✅ `astype("Int64")` für Personenzahlen, `pd.to_datetime()` als Alternative zu `pd.Period` | 12_Unterbeschaeftigung |
-| `concat()`, `merge()`, `join()` | ✅ `concat()` beim Zusammenführen der 18 Monatsberichte, `merge()` beim Verknüpfen mit `kennzahlen_sgb2`; `join()` funktional äquivalent über `merge(left_index=True, right_index=True)` abgedeckt | 11_Arbeitsstellen |
+| `concat()`, `merge()`, `join()` | ✅ `concat()` beim Zusammenführen der 21 Monatsberichte, `merge()` beim Verknüpfen mit `kennzahlen_sgb2`; `join()` funktional äquivalent über `merge(left_index=True, right_index=True)` abgedeckt | 11_Arbeitsstellen |
 | Resample & Rolling | ✅ `resample("QE")` für Quartalsdurchschnitte, `rolling(12).sum()`/`rolling(3).mean()` für Cross-Check und Glättung | 11_Arbeitsstellen |
 | `str.contains()`, `.replace()`, `str.extract()` | ✅ `str.replace()` bei der Spaltenumbenennung, `str.extract()` und `str.contains()` bei der Dateinamens-Verarbeitung | 11_Arbeitsstellen |
 
@@ -57,7 +57,7 @@ RLB/ELB/NEF-Struktur, sozialversicherungspflichtige/geringfügige Beschäftigung
 | Korrelationskoeffizient | ✅ (03_Statistik, Pearson-Korrelationsmatrix + `pearsonr`) |
 | Streudiagramme | ✅ (03_Statistik, Langzeitarbeitslose vs. Bedarfsgemeinschaften) |
 | Inferenzstatistik (Konfidenzintervalle, Tests) | ✅ (03_Statistik, Welch-t-Test + 95%-CI) |
-| Regressionsanalyse | ✅ (03_Statistik, einfache lineare Regression mit `sklearn`, R² = 0,983) |
+| Regressionsanalyse | ✅ (03_Statistik, einfache lineare Regression mit `sklearn`, R² = 0,952; Prognosevalidierung gegen Istwerte Jul–Sep 2026 mit MAE/MAPE) |
 | ANOVA | ❌ fehlt (nur Zweistichproben-t-Test, keine Mehrgruppen-Varianzanalyse) |
 | Multiple Regression | ❌ fehlt (nur einfache Regression mit einem Prädiktor „Zeit“) |
 

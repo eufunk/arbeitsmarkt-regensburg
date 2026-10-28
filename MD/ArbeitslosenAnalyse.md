@@ -1,10 +1,10 @@
 # Arbeitslosenanalyse Regensburg — Inhaltliche Themenübersicht
 
 Überblick, welche Aspekte der Arbeitslosigkeit im Jobcenter Regensburg (Rechtskreis SGB II,
-Januar 2025 – Juni 2026) wir aus den Rohdaten bereits ausgewertet haben, und was in den
+Januar 2025 – September 2026) wir aus den Rohdaten bereits ausgewertet haben, und was in den
 Rohdaten noch steckt, aber bislang nicht analysiert wurde.
 
-Rohdaten: `Data/RegensburgJCData/*.xlsx` (18 Monatsberichte "Eckwerte für Jobcenter").
+Rohdaten: `Data/RegensburgJCData/*.xlsx` (21 Monatsberichte "Eckwerte für Jobcenter").
 Kernanalyse basiert auf dem Tabellenblatt **"1.1 Eckwerte"** (Spalte B = Insgesamt
 SGB II+SGB III, Spalte G = Rechtskreis SGB II je Berichtsmonat); ergänzend werden die
 Blätter **"3.1 Bedarfsgemeinschaften"**, **"3.3 Erwerbstätigkeit"**, **"3.4
@@ -14,87 +14,90 @@ Excel-Rohdaten, ⚠️ mit 3 Monaten Wartezeit).
 
 ## ✅ Bereits analysiert
 
-- **Bestand der Arbeitslosen** (SGB II) über die Zeit — leicht gestiegen (1.470 → 1.500),
+- **Bestand der Arbeitslosen** (SGB II) über die Zeit — leicht gestiegen (1.470 → 1.523),
   Spanne 1.382–1.587
 - **Arbeitslosenquote** über die Zeit — stabil zwischen 1,2 % und 1,4 %
 - **Langzeitarbeitslosigkeit** — absolute Zahl und Anteil am Bestand; deutlichster Trend
-  (502 → 709 Personen, Anteil 34 % → 47 %)
+  (502 → 698 Personen, Anteil 34 % → 46 %); Höchststand 714 im Mai 2026, seither Plateau —
+  die lineare Prognose für Juli–September 2026 lag dadurch um 5–7 % zu hoch (siehe Abschnitt
+  „Prognose vs. Ist“ in [`03_Statistik.ipynb`](../Notebooks/03_Statistik.ipynb))
 - **Unterbeschäftigungsquote** im Vergleich zur Arbeitslosenquote
 - **Bedarfsgemeinschaften** und **Personen im Leistungsbezug** über die Zeit — beide
-  rückläufig (ca. −4 % bzw. −6 %)
+  rückläufig (ca. −8 % bzw. −11 %)
 - **Altersstruktur** der Arbeitslosen (15–25 / 25–50 / 50+) — nur letzter Berichtsmonat,
   keine Zeitreihe
 - **Geschlechterverteilung** (Männer/Frauen) — nur letzter Berichtsmonat, keine Zeitreihe
 - **Veränderung zum Vormonat / Vorjahresmonat** für die vier Kernkennzahlen (Bestand,
   Langzeitarbeitslose, Bedarfsgemeinschaften, Personen in BG)
 - **Fluktuation** (Zugang/Abgang aus Arbeitslosigkeit, im Monat und als 12-Monatssumme) —
-  Zugang Ø 267/Monat, Abgang Ø 281/Monat, Netto-Fluktuation überwiegend negativ; Abgleich mit
-  der Bestandsänderung zeigt eine systematische Differenz von rund 21 Personen/Monat, plausibel
+  Zugang Ø 270/Monat, Abgang Ø 283/Monat, Netto-Fluktuation überwiegend negativ; Abgleich mit
+  der Bestandsänderung zeigt eine systematische Differenz von rund 20 Personen/Monat, plausibel
   durch Rechtskreiswechsel SGB II ↔ SGB III erklärbar (siehe
   [`04_Fluktuation.ipynb`](../Notebooks/04_Fluktuation.ipynb))
 - **Altersstruktur und Geschlecht als Zeitreihe** (statt nur Momentaufnahme), plus **55+ als
   Teilmenge von 50+** — sehr stabile Verteilung, aber Anteil der 55-Jährigen und Älteren an
-  der Gruppe 50+ steigt von 64,8 % auf 68,8 %; Männeranteil steigt leicht (53,1 % → 54,5 %)
+  der Gruppe 50+ steigt von 64,8 % auf 71,4 %; Männeranteil weitgehend stabil (53,1 % → 53,6 %)
 - **Schwerbehinderte Menschen** unter den Arbeitslosen — kleiner, leicht steigender Anteil
-  (7,9 % → 8,7 %)
+  (7,9 % → 8,8 %)
 - **Ausländische Arbeitslose** — überraschend hoher, deutlich rückläufiger Anteil (51,7 % →
-  45,4 % des Bestands); bislang auffälligste neue Erkenntnis abseits der
+  45,0 % des Bestands); bislang auffälligste neue Erkenntnis abseits der
   Langzeitarbeitslosigkeit (siehe [`05_Demografie.ipynb`](../Notebooks/05_Demografie.ipynb))
 - **Erwerbstätigkeit trotz Bürgergeld-Bezug ("Aufstocker")** — erstmals Blatt „3.3
-  Erwerbstätigkeit“ ausgewertet (⚠️ 3 Monate Wartezeit, Zeitreihe daher Okt 2024 – Mär 2026):
-  Aufstockerquote stabil bei Ø 21,4 % (rund jede fünfte erwerbsfähige leistungsberechtigte
-  Person ist erwerbstätig), klar dominiert von abhängiger Beschäftigung (93–94 %), leichte
+  Erwerbstätigkeit“ ausgewertet (⚠️ 3 Monate Wartezeit, Zeitreihe daher Okt 2024 – Jun 2026):
+  Aufstockerquote stabil bei Ø 21,2 % (rund jede fünfte erwerbsfähige leistungsberechtigte
+  Person ist erwerbstätig), klar dominiert von abhängiger Beschäftigung (93–95 %), leichte
   Verschiebung zu höheren Einkommen innerhalb der Aufstocker (siehe
   [`06_Erwerbstaetigkeit.ipynb`](../Notebooks/06_Erwerbstaetigkeit.ipynb))
 - **Zahlungsansprüche (Finanzen)** — erstmals Blatt „3.6 Zahlungsansprüche“ ausgewertet, die
   einzige Quelle für tatsächliche Euro-Beträge (⚠️ 3 Monate Wartezeit, Zeitreihe daher Okt
-  2024 – Mär 2026): Gesamtvolumen praktisch stabil (3.451,5 → 3.473,0 Tsd. Euro), aber Ø je
-  Bedarfsgemeinschaft spürbar gestiegen (1.251 € → 1.288 €); Sozialversicherungsbeiträge
-  steigen deutlich (15,6 % → 18,3 % Anteil), Regelbedarf NEF sinkt (siehe
+  2024 – Jun 2026): Gesamtvolumen praktisch stabil (3.451,5 → 3.443,1 Tsd. Euro), aber Ø je
+  Bedarfsgemeinschaft spürbar gestiegen (1.251 € → 1.299 €); Sozialversicherungsbeiträge
+  steigen deutlich (15,6 % → 18,0 % Anteil), Regelbedarf NEF sinkt (siehe
   [`07_Finanzen.ipynb`](../Notebooks/07_Finanzen.ipynb))
 - **Förderung der aktiven Arbeitsmarktpolitik** — erstmals Blätter „4.1 Förderung“ und „4.2
-  Förderung Strukturen“ ausgewertet (⚠️ 3 Monate Wartezeit, Zeitreihe daher Okt 2024 – Mär
-  2026): Bestand an Teilnehmenden stieg bis Höchststand 313 (April 2025), seither wieder auf
-  250 gesunken; Aktivierungsquoten AQ1/AQ2a rückläufig; Anteil zuvor langzeitarbeitsloser
-  Teilnehmender steigt deutlich (16,2 % → 23,6 %) — passt zur steigenden
+  Förderung Strukturen“ ausgewertet (⚠️ 3 Monate Wartezeit, Zeitreihe daher Okt 2024 – Jun
+  2026): Bestand an Teilnehmenden stieg bis Höchststand 313 (April 2025), sank bis März 2026
+  auf 250 und steigt seither wieder (Juni 2026: 291); Aktivierungsquoten AQ1/AQ2a bis
+  Frühjahr 2026 rückläufig, seither wieder steigend; Anteil zuvor langzeitarbeitsloser
+  Teilnehmender steigt deutlich (16,2 % → 25,1 %) — passt zur steigenden
   Langzeitarbeitslosigkeit (siehe [`08_Foerderung.ipynb`](../Notebooks/08_Foerderung.ipynb))
 - **Bezugsdauer** (Haushaltsstruktur, Langzeitleistungsbezug, Drehtür-Effekt) — erstmals
   Blätter „3.1 Bedarfsgemeinschaften“, „3.4 Langzeitleistungsbezug“ und „3.5 Bewegungen
-  Personen“ kombiniert ausgewertet (⚠️ 3 Monate Wartezeit, Zeitreihe daher Okt 2024 – Mär
-  2026): Single-Bedarfsgemeinschaften nehmen relativ zu (57,0 % → 59,3 %); über die Hälfte
-  aller ELB ist inzwischen langzeitleistungsbeziehend (LZB-Anteil 48,9 % → 55,1 %); Anteil
-  der Zugänge mit Vorbezug steigt deutlich (56,1 % → 73,4 %) — echte Erstzugänge werden
+  Personen“ kombiniert ausgewertet (⚠️ 3 Monate Wartezeit, Zeitreihe daher Okt 2024 – Jun
+  2026): Single-Bedarfsgemeinschaften nehmen relativ zu (57,0 % → 59,4 %); über die Hälfte
+  aller ELB ist inzwischen langzeitleistungsbeziehend (LZB-Anteil 48,9 % → 56,3 %); Anteil
+  der Zugänge mit Vorbezug steigt deutlich (56,1 % → 70,9 %) — echte Erstzugänge werden
   seltener (siehe [`09_Bezugsdauer.ipynb`](../Notebooks/09_Bezugsdauer.ipynb))
 - **Vergleich "Insgesamt (SGB II+SGB III)" vs. "SGB II"** (Rechtskreisvergleich) — der
-  Jobcenter-Anteil an allen Arbeitslosen liegt stabil bei nur Ø 39,8 % (Mehrheit ≈ 60 %
+  Jobcenter-Anteil an allen Arbeitslosen liegt stabil bei nur Ø 39,7 % (Mehrheit ≈ 60 %
   fällt in die Zuständigkeit der Agentur für Arbeit); bei Langzeitarbeitslosen liegt der
-  Jobcenter-Anteil dagegen bei Ø 72,3 % — plausibel durch die zeitliche Befristung von
+  Jobcenter-Anteil dagegen bei Ø 72,2 % — plausibel durch die zeitliche Befristung von
   Arbeitslosengeld I (SGB III); SGB-III-Langzeitarbeitslosigkeit wächst sogar noch stärker
-  (+ 55 %) als die SGB-II-Zahl (+ 41 %) (siehe
+  (+ 58 %) als die SGB-II-Zahl (+ 39 %) (siehe
   [`10_Rechtskreisvergleich.ipynb`](../Notebooks/10_Rechtskreisvergleich.ipynb))
 - **Gemeldete Arbeitsstellen** (Nachfrageseite des Arbeitsmarkts) — erstmals den Block
   „gemeldete Arbeitsstellen“ aus „1.1 Eckwerte“ direkt ausgewertet (⚠️ nicht nach Rechtskreis
-  differenziert, nur „Insgesamt“-Wert): Bestand sinkt deutlich von 1.571 auf 1.192 (−24 %);
-  Relation „Arbeitsstellen je 100 Arbeitslose“ fällt von 106,9 auf 79,5 — ein von den
+  differenziert, nur „Insgesamt“-Wert): Bestand sinkt deutlich von 1.571 auf 1.208 (−23 %);
+  Relation „Arbeitsstellen je 100 Arbeitslose“ fällt von 106,9 auf 79,3 — ein von den
   Arbeitslosenzahlen unabhängiger Beleg für eine sich eintrübende Arbeitsmarktlage (siehe
   [`11_Arbeitsstellen.ipynb`](../Notebooks/11_Arbeitsstellen.ipynb))
 - **Unterbeschäftigung im engeren Sinne / ohne Kurzarbeit** — erstmals als eigene Zeitreihe
   ausgewertet (bisher nur die Quote genutzt): Kurzarbeiter-Komponente im SGB-II-Kontext
-  verschwindend gering (Ø 2,6 Personen), Maßnahmen-Komponente deutlich substanzieller (Ø 399
+  verschwindend gering (Ø 2,4 Personen), Maßnahmen-Komponente deutlich substanzieller (Ø 388
   Personen); SGB-II-Anteil an der Unterbeschäftigung (41–50 %) liegt zwischen dem Anteil am
   Arbeitslosenbestand (≈ 40 %) und dem an der Langzeitarbeitslosigkeit (≈ 72 %) (siehe
   [`12_Unterbeschaeftigung.ipynb`](../Notebooks/12_Unterbeschaeftigung.ipynb))
 - **Regelleistungsberechtigte (RLB), erwerbsfähige (ELB) vs. nicht erwerbsfähige (NEF)** —
   Struktur innerhalb der Bedarfsgemeinschaften erstmals als eigene Zeitreihe statt nur
-  Momentaufnahme ausgewertet: alle drei Kennzahlen rückläufig (RLB −6,9 %, ELB −5,5 %, NEF
-  −10,5 %), aber gegenläufiger Trend bei den nicht leistungsberechtigten
-  Haushaltsmitgliedern (PERS − RLB): steigt von 286 auf 309 Personen, Anteil an PERS von
+  Momentaufnahme ausgewertet: alle drei Kennzahlen rückläufig (RLB −11,8 %, ELB −10,1 %, NEF
+  −16,0 %), aber gegenläufiger Trend bei den nicht leistungsberechtigten
+  Haushaltsmitgliedern (PERS − RLB): steigt von 286 auf 295 Personen, Anteil an PERS von
   5,2 % auf 6,0 % (siehe [`13_RLB_ELB_NEF.ipynb`](../Notebooks/13_RLB_ELB_NEF.ipynb))
 - **Sozialversicherungspflichtige und geringfügig entlohnte Beschäftigung** (nach Arbeits-
   und Wohnort) — Gegenstück zur Arbeitslosigkeit, erstmals ausgewertet (⚠️ quartalsweise statt
-  monatlich, 6 Monate Wartezeit, Zeitreihe daher Jun 2024 – Dez 2025): beide Beschäftigungsarten
+  monatlich, 6 Monate Wartezeit, Zeitreihe daher Jun 2024 – Mär 2026): beide Beschäftigungsarten
   bemerkenswert stabil; auffälligster Befund ist der fast unveränderte Pendlersaldo von rund
-  34.000 Personen (Auspendlerüberschuss) über alle 7 verfügbaren Quartale (siehe
+  34.000 Personen (Auspendlerüberschuss) über alle 8 verfügbaren Quartale (siehe
   [`14_Beschaeftigung.ipynb`](../Notebooks/14_Beschaeftigung.ipynb))
 
 Damit ist die priorisierte Themenliste aus diesem Dokument **vollständig abgearbeitet**.
@@ -106,14 +109,14 @@ Erweiterungsideen ohne konkrete Priorisierung (siehe unten).
 
 ### Noch ungenutzte Tabellenblätter
 
-Jede der 18 Dateien hat 21 Tabellenblätter, nicht nur "1.1 Eckwerte". Alle wurden mittlerweile
+Jede der 21 Dateien hat 21 Tabellenblätter, nicht nur "1.1 Eckwerte". Alle wurden mittlerweile
 systematisch gesichtet — Abschnitt "1. Tabellenblätter der Rohdaten untersuchen" in
 [`01_Exploration.ipynb`](../Notebooks/01_Exploration.ipynb) gibt für jedes Blatt per Print-Ausgabe
 eine Einschätzung (Daten + Diagramm-Ideen). Kurzfassung hier:
 
 **⚠️ Wichtige Einschränkung:** Die Blätter **3.1–3.6** und **4.1–4.2** melden nicht den
 Berichtsmonat des Dateinamens, sondern Daten mit **3 bzw. 6 Monaten Wartezeit** (z. B. meldet
-die Juni-2026-Datei dort Stand "März 2026" bzw. "Dezember 2025"). Beim Aufbau einer Zeitreihe
+die September-2026-Datei dort Stand "Juni 2026" bzw. "März 2026"). Beim Aufbau einer Zeitreihe
 aus mehreren Dateien muss der tatsächliche Stichmonat aus dem Blattinhalt gelesen werden, nicht
 aus dem Dateinamen abgeleitet werden.
 
@@ -171,23 +174,23 @@ Details: [`Dashboard/README.md`](../Dashboard/README.md).
   `02_Analyse_SGBII.ipynb`, plus Trichter-Grafik und formatierte Kennzahlen-Tabelle)
 - Tab **"SGB II vs. SGB III"** ist fertig (entspricht `10_Rechtskreisvergleich.ipynb`):
   Jobcenter-Anteil an Arbeitslosen-Bestand, Langzeitarbeitslosen und Quoten — nutzt die
-  volle 18-Monats-Zeitreihe (Jan 2025 – Jun 2026), reagiert auf den Sidebar-Zeitraum-Filter
+  volle 21-Monats-Zeitreihe (Jan 2025 – Sep 2026), reagiert auf den Sidebar-Zeitraum-Filter
 - Tab **"Fluktuation"** ist fertig (entspricht `04_Fluktuation.ipynb`): Zugang/Abgang im
   Monatsverlauf, Netto-Fluktuation vs. Bestandsänderung, 12-Monatssummen
 - Tab **"Demografie"** ist fertig (entspricht `05_Demografie.ipynb`): Altersstruktur und
   Geschlecht als Zeitreihe, plus Ausländer und Schwerbehinderte als Zeitreihe
 - Tab **"Erwerbstätigkeit"** ist fertig (entspricht `06_Erwerbstaetigkeit.ipynb`):
   Aufstockerquote, abhängig vs. selbständig, Einkommensstruktur — mit eigenem
-  Zeitfenster (Okt 2024 – Mär 2026), unabhängig vom Sidebar-Zeitraum-Filter
+  Zeitfenster (Okt 2024 – Jun 2026), unabhängig vom Sidebar-Zeitraum-Filter
 - Tab **"Finanzen"** ist fertig (entspricht `07_Finanzen.ipynb`): Gesamtvolumen der
   Zahlungsansprüche + Ø je BG, Struktur nach Regelbedarf/KdU/Sozialversicherung — ebenfalls
-  mit eigenem Zeitfenster (Okt 2024 – Mär 2026)
+  mit eigenem Zeitfenster (Okt 2024 – Jun 2026)
 - Tab **"Förderung"** ist fertig (entspricht `08_Foerderung.ipynb`): Eintritte + Bestand an
   Fördermaßnahmen, Aktivierungsquote AQ1/AQ2a, Struktur nach Geschlecht/LZA-Vorgeschichte —
-  ebenfalls mit eigenem Zeitfenster (Okt 2024 – Mär 2026)
+  ebenfalls mit eigenem Zeitfenster (Okt 2024 – Jun 2026)
 - Tab **"Bezugsdauer"** ist fertig (entspricht `09_Bezugsdauer.ipynb`): BG-Struktur nach
   Größe/Typ, LZB vs. LZA, Drehtür-Effekt — ebenfalls mit eigenem Zeitfenster (Okt 2024 –
-  Mär 2026)
+  Jun 2026)
 - Tab **"Glossar"** erklärt alle im Dashboard verwendeten Fachbegriffe (Grundbegriffe,
   Personengruppen wie ELB/RLB/NEF, Kennzahlen, Aufstocker-Einkommen, Zahlungsansprüche,
   Datenbesonderheiten wie die Wartezeit-Problematik) — gruppiert in aufklappbaren
