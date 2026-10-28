@@ -147,12 +147,20 @@ Langzeitarbeitslose). Diese Monate liegen jetzt als Istwerte vor.
 ## Phase 7 – Präsentation (`Docs/Projektpraesentation.pptx`)
 
 84 Folien, ~40 Bilder, Sprechernotizen vorhanden.
-- [ ] Bilder auf den Folien per Skript (python-pptx) durch die neuen PNGs ersetzen,
-      Position und Größe bleiben gleich.
-- [ ] Folientexte und **Sprechernotizen** mit Zahlen/Zeiträumen aktualisieren
-      (Titel-, Datengrundlage-, Befund- und Fazitfolien).
-- [ ] Ggf. neue Folie „Prognose vs. Ist“ nach Folie 4.5 einfügen (falls bestätigt).
-- [ ] Folien als Bilder rendern und visuell prüfen (Textüberlauf durch längere Zahlen).
+- [x] Alle 42 Bilder ersetzt: 37 per Hash-Abgleich, 5 (Folien 11–14 und 22) waren ältere
+      Fassungen von abb1–4 bzw. abb32 und wurden über gleiche Pixelmaße + Bildvergleich
+      eindeutig zugeordnet. Position und Größe unverändert.
+- [x] Folientexte und Sprechernotizen aktualisiert (~120 geprüfte Ersetzungen in 115 Dateien),
+      u. a. Titelfolie (Datum 28.10.2026), Datengrundlage (21 Berichte, Jan 25 – Sep 26),
+      Vormonat/Vorjahr (Folie 16, Anstieg der LZA zum Vormonat jetzt rot), Statistik-Kapitel,
+      Förderung (Wiederanstieg seit April 2026). Veraltete Notiz auf Folie 2 („zwölf
+      Kapitel“) auf 16 Kapitel korrigiert.
+- [x] **Neue Folie 4.8 „Prognose vs. Ist: Out-of-Sample-Test“** mit abb44 und eigenen
+      Sprechernotizen (per `add_slide.py` dupliziert, Notizfolie ergänzt); bisherige 4.8 → 4.9.
+      Foliennummern sind Felder und zählen automatisch → jetzt 85 Folien.
+- [x] Prüfung: Skill-Validator „All validations PASSED“; PDF über PowerPoint (COM) erzeugt und
+      die geänderten Folien visuell geprüft. Gefunden und behoben: unescaptes „<“ in
+      „p < 0,0001“ (XML-Fehler), Zeilenumbruch in der Kennzahl auf Folie 76.
 
 ## Phase 8 – Abschluss
 
