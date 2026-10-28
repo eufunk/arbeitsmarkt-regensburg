@@ -22,6 +22,8 @@ sonst fehlen die CSVs.
 
 ## Output
 
+- `Docs/Abbildungen/` abb1–abb5 (Übersicht, Quoten, LZA-Anteil, indexierte Kennzahlen, Alter/Geschlecht) — für Projektdokumentation und -präsentation, erzeugt über
+  `export_abbildung()` (Kopie im weißen Layout, gleiche Pixelmaße wie bisher).
 Keine Datei-Exporte — das Notebook dient der visuellen/inhaltlichen Auswertung innerhalb von
 Jupyter (Diagramme + Tabellen als Zell-Output).
 

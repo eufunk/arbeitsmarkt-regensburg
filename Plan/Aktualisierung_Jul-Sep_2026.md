@@ -94,12 +94,15 @@ Langzeitarbeitslose). Diese Monate liegen jetzt als Istwerte vor.
 
 - Aktuell exportieren nur die Notebooks 03 (abb32) und 11–14 (abb33–43) ihre Grafiken per
   `write_image`. **abb1–abb31 haben keinen Export-Code** im Notebook.
-- [ ] In den Notebooks 02–10 den Export ergänzen, im gleichen Stil wie in 11–14
-      (gleicher Dateiname, gleiche Größe/Skalierung wie die vorhandenen PNGs), damit die
-      Abbildungen künftig reproduzierbar sind.
-- [ ] Alle 43 Abbildungen neu schreiben; ggf. neue Abbildung „Prognose vs. Ist“ (abb44).
-- [ ] Stichprobenartig ansehen, ob Achsen, Beschriftungen und Legenden mit 21 Monaten noch
-      sauber aussehen.
+- [x] In den Notebooks 02–10 den Export ergänzen: Hilfsfunktion `export_abbildung(fig, datei,
+      width, height, **layout)` im Setup jeder Notebook-Datei. Sie speichert eine Kopie im weißen
+      Layout (`plotly_white`) mit den exakten bisherigen Pixelmaßen; die Notebook-Anzeige bleibt
+      unverändert. abb5 (Matplotlib) per `savefig(dpi=200)`. Für abb8 (Histogramm + Boxplot
+      nebeneinander) gab es keine Notebook-Zelle → in 03 neu ergänzt.
+- [x] Alle 43 Abbildungen neu geschrieben + neue abb44 (Prognose vs. Ist). Pixelmaße aller
+      43 bestehenden Dateien geprüft: identisch zu vorher.
+- [x] Übersichtsseite aller Abbildungen geprüft; abb1 (kürzerer Titel, waagerechte Legende) sowie
+      abb2/abb4 (waagerechte Legende) per Export-Layout an die bisherige Optik angeglichen.
 
 ## Phase 4 – Dashboard (`Dashboard/app.py`)
 

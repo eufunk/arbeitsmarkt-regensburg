@@ -21,6 +21,8 @@ Kein erneutes Einlesen der Excel-Rohdaten nötig.
 
 ## Output
 
+- `Docs/Abbildungen/` abb13–abb16 (Altersstruktur, Geschlecht, Ausländer, Schwerbehinderte) — für Projektdokumentation und -präsentation, erzeugt über
+  `export_abbildung()` (Kopie im weißen Layout, gleiche Pixelmaße wie bisher).
 - `Data/processed/demografie_sgb2.csv` — Wide-Format-Zeitreihe mit den acht Merkmalen
   (Altersgruppen, Geschlecht, Ausländer, Schwerbehinderte) sowie berechneten Anteilen.
   Grundlage für den Dashboard-Tab "👥 Demografie".

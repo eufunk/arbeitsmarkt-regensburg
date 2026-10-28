@@ -18,6 +18,8 @@ Januar 2025 – September 2026 (wie [`02_Analyse_SGBII.ipynb`](02_Analyse_SGBII.
 
 ## Output
 
+- `Docs/Abbildungen/` abb29–abb31 (Bestand, Langzeitarbeitslose, Quoten im Rechtskreisvergleich) — für Projektdokumentation und -präsentation, erzeugt über
+  `export_abbildung()` (Kopie im weißen Layout, gleiche Pixelmaße wie bisher).
 - `Data/processed/rechtskreisvergleich_sgb2.csv` — Wide-Format-Zeitreihe mit
   Insgesamt/SGB II/SGB III/Jobcenter-Anteil (%) für vier Kennzahlen: Arbeitslose (Bestand),
   Arbeitslosenquote, Langzeitarbeitslose, Unterbeschäftigungsquote.

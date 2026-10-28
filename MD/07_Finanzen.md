@@ -21,6 +21,8 @@ neuen Monat liefert, ergibt sich eine lückenlose Zeitreihe für **Oktober 2024 
 
 ## Output
 
+- `Docs/Abbildungen/` abb20–abb21 (Volumen und Ø je BG, Struktur der Zahlungsansprüche) — für Projektdokumentation und -präsentation, erzeugt über
+  `export_abbildung()` (Kopie im weißen Layout, gleiche Pixelmaße wie bisher).
 - `Data/processed/finanzen_sgb2.csv` — Wide-Format-Zeitreihe mit Gesamtvolumen, Ø je BG,
   BG-Bestand sowie den sechs Einzelposten der Zahlungsansprüche. Grundlage für den
   Dashboard-Tab "💶 Finanzen".

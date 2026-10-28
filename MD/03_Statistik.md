@@ -21,6 +21,8 @@ Alle Tests und die Regression sind entsprechend vorsichtig zu interpretieren.
 
 ## Output
 
+- `Docs/Abbildungen/` abb6–abb9 (Korrelationsmatrix, Streudiagramm, Histogramm + Boxplot, Regression); abb32 und abb44 siehe unten — für Projektdokumentation und -präsentation, erzeugt über
+  `export_abbildung()` (Kopie im weißen Layout, gleiche Pixelmaße wie bisher).
 - `Docs/Abbildungen/abb32_verteilung_boxstrip.png` (Boxplot mit Einzelpunkten, für die
   Projektpräsentation)
 - `Docs/Abbildungen/abb44_prognose_vs_ist.png` (Prognose vs. Ist, Juli – September 2026)

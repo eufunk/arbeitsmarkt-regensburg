@@ -20,6 +20,8 @@ Kein erneutes Einlesen der Excel-Rohdaten nötig.
 
 ## Output
 
+- `Docs/Abbildungen/` abb10–abb12 (Zugang/Abgang, Netto-Fluktuation, 12-Monatssummen) — für Projektdokumentation und -präsentation, erzeugt über
+  `export_abbildung()` (Kopie im weißen Layout, gleiche Pixelmaße wie bisher).
 - `Data/processed/fluktuation_sgb2.csv` — Wide-Format-Zeitreihe mit Zugang/Abgang (im Monat
   und als 12-Monatssumme) sowie der berechneten Netto-Fluktuation, Rechtskreis SGB II.
   Grundlage für den Dashboard-Tab "🔄 Fluktuation".

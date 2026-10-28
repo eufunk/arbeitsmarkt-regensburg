@@ -18,6 +18,8 @@ direkt als Datum in Zelle B32 (nicht als Text wie bei den anderen Blättern).
 
 ## Output
 
+- `Docs/Abbildungen/` abb25–abb28 (BG-Größe, BG-Typ, LZB vs. LZA, Drehtür-Effekt) — für Projektdokumentation und -präsentation, erzeugt über
+  `export_abbildung()` (Kopie im weißen Layout, gleiche Pixelmaße wie bisher).
 - `Data/processed/bezugsdauer_sgb2.csv` — Wide-Format-Zeitreihe mit BG-Struktur (Größe,
   Typ), LZB/LZA sowie Bewegungskennzahlen. Grundlage für den Dashboard-Tab "⏳ Bezugsdauer".
 

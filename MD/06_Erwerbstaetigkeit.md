@@ -24,6 +24,8 @@ Dateien einen neuen Monat liefert, ergibt sich eine lückenlose Zeitreihe — je
 
 ## Output
 
+- `Docs/Abbildungen/` abb17–abb19 (Aufstockerquote, abhängig/selbständig, Einkommensstruktur) — für Projektdokumentation und -präsentation, erzeugt über
+  `export_abbildung()` (Kopie im weißen Layout, gleiche Pixelmaße wie bisher).
 - `Data/processed/erwerbstaetigkeit_sgb2.csv` — Wide-Format-Zeitreihe mit Insgesamt-ELB,
   erwerbstätigen ELB, abhängig/selbständig erwerbstätig, den drei Einkommensstufen sowie
   der berechneten Aufstockerquote. Grundlage für den Dashboard-Tab "💼 Erwerbstätigkeit".

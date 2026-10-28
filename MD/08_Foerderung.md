@@ -25,6 +25,8 @@ genutzten Summenzeilen sind davon nicht betroffen.
 
 ## Output
 
+- `Docs/Abbildungen/` abb22–abb24 (Eintritte/Bestand, Aktivierungsquote, Anteile im Bestand) — für Projektdokumentation und -präsentation, erzeugt über
+  `export_abbildung()` (Kopie im weißen Layout, gleiche Pixelmaße wie bisher).
 - `Data/processed/foerderung_sgb2.csv` — Wide-Format-Zeitreihe mit Eintritten, Bestand
   (inkl. 12-Monatswerten), Struktur nach Geschlecht/Alter/LZA-Vorgeschichte sowie AQ1/AQ2a
   (inkl. 12-Monatsdurchschnitt). Grundlage für den Dashboard-Tab "🎯 Förderung".
