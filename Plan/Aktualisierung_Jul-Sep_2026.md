@@ -41,12 +41,13 @@ die Interpretation gegebenenfalls umformuliert werden.
 
 ## Phase 1 – Datenaufbereitung (`01_Exploration.ipynb`)
 
-- [ ] Notebook komplett ausführen → `eckwerte_long.csv`, `kennzahlen_sgb2.csv` neu.
-- [ ] Prüfen: 21 eindeutige Monate, keine Duplikate/Lücken, gleiche Merkmalsliste wie bisher.
-- [ ] Markdown anpassen: „Januar 2025 – Juni 2026 (18 Berichtsmonate)“ → „Januar 2025 –
+- [x] Notebook komplett ausführen → `eckwerte_long.csv`, `kennzahlen_sgb2.csv` neu.
+- [x] Prüfen: 21 eindeutige Monate, keine Duplikate/Lücken, gleiche Merkmalsliste wie bisher.
+      → 651 Zeilen (vorher 558), 0 Duplikate; historische Werte unverändert (Diff nur Zugänge).
+- [x] Markdown anpassen: „Januar 2025 – Juni 2026 (18 Berichtsmonate)“ → „Januar 2025 –
       September 2026 (21 Berichtsmonate)“; Beispiel zur Wartezeit („Bericht Juni 2026 → März 2026“)
       auf den neuesten Bericht umstellen.
-- [ ] `MD/01_Exploration.md` angleichen.
+- [x] `MD/01_Exploration.md` angleichen.
 
 ## Phase 2 – Analyse-Notebooks neu ausführen und Texte aktualisieren
 
