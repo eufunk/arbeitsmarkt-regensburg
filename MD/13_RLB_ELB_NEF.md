@@ -22,11 +22,11 @@ leistungsberechtigt sind.
 
 **Keine neuen Rohdaten nötig.**
 
-⚠️ **Hinweis zur Datenaktualität:** Ein Abgleich der jüngsten Rohdateien (April–Juni 2026) mit
-den bereits aufbereiteten Werten aus `eckwerte_long.csv` zeigte Abweichungen in diesen drei
-Monaten — plausibel durch nachträglich revidierte Werte in den Rohdateien selbst (ältere
-Monate stimmen exakt überein). Um konsistent mit allen bisherigen Kapiteln zu bleiben, nutzt
-dieses Notebook bewusst die bereits aufbereiteten (unveränderten) Werte statt neu einzulesen.
+**Hinweis zur Datenaktualität:** Früher vermutete Abweichungen zwischen den Rohdateien
+April–Juni 2026 und `eckwerte_long.csv` haben sich nicht bestätigt: Beim vollständigen
+Neulauf von `01_Exploration.ipynb` mit 21 Rohdateien (Oktober 2026) blieb jeder historische
+Wert unverändert, und ein gezielter Abgleich der RLB/ELB/NEF-Werte für April–Juni 2026 zeigt
+exakte Übereinstimmung.
 
 ## Output
 
@@ -41,17 +41,17 @@ dieses Notebook bewusst die bereits aufbereiteten (unveränderten) Werte statt n
 2. **Setup & Laden** — Filtert `eckwerte_long.csv` auf `kategorie == "Grundsicherung für
    Arbeitsuchende"`, pivotiert auf Wide-Format.
 3. **1. Zeitreihe: RLB, ELB und NEF im Vergleich**
-   - **Befund:** Alle drei Kennzahlen rückläufig — RLB −6,9 %, ELB −5,5 %, NEF −10,5 %. NEF
+   - **Befund:** Alle drei Kennzahlen rückläufig — RLB −11,8 %, ELB −10,1 %, NEF −16,0 %. NEF
      (überwiegend Kinder) geht damit relativ am stärksten zurück.
 4. **2. NEF-Anteil an den Regelleistungsberechtigten**
-   - **Befund:** NEF-Anteil sinkt leicht von 28,3 % auf 27,2 % (Spanne 27,1–28,3 %).
+   - **Befund:** NEF-Anteil sinkt leicht von 28,3 % auf 26,9 % (Spanne 26,9–28,3 %).
 5. **3. Nicht leistungsberechtigte Haushaltsmitglieder: PERS minus RLB**
    - **Befund:** Gegenläufiger Trend — die Zahl der nicht leistungsberechtigten
-     Haushaltsmitglieder steigt von 286 auf 309 Personen (Anteil an PERS: 5,2 % → 6,0 %),
+     Haushaltsmitglieder steigt von 286 auf 295 Personen (Höchststand 316 im Mai 2026; Anteil an PERS: 5,2 % → 6,0 %),
      obwohl BG, PERS und RLB insgesamt rückläufig sind.
 6. **4. Struktur der Bedarfsgemeinschaften im letzten Berichtsmonat**
    - Donut-Chart: ELB / NEF / nicht leistungsberechtigt.
-   - **Befund:** Rund 68 % ELB, 26 % NEF, 6 % nicht leistungsberechtigt.
+   - **Befund:** Rund 69 % ELB, 25 % NEF, 6 % nicht leistungsberechtigt (September 2026).
 7. **5. Zusammenfassung (Markdown)** — fasst den gegenläufigen Trend ein und ordnet ihn als
    neue, bislang unsichtbare Struktur-Information ein.
 8. **Export** — schreibt `rlb_elb_nef_sgb2.csv`.

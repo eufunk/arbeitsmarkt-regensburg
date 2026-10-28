@@ -35,23 +35,24 @@ Kein erneutes Einlesen der Excel-Rohdaten nötig.
      55, 55+). Die Gruppe „50 Jahre und älter“ wird dafür in „50 bis unter 55“ und „55 und
      älter“ aufgeteilt (Subtraktion), damit die Teilmenge 55+ als eigenes, korrekt
      positioniertes Band erscheint statt als frei schwebende Linie.
-   - **Befund:** sehr stabile Verteilung (25–50 Jahre ~57 %), aber der Anteil der
-     55-Jährigen und Älteren an der Gruppe 50+ steigt von 64,8 % auf 68,8 % — die
+   - **Befund:** weitgehend stabile Verteilung (25–50 Jahre 55–59 %), mit wiederkehrendem
+     Sommereffekt bei den unter 25-Jährigen (Aug/Sep jeweils 13–15 %). Der Anteil der
+     55-Jährigen und Älteren an der Gruppe 50+ steigt von 64,8 % auf 71,4 % — die
      Altersstruktur *innerhalb* von 50+ verschiebt sich stärker als die grobe Einteilung
      zeigt.
 4. **2. Geschlechterverteilung im Zeitverlauf**
    - Gestapelte Fläche Männer/Frauen.
-   - **Befund:** leichte Verschiebung zu mehr Männern (53,1 % → 54,5 %); der
-     Bestandsanstieg der letzten Monate geht überproportional auf Männer zurück
-     (Männer 780 → 818, Frauen 690 → 682).
+   - **Befund:** weitgehend stabil (Männeranteil 53,1 % → 53,6 %); die zwischenzeitliche
+     Verschiebung zu mehr Männern (54,5 % im Juni 2026) hat sich teilweise zurückgebildet
+     (Männer 780 → 816, Frauen 690 → 707).
 5. **3. Ausländische Arbeitslose im Zeitverlauf**
    - Zwei-Achsen-Chart: absolute Zahl + Anteil am Bestand.
-   - **Befund:** überraschend hoher Anteil von 45–52 % des gesamten SGB-II-Bestands,
-     deutlich rückläufig von 51,7 % (760 Personen, Jan 2025) auf 45,4 % (681 Personen,
-     Jun 2026) — die auffälligste neue Erkenntnis dieses Notebooks.
+   - **Befund:** überraschend hoher Anteil von 44–52 % des gesamten SGB-II-Bestands,
+     deutlich rückläufig von 51,7 % (760 Personen, Jan 2025) auf 45,0 % (685 Personen,
+     Sep 2026; Tiefstwert 44,3 % im Jul 2026) — die auffälligste neue Erkenntnis dieses Notebooks.
 6. **4. Schwerbehinderte Menschen im Zeitverlauf**
    - Gleiche Darstellung wie Ausländer.
-   - **Befund:** kleinerer, leicht steigender Anteil (7,9 % → 8,7 %, 116 → 130 Personen).
+   - **Befund:** kleinerer, leicht steigender Anteil (7,9 % → 8,8 %, 116 → 134 Personen).
 7. **5. Export** — Schreibt `demografie_sgb2.csv`.
 8. **6. Zusammenfassung (Markdown)** — fasst alle Befunde zusammen.
 

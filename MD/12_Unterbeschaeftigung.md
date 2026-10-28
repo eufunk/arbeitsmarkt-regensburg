@@ -35,7 +35,8 @@ Kennzahlen bereits ein vollständiger, eindeutiger SGB-II-Wert vor.
 2. **Setup & Laden** — Filtert `eckwerte_long.csv` auf `kategorie == "Unterbeschäftigung"`.
 3. **1. Qualitätssicherung mit `drop_duplicates()`**
    - Prüft explizit auf doppelte (Berichtsmonat, Merkmal)-Kombinationen vor dem Pivotieren
-     (0 gefunden, 18 Monate × 4 Merkmale = 72 Zeilen bestätigt).
+     (0 gefunden, 21 Monate × 4 Merkmale = 84 Zeilen bestätigt; die erwartete Zeilenzahl wird
+     jetzt aus der Zahl der Monate und Merkmale berechnet statt fest eingetragen).
 4. **2. Aufbereitung**
    - `pivot_table()` auf Wide-Format mit "Insgesamt"/"SGB II" je Merkmal.
    - Personenzahlen per `astype("Int64")` auf nullable Integer umgestellt (Quote bleibt float).
@@ -43,14 +44,14 @@ Kennzahlen bereits ein vollständiger, eindeutiger SGB-II-Wert vor.
 5. **3. Zeitreihe der drei Komponenten (SGB II)**
    - Liniendiagramm aller drei Kennzahlen.
    - **Befund:** Die Kurzarbeiter-Komponente ("ohne Kurzarbeit" minus "im engeren Sinne") ist
-     verschwindend gering (Ø 2,6 Personen, Spanne 2–4) — Kurzarbeit spielt im SGB-II-Kontext
+     verschwindend gering (Ø 2,4 Personen, Spanne 1–4) — Kurzarbeit spielt im SGB-II-Kontext
      praktisch keine Rolle. Die Maßnahmen-Komponente ("im engeren Sinne" minus "im weiteren
-     Sinne") ist mit Ø 399 Personen (Spanne 314–559) deutlich substanzieller.
+     Sinne") ist mit Ø 388 Personen (Spanne 314–559) deutlich substanzieller (zuletzt 315–343).
 6. **4. SGB-II-Anteil im Vergleich**
    - Vergleich mit den bereits bekannten Anteilen aus
      [`10_Rechtskreisvergleich.ipynb`](10_Rechtskreisvergleich.md) (Bestand ≈ 40 %, LZA ≈ 72 %).
-   - **Befund:** SGB-II-Anteil an der Unterbeschäftigung im engeren Sinne liegt bei 44,5 %
-     (Juni 2026, Spanne 41,1–49,6 %) — zwischen dem Bestands- und dem LZA-Anteil.
+   - **Befund:** SGB-II-Anteil an der Unterbeschäftigung im engeren Sinne liegt bei 42,7 %
+     (September 2026, Spanne 41,1–49,6 %, leicht rückläufig) — zwischen dem Bestands- und dem LZA-Anteil.
 7. **5. Zusammenfassung (Markdown)** — fasst beide Befunde zusammen und ordnet die
    verwendeten Pandas-Methoden ein.
 8. **Export** — schreibt `unterbeschaeftigung_sgb2.csv`.

@@ -55,39 +55,40 @@ Reihenfolge wie im README, weil 02–05 und 10–13 auf den CSVs aus 01 aufbauen
 Für **jedes** Notebook: ausführen → Ausgaben lesen → Markdown-Befunde, Plot-Titel und
 Zeitraumangaben anpassen → zugehörige `MD/xx_*.md` angleichen → exportierte CSV prüfen.
 
-| Nr. | Notebook | Besondere Punkte |
+| Nr. | Notebook | Status / wichtigste Änderung |
 |---|---|---|
-| 02 | Analyse_SGBII | Start-/Endwerte LZA, Indexierung, Vormonat/Vorjahr (jetzt Sep 2026 vs. Sep 2025) |
-| 03 | Statistik | siehe **Phase 2a** unten |
-| 04 | Fluktuation | Zugang/Abgang, Netto-Fluktuation, 12-Monatssummen (mehr Werte) |
-| 05 | Demografie | Alters-/Geschlechts-/Ausländer-/Schwerbehindertenanteile, Endwerte |
-| 06 | Erwerbstätigkeit | Zeitraum im Titel fest eingetragen (`Oktober 2024 – März 2026`) → bis Juni 2026; „18 Dateien / 18 Monate“ → 21 |
-| 07 | Finanzen | Zeitraum + „18 Dateien“, Volumen/Ø je BG neu formulieren |
-| 08 | Förderung | Zeitraum, Eintritte-Spanne, Bestandshöchststand, Aktivierungsquote |
-| 09 | Bezugsdauer | Zeitraum, LZB-Anteil, Drehtür-Quote, Zugänge mit Vorbezug |
-| 10 | Rechtskreisvergleich | viele feste Zeitangaben (43 Treffer) – alle durchgehen |
-| 11 | Arbeitsstellen | Befunde zu Zugang/Bestand, Angebot-Nachfrage-Relation; Cross-Check `rolling(12)` jetzt mit 10 Werten. Das `str.contains`-Beispiel (2. Halbjahr 2025) bleibt, ist nur Syntaxdemo |
-| 12 | Unterbeschäftigung | Komponenten und SGB-II-Anteil |
-| 13 | RLB/ELB/NEF | „letzter Berichtsmonat“ ist jetzt September 2026 |
-| 14 | Beschäftigung | Anzahl Quartale („7 Quartale“ an mehreren Stellen), Spannen AO/WO, Pendlersaldo; y-Achse ist fest auf `[33000, 34500]` gesetzt, prüfen ob neuer Wert hineinpasst |
+| 02 | Analyse_SGBII | [x] LZA 502 → 698 (Höchststand 714 im Mai 2026, seither Plateau); BG −8 %, PERS −11 % |
+| 03 | Statistik | [x] siehe **Phase 2a** unten |
+| 04 | Fluktuation | [x] 12-Monats-Netto −286 (Tiefstwert); Differenz Netto vs. Bestand in 19 von 20 Monaten negativ |
+| 05 | Demografie | [x] Sommereffekt bei unter 25-Jährigen (Aug/Sep 2026); 55+/50+ 71,4 %; Männeranteil wieder 53,6 % |
+| 06 | Erwerbstätigkeit | [x] Zeitraum bis Juni 2026, Plot-Titel angepasst; Aufstockerquote 20,1 % (Tiefstwert) |
+| 07 | Finanzen | [x] Ø je BG 1.299 €; Überlappung mit BG-Zeitreihe jetzt 18 Monate |
+| 08 | Förderung | [x] **Aussage geändert:** Bestand und Aktivierungsquoten seit April 2026 wieder steigend; Umbenennung der Maßnahmenkategorie dokumentiert |
+| 09 | Bezugsdauer | [x] LZB-Anteil 56,3 %, Zugänge mit Vorbezug 70,9 % |
+| 10 | Rechtskreisvergleich | [x] Jobcenter-Anteil seit Mai 2026 sinkend (38,6 %); SGB-III-LZA +58 % |
+| 11 | Arbeitsstellen | [x] Bestand 1.208, Relation 79,3; 12-Monats-Zugang auf Tiefstwert 2.885; Violin-Titel dynamisch |
+| 12 | Unterbeschäftigung | [x] erwartete Zeilenzahl im Duplikat-Check jetzt berechnet statt fest „18 × 4 = 72“; Referenzlinien 39,7 % / 72,2 % |
+| 13 | RLB/ELB/NEF | [x] veralteter Hinweis auf Abweichungen Apr–Jun 2026 **widerlegt und ersetzt** (Rohdaten = CSV, exakt geprüft) |
+| 14 | Beschäftigung | [x] 8 Quartale (Jun 2024 – Mär 2026); Pendlersaldo-Tiefstwert 33.557 passt in die feste y-Achse |
+
+**Technische Hinweise aus dem Lauf:**
+- Unter Windows blockierte eine App-Control-Richtlinie sporadisch eine `statsmodels`-DLL
+  (Notebook 03) bzw. den Chrome-Start von Kaleido (Bildexport). Beides trat nur vereinzelt
+  auf; das Ausführungsskript wiederholt ein Notebook deshalb bis zu dreimal.
+- Ausführung per `nbclient` (Skript im Scratchpad), Notebooks werden mit Ausgaben gespeichert.
 
 ### Phase 2a – Sonderfall `03_Statistik.ipynb`
 
 Das Notebook enthält eine **Prognose für Juli–September 2026** (≈ 727, 740, 754
 Langzeitarbeitslose). Diese Monate liegen jetzt als Istwerte vor.
 
-Vorschlag:
-- [ ] Regression wie bisher auf allen nun 21 Monaten neu rechnen (Monatsindex 0–20), R² und
-      Steigung neu interpretieren; Hypothesentest (1. vs. 2. Hälfte) läuft auf 10/11 Monaten.
-- [ ] **Neuer kurzer Abschnitt „Prognose vs. Ist“:** alte Prognose (Modell nur auf Jan 2025 –
-      Jun 2026) gegen die tatsächlichen Werte Jul–Sep 2026 stellen (Tabelle + Abweichung in
-      Personen und %). Das ist ein echter Out-of-Sample-Test und eine gute Ergänzung für die
-      Präsentation.
-- [ ] Neue Prognose für **Oktober – Dezember 2026**.
-- [ ] Die Texte „18 Datenpunkte“, „Monatsindex 0 = Januar 2025 bis 17 = Juni 2026“ anpassen.
-
-*→ Bitte bestätigen, ob der Abschnitt „Prognose vs. Ist“ gewünscht ist (auch als neue Abbildung
-und Folie in Word/PowerPoint), oder ob nur stillschweigend aktualisiert werden soll.*
+- [x] Regression auf allen 21 Monaten neu gerechnet: R² 0,983 → **0,952**, Steigung +13,2 →
+      **+11,5** Personen/Monat; Hypothesentest jetzt 10 vs. 11 Monate (p < 0,0001).
+- [x] **Neuer Abschnitt „6. Prognose vs. Ist“** (Zusammenfassung wird Abschnitt 7): Modell nur
+      auf Jan 2025 – Jun 2026 geschätzt, Prognose 727/740/754 vs. Ist 690/692/698 →
+      Abweichung −37/−48/−56 (MAE 47, MAPE 6,3 %). Neue Abbildung **abb44_prognose_vs_ist.png**.
+- [x] Neue Prognose für **Oktober – Dezember 2026**: 742 / 753 / 765.
+- [x] Texte „18 Datenpunkte“, Monatsindex, Korrelationen (r = −0,58 / 0,65) angepasst.
 
 ## Phase 3 – Abbildungen `Docs/Abbildungen/` neu erzeugen
 

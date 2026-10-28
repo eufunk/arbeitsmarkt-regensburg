@@ -16,7 +16,7 @@ Donut-/Pie-Chart.
 
 ## Input
 
-- `Data/RegensburgJCData/*.xlsx` (18 Monatsberichte), Blatt "1.1 Eckwerte", **direkt neu
+- `Data/RegensburgJCData/*.xlsx` (21 Monatsberichte), Blatt "1.1 Eckwerte", **direkt neu
   eingelesen** — nicht aus `eckwerte_long.csv`.
 - `Data/processed/kennzahlen_sgb2.csv` (für den Angebot-Nachfrage-Vergleich).
 
@@ -30,7 +30,7 @@ jede "sozialversicherungspflichtig"-Zeile explizit der unmittelbar vorangehenden
 
 ⚠️ **Wichtige Einschränkung:** "gemeldete Arbeitsstellen" wird von der Bundesagentur **nicht
 nach Rechtskreis differenziert** ausgewiesen — nur ein "Insgesamt"-Wert, kein eigener
-SGB-II-Wert. Das erklärt auch die 108 fehlenden Werte, die in
+SGB-II-Wert. Das erklärt auch die 126 fehlenden Werte, die in
 [`01_Exploration.ipynb`](01_Exploration.ipynb) dokumentiert wurden.
 
 ## Output
@@ -49,7 +49,7 @@ SGB-II-Wert. Das erklärt auch die 108 fehlenden Werte, die in
 3. **1. Datenextraktion**
    - `parse_arbeitsstellen()` liest Zeilen 9–47 aus "1.1 Eckwerte", verfolgt beim Durchlaufen
      die zuletzt gesehene Hauptzeile und hängt jede "sozialversicherungspflichtig"-Zeile daran.
-   - `pd.concat()` fügt die 18 Monats-Einzeltabellen zusammen; Spaltennamen werden über
+   - `pd.concat()` fügt die 21 Monats-Einzeltabellen zusammen; Spaltennamen werden über
      vektorisierte Stringmethoden (`str.lower()`, `str.replace()`, `str.strip()`) in
      einheitliches snake_case überführt.
    - Alternative Demonstration: `str.extract()` zur vektorisierten Berichtsmonat-Extraktion
@@ -57,30 +57,33 @@ SGB-II-Wert. Das erklärt auch die 108 fehlenden Werte, die in
      Filtern der Dateinamen auf einen Zeitraum (zweites Halbjahr 2025).
 4. **2. Zeitreihe: Zugang und Bestand**
    - Balken (Zugang) + Linie (Bestand).
-   - **Befund:** Bestand sinkt von 1.571 (Jan 2025) auf 1.192 (Jun 2026), rund −24 %. Zugang
-     volatil (163–593/Monat), Höchststand im August 2025 (593).
+   - **Befund:** Bestand sinkt von 1.571 (Jan 2025) auf 1.208 (Sep 2026), rund −23 %; seit
+     dem Tiefstand im Mai 2026 (1.169) Seitwärtsbewegung. Zugang volatil (163–593/Monat),
+     Höchststand im August 2025 (593), Sommer 2026 deutlich schwächer (Aug 2026: 289).
 5. **3. Cross-Check und Glättung mit `rolling()`**
    - `rolling(12).sum()` auf den eigenen Monatswerten vs. die von der Bundesagentur bereits
      gemeldete 12-Monatssumme; zusätzlich `rolling(3).mean()` zur Glättung.
-   - **Befund:** Für alle 7 vergleichbaren Monate exakte Übereinstimmung (Differenz 0) — Beleg
+   - **Befund:** Für alle 10 vergleichbaren Monate exakte Übereinstimmung (Differenz 0) — Beleg
      für korrekte Extraktion. Der August-2025-Ausreißer erweist sich im geglätteten Verlauf als
-     Einzelmonat ohne dauerhaften Trendwechsel.
+     Einzelmonat ohne dauerhaften Trendwechsel. Seit er aus dem Fenster gefallen ist, sinkt die
+     12-Monatssumme auf ihren Tiefstwert 2.885 (Sep 2026; Höchstwert 3.684 im Nov 2025).
 6. **4. Quartalsdurchschnitt mit `resample()`**
    - `PeriodIndex` → `DatetimeIndex` → `resample("QE").mean()`.
    - **Befund:** Q3 2025 sticht heraus (Ø Bestand 1.624,7, Ø Zugang 441,3) — deutlich über allen
-     anderen Quartalen. Q2 2026 markiert mit Ø 1.207,0 den niedrigsten Quartalsbestand.
+     anderen Quartalen. Q2 2026 (Ø 1.207,0) und Q3 2026 (Ø 1.201,7) markieren die niedrigsten
+     Quartalsbestände; Q3 2026 hat mit Ø 223,7 Zugängen nur halb so viele wie Q3 2025.
 7. **5. Angebot vs. Nachfrage mit `merge()` und `query()`**
    - Verknüpft `arbeitsstellen` mit `kennzahlen_sgb2["Arbeitslose (Bestand)"]` über
      `merge(..., left_index=True, right_index=True)`; berechnet Arbeitsstellen je 100
      Arbeitslose. `query()` filtert Monate mit überdurchschnittlichem Stellenbestand.
-   - **Befund:** Relation fällt von 106,9 (Jan 2025, mehr Stellen als Arbeitslose) auf 79,5
-     (Jun 2026); Höchstwert 115,0 (Okt 2025), Tiefstwert 75,3 (Mai 2026) — ein von den
+   - **Befund:** Relation fällt von 106,9 (Jan 2025, mehr Stellen als Arbeitslose) auf 79,3
+     (Sep 2026); Höchstwert 115,0 (Okt 2025), Tiefstwert 75,3 (Mai 2026), seither stabil bei 78–80 — ein von den
      Arbeitslosenkennzahlen unabhängiger Beleg für eine sich eintrübende Arbeitsmarktlage.
 8. **6. Struktur und Verteilung**
    - Donut-Chart: Zusammensetzung des Bestands im letzten Berichtsmonat.
-   - Violinplot: Verteilung des monatlichen Zugangs über alle 18 Monate.
-   - **Befund:** 98,7 % des Bestands (Juni 2026) ist sozialversicherungspflichtig. Der
-     Zugang ist rechtsschief verteilt (Median 249 < Mittelwert 280,1), gezogen durch den
+   - Violinplot: Verteilung des monatlichen Zugangs über alle 21 Monate.
+   - **Befund:** 98,3 % des Bestands (September 2026) ist sozialversicherungspflichtig. Der
+     Zugang ist rechtsschief verteilt (Median 245 < Mittelwert 272,0), gezogen durch den
      August-2025-Ausreißer.
 9. **7. Zusammenfassung (Markdown)** — fasst den Befund ein und ordnet die verwendeten
    Pandas-Methoden den jeweiligen Analyseschritten zu.
@@ -95,7 +98,7 @@ SGB-II-Wert. Das erklärt auch die 108 fehlenden Werte, die in
 | 3 | Balkendiagramm | ✅ Plotly | Ø Bestand je Quartal |
 | 4 | Liniendiagramm | ✅ Plotly | Arbeitsstellen je 100 Arbeitslose |
 | 5 | Donut-Chart | ✅ Plotly | Struktur des Bestands (sozialversicherungspflichtig vs. sonstige) |
-| 6 | Violinplot | ✅ Plotly | Verteilung des monatlichen Zugangs (18 Monate) |
+| 6 | Violinplot | ✅ Plotly | Verteilung des monatlichen Zugangs (21 Monate) |
 
 ## Voraussetzungen
 

@@ -14,19 +14,19 @@ Differenz WO − AO ist der **Pendlersaldo**.
 
 ## Input
 
-- `Data/RegensburgJCData/*.xlsx` (18 Monatsberichte), Blatt "1.1 Eckwerte", **Zeilen 49–58**
+- `Data/RegensburgJCData/*.xlsx` (21 Monatsberichte), Blatt "1.1 Eckwerte", **Zeilen 49–58**
   (bislang ungenutzter Bereich unterhalb der Hauptkennzahlen) — direkt neu eingelesen.
 
 ⚠️ **Wichtige Einschränkung — abweichender Rhythmus und Zeitraum:** Dieser Block ist
 **quartalsweise** (nicht monatlich) und hat laut Fußnote im Bericht eine **Wartezeit von 6
-Monaten**. In den 18 Monatsberichten tauchen dadurch nur **7 unterschiedliche Quartale** auf,
-jeweils identisch über 3 aufeinanderfolgende Monatsberichte gemeldet — das abgedeckte
-Zeitfenster liegt entsprechend früher: **Juni 2024 – Dezember 2025**, statt Januar 2025 – Juni
+Monaten**. In den 21 Monatsberichten tauchen dadurch nur **8 unterschiedliche Quartale** auf,
+jeweils identisch über bis zu 3 aufeinanderfolgende Monatsberichte gemeldet — das abgedeckte
+Zeitfenster liegt entsprechend früher: **Juni 2024 – März 2026**, statt Januar 2025 – September
 2026 wie in den übrigen Kapiteln.
 
 ## Output
 
-- `Data/processed/beschaeftigung_quartal.csv` — Quartals-Zeitreihe (7 Zeilen) mit den Spalten
+- `Data/processed/beschaeftigung_quartal.csv` — Quartals-Zeitreihe (8 Zeilen) mit den Spalten
   `ao_svp`, `wo_svp`, `ao_geringfuegig`, `wo_geringfuegig`.
 - `Docs/Abbildungen/abb41_beschaeftigung_ao_wo.png`, `abb42_beschaeftigung_pendlersaldo.png`,
   `abb43_beschaeftigung_anteil_geringfuegig.png` — für Kapitel 15 der
@@ -36,18 +36,19 @@ Zeitfenster liegt entsprechend früher: **Juni 2024 – Dezember 2025**, statt J
 
 1. **Intro (Markdown)** — Einordnung, AO/WO-Begriffe, Hinweis zu Rhythmus und Zeitraum.
 2. **Setup & Extraktion** — `parse_beschaeftigung()` liest Zeile 49 (Quartalsdatum) und Zeilen
-   55–58 (vier Kennzahlen, jeweils Spalte B) aus jedem der 18 Berichte; `drop_duplicates()`
-   reduziert auf die 7 tatsächlich eindeutigen Quartale.
+   55–58 (vier Kennzahlen, jeweils Spalte B) aus jedem der 21 Berichte; `drop_duplicates()`
+   reduziert auf die 8 tatsächlich eindeutigen Quartale.
 3. **1. Sozialversicherungspflichtige Beschäftigung: Arbeitsort vs. Wohnort**
    - **Befund:** Beide Werte bemerkenswert stabil (AO 54.214–55.331, WO 88.011–89.259),
      WO durchgehend rund 34.000 über AO.
 4. **2. Pendlersaldo**
-   - **Befund:** Außergewöhnlich stabiler Auspendlerüberschuss von 33.739–34.069 Personen
-     (Ø ≈ 33.929) über alle 7 Quartale — kaum Schwankung.
+   - **Befund:** Außergewöhnlich stabiler Auspendlerüberschuss von 33.557–34.069 Personen
+     (Ø ≈ 33.882) über alle 8 Quartale — kaum Schwankung; Tiefstwert im jüngsten Quartal
+     (März 2026), weil die AO-Beschäftigung etwas stärker steigt als die WO-Beschäftigung.
 5. **3. Geringfügig entlohnte Beschäftigung: Arbeitsort vs. Wohnort**
-   - **Befund:** Leicht rückläufig in beiden Perspektiven (AO −2,0 %, WO −2,5 %).
+   - **Befund:** Leicht rückläufig in beiden Perspektiven (AO −2,6 %, WO −2,4 %).
 6. **4. Anteil geringfügiger Beschäftigung an der Gesamtbeschäftigung**
-   - **Befund:** Anteil sinkt leicht (AO 13,3 % → 13,0 %, WO 10,8 % → 10,5 %) — passend zur in
+   - **Befund:** Anteil sinkt leicht (AO 13,3 % → 12,9 %, WO 10,8 % → 10,5 %) — passend zur in
      Kapitel 7 beobachteten Verschiebung zu höheren Einkommen bei den Aufstockern.
 7. **5. Zusammenfassung (Markdown)** — fasst den stabilen Pendlersaldo als zentralen neuen
    Befund zusammen und markiert den Abschluss der priorisierten Themenliste aus

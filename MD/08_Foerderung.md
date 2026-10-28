@@ -13,12 +13,15 @@ und Bestand an Teilnehmenden in Fördermaßnahmen sowie die Aktivierungsquote (A
   und 7), nicht aus `eckwerte_long.csv`.
 
 ⚠️ **Wartezeit:** wie bei den Blättern 3.3/3.6 nur ein Datenblock mit **3 Monaten
-Wartezeit** → Zeitreihe für **Oktober 2024 – März 2026**.
+Wartezeit** → Zeitreihe für **Oktober 2024 – Juni 2026**.
 
 ⚠️ **Anonymisierung:** Kleine Fallzahlen (< 3) werden von der Bundesagentur als „*“
 unterdrückt — betrifft vor allem die feineren Instrumenten-Unterkategorien. Dieses Notebook
-beschränkt sich bewusst auf **Summenzeilen**, die über alle 18 Dateien hinweg durchgehend
-als Zahl vorliegen.
+beschränkt sich bewusst auf **Summenzeilen**, die über alle 21 Dateien hinweg durchgehend
+als Zahl vorliegen. Ab Bericht August 2026 (Datenmonat Mai 2026) hat die Bundesagentur
+zudem die Unterkategorie „Eingliederung von Langzeitarbeitslosen“ in „Eingliederung von
+Langzeitleistungsbeziehenden“ umbenannt (Blatt 4.1 Z. 49/66, Blatt 4.2 Z. 47) — die
+genutzten Summenzeilen sind davon nicht betroffen.
 
 ## Output
 
@@ -33,23 +36,25 @@ als Zahl vorliegen.
    kombiniert feste Zellen aus beiden Blättern (4.1: B39/F39/B40/B58/F58, 4.2:
    C39/D39/E39/F39/G39/H39/B56/B57/B58/B59).
 3. **1. Datenüberblick und Plausibilitätsprüfung**
-   - **Befund:** 18 lückenlose Monate. Bestand aus 4.1 und 4.2 stimmt exakt überein
+   - **Befund:** 21 lückenlose Monate. Bestand aus 4.1 und 4.2 stimmt exakt überein
      (Cross-Sheet-Konsistenz). Geschlechter-Summe exakt, Alters-Summe weicht bis zu 11
      Personen ab (vermutlich Gruppe mit unbekanntem Alter).
 4. **2. Eintritte und Bestand an Fördermaßnahmen im Zeitverlauf**
    - Kombi-Chart: Eintritte (Balken) + Bestand (Linie), zwei Achsen.
-   - **Befund:** Eintritte volatil, leicht rückläufig (Ø 87,2/Monat, 119 → 91). Bestand
-     stieg bis Höchststand 313 (April 2025), seither wieder auf 250 (März 2026); geglätteter
-     12-Monatsdurchschnitt zeigt klaren Anstieg gegenüber 2024 (203,0 → 268,7).
+   - **Befund:** Eintritte volatil, rückläufig (Ø 86,7/Monat, 119 → 73). Bestand stieg bis
+     Höchststand 313 (April 2025), sank bis März 2026 auf 250 und stieg seither erneut auf
+     291 (Juni 2026); geglätteter 12-Monatsdurchschnitt zeigt klaren Anstieg gegenüber 2024
+     (203,0 → 263,8).
 5. **3. Aktivierungsquote im Zeitverlauf**
    - AQ1 (bezogen auf Teilnehmende + Arbeitslose) und AQ2a (bezogen auf alle ELB), je mit
      12-Monatsdurchschnitt.
-   - **Befund:** beide Rohwerte rückläufig (AQ1: 13,3 % → 9,9 %; AQ2a: 6,0 % → 5,5 %); die
-     12M-Durchschnitte zeigen ein differenzierteres Bild (AQ1-Ø leicht rückläufig, AQ2a-Ø
-     sogar steigend).
+   - **Befund:** beide Rohwerte bis März 2026 rückläufig (AQ1: 13,3 % → 9,9 %), seither
+     wieder steigend (Juni 2026: AQ1 11,8 %, AQ2a 6,6 % — über dem Startwert 6,0 %); die
+     12M-Durchschnitte zeigen ein differenzierteres Bild (AQ1-Ø 12,3 % → 10,9 %, AQ2a-Ø
+     5,3 % → 6,1 %).
 6. **4. Struktur des Bestands: Geschlecht und Vorgeschichte**
-   - **Befund:** Frauenanteil stabil (~44 %). Anteil zuvor langzeitarbeitsloser
-     Teilnehmender steigt deutlich (16,2 % → 23,6 %) — passt zur steigenden
+   - **Befund:** Frauenanteil überwiegend stabil (~44 %). Anteil zuvor langzeitarbeitsloser
+     Teilnehmender steigt deutlich (16,2 % → 25,1 %, Höchstwert 26,3 % im Mai 2026) — passt zur steigenden
      Langzeitarbeitslosigkeit aus [`03_Statistik.ipynb`](03_Statistik.md).
 7. **5. Export** — Schreibt `foerderung_sgb2.csv`.
 8. **6. Zusammenfassung (Markdown)** — fasst alle Befunde zusammen, schließt die

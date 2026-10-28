@@ -15,8 +15,8 @@ Bearbeitet Priorität 4 aus dem Priorisierungsvorschlag in
 - `Data/processed/kennzahlen_sgb2.csv` (für den Cross-Check des BG-Bestands)
 
 ⚠️ **Wartezeit:** Anders als Blatt „3.3 Erwerbstätigkeit“ (zwei Blöcke) liefert dieses Blatt
-nur **einen** Datenblock pro Datei mit **3 Monaten Wartezeit**. Da jede der 18 Dateien einen
-neuen Monat liefert, ergibt sich eine lückenlose Zeitreihe für **Oktober 2024 – März 2026**
+nur **einen** Datenblock pro Datei mit **3 Monaten Wartezeit**. Da jede der 21 Dateien einen
+neuen Monat liefert, ergibt sich eine lückenlose Zeitreihe für **Oktober 2024 – Juni 2026**
 (3 Monate vor dem jeweiligen Berichtsmonat der Datei).
 
 ## Output
@@ -30,7 +30,7 @@ neuen Monat liefert, ergibt sich eine lückenlose Zeitreihe für **Oktober 2024 
 1. **Intro (Markdown)** — Einordnung, Erklärung der (einfacheren) Wartezeit-Struktur
    gegenüber Kapitel 6.
 2. **Setup & Parsing** — `parse_zahlungsansprueche(path)`: liest Monat per Regex aus Zelle
-   A5 ("März 2026 - Daten nach einer Wartezeit von 3 Monaten"), Werte aus den festen Zeilen
+   A5 (z. B. "Juni 2026 - Daten nach einer Wartezeit von 3 Monaten"), Werte aus den festen Zeilen
    36 (Insgesamt, Ø je BG, Bestand BG) und 38–47 (Einzelposten) der Spalte B.
 3. **1. Datenüberblick und Cross-Check gegen die eigene BG-Zeitreihe**
    - Summen-Check: sechs Einzelposten (Regelbedarf ELB/NEF, Mehrbedarfe, Kosten der
@@ -39,18 +39,18 @@ neuen Monat liefert, ergibt sich eine lückenlose Zeitreihe für **Oktober 2024 
      ersten vier Posten und wird separat mitgeführt, aber nicht mitgestapelt (sonst
      Doppelzählung).
    - Cross-Check "Bestand BG" (aus diesem Blatt) gegen die eigene
-     Bedarfsgemeinschaften-Zeitreihe für die 15 Überlapp-Monate.
+     Bedarfsgemeinschaften-Zeitreihe für die 18 Überlapp-Monate (Jan 2025 – Jun 2026).
    - **Befund:** Summen-Check exakt (Differenz < 0,001), Cross-Check zeigt kleine,
-     unsystematische Abweichung (Ø −9,5, Spanne −47 bis +49 BG) — Daten konsistent.
+     unsystematische Abweichung (Ø −12,5, Spanne −47 bis +49 BG) — Daten konsistent.
 4. **2. Gesamtvolumen der Zahlungsansprüche im Zeitverlauf**
    - Zwei-Achsen-Chart: Insgesamt (Tsd. Euro) + Ø je BG (Euro).
-   - **Befund:** Gesamtvolumen praktisch stabil (3.451,5 → 3.473,0 Tsd. Euro), aber Ø je BG
-     spürbar gestiegen (1.251 € → 1.288 €) — sinkende BG-Zahl bei stabilem Gesamtvolumen.
+   - **Befund:** Gesamtvolumen praktisch stabil (3.451,5 → 3.443,1 Tsd. Euro), aber Ø je BG
+     spürbar gestiegen (1.251 € → 1.299 €) — sinkende BG-Zahl bei stabilem Gesamtvolumen.
 5. **3. Struktur der Zahlungsansprüche**
    - Gestapelte Fläche der sechs Einzelposten.
-   - **Befund:** Regelbedarf ELB (größter Posten, 41,6 % → 39,3 %) und Kosten der
+   - **Befund:** Regelbedarf ELB (größter Posten, 41,6 % → 39,4 %) und Kosten der
      Unterkunft (~36 %) dominieren. Sozialversicherungsbeiträge steigen deutlich
-     (15,6 % → 18,3 %), Regelbedarf NEF sinkt (3,8 % → 2,8 %).
+     (15,6 % → 18,0 %), Regelbedarf NEF sinkt (3,8 % → 2,8 %).
 6. **4. Export** — Schreibt `finanzen_sgb2.csv`.
 7. **5. Zusammenfassung (Markdown)** — fasst alle Befunde zusammen.
 

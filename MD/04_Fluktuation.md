@@ -31,22 +31,25 @@ Kein erneutes Einlesen der Excel-Rohdaten nötig.
    Merkmale Zugang/Abgang (im Monat / 12-Monatssumme), pivotiert zu einer Wide-Zeitreihe.
 3. **1. Zugang und Abgang im Monatsverlauf**
    - Plotly-Balkendiagramm: Zugang als positiver, Abgang als negativer Balken.
-   - **Befund:** Zugang Ø 267 Personen/Monat (215–338), Abgang Ø 281 (185–369) — im Schnitt
-     etwas mehr Abgang als Zugang. Trend: Zugang sinkt von 271 (Jan 2025) auf 215 (Jun 2026),
-     Abgang steigt von 204 auf 290.
+   - **Befund:** Zugang Ø 270 Personen/Monat (215–346), Abgang Ø 283 (185–369) — im Schnitt
+     etwas mehr Abgang als Zugang. Zugang: Tiefstand 215 (Jun 2026), Höchststand 346 (Aug 2026,
+     Sommereffekt), zuletzt 252 (Sep 2026; Jan 2025: 271). Abgang steigt von 204 (Jan 2025) auf
+     293 (Sep 2026).
 4. **2. Netto-Fluktuation und Abgleich mit dem Bestand**
    - Tabelle: Netto-Fluktuation (Zugang − Abgang) vs. tatsächliche Bestandsänderung
      (`.diff()` auf `Arbeitslose (Bestand)`), als Plausibilitätscheck der Daten.
    - Plotly-Chart: Netto-Fluktuation (Balken) vs. tatsächliche Bestandsänderung (Linie).
-   - **Befund:** Netto-Fluktuation liegt in allen 18 Monaten unter der tatsächlichen
-     Bestandsänderung (Ø Differenz −20,9 Personen, Spanne −11 bis −30). Plausibelster Grund:
+   - **Befund:** Netto-Fluktuation liegt in 19 von 20 vergleichbaren Monaten unter der
+     tatsächlichen Bestandsänderung (Ø Differenz −19,8 Personen, Spanne 0 bis −30; nur im
+     September 2026 deckungsgleich). Plausibelster Grund:
      Rechtskreiswechsel SGB II ↔ SGB III schlagen sich im Bestand nieder, ohne als eigene
      Zugangs-/Abgangskategorie zu erscheinen.
 5. **3. 12-Monatssummen: der mittelfristige Trend**
    - Plotly-Chart der rollierenden 12-Monatssummen von Zugang und Abgang.
-   - **Befund:** Zugangstrend rückläufig (3.260 → 3.115 pro Jahr), Abgangstrend leicht
-     steigend (3.318 → 3.379) — rollierende Netto-Fluktuation verschlechtert sich von −58 auf
-     −264 Personen/Jahr, ohne dass sich das bislang deutlich im Bestand zeigt.
+   - **Befund:** Zugangstrend rückläufig (3.260 → 3.182 pro Jahr, Tiefpunkt 3.115 im Juni
+     2026), Abgangstrend steigend (3.318 → 3.468) — rollierende Netto-Fluktuation
+     verschlechtert sich von −58 auf −286 Personen/Jahr, ohne dass sich das bislang deutlich im
+     Bestand zeigt.
 6. **4. Export** — Schreibt `fluktuation_sgb2.csv`.
 7. **5. Zusammenfassung (Markdown)** — fasst alle Befunde zusammen.
 

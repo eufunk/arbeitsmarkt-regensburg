@@ -4,7 +4,7 @@
 
 Baut auf den von [`01_Exploration.ipynb`](01_Exploration.md) exportierten CSV-Dateien auf und
 enthält die **gesamte Visualisierung und inhaltliche Auswertung** der Arbeitsmarktdaten des
-Jobcenters Regensburg (Rechtskreis **SGB II**, Januar 2025 – Juni 2026). Alle Grafiken des
+Jobcenters Regensburg (Rechtskreis **SGB II**, Januar 2025 – September 2026). Alle Grafiken des
 Notebook-Teils liegen hier. Ausgewertet wird ausschließlich der SGB-II-Anteil (Jobcenter-
 Zuständigkeit) — die parallel vorliegende "Insgesamt (SGB II+SGB III)"-Spalte aus den Rohdaten
 wird nicht visualisiert.
@@ -66,10 +66,12 @@ Jupyter (Diagramme + Tabellen als Zell-Output).
      Vorjahresmonat (`.iloc[-13]`).
 9. **7. Zusammenfassung (Markdown)**
    - Textliche Einordnung der wichtigsten Befunde:
-     - Arbeitslose (Bestand): 1.470 (Jan 2025) → 1.500 (Jun 2026), Spanne 1.382–1.587
+     - Arbeitslose (Bestand): 1.470 (Jan 2025) → 1.523 (Sep 2026), Spanne 1.382–1.587
      - Arbeitslosenquote: stabil zwischen 1,2 % und 1,4 %
-     - Langzeitarbeitslose: 502 → 709 (+ ca. 41 %), deutlichster Trend im Datensatz
-     - Bedarfsgemeinschaften / Personen in BG: beide rückläufig (ca. −4 % bzw. −6 %)
+     - Langzeitarbeitslose: 502 → 698 (+ ca. 39 %), deutlichster Trend im Datensatz; Höchststand 714 im
+       Mai 2026, seither Stabilisierung auf hohem Niveau (Jul–Sep 2026: 690–698)
+     - Bedarfsgemeinschaften / Personen in BG: beide rückläufig (ca. −8 % bzw. −11 %), Tiefstand im
+       September 2026
 
 ## Enthaltene Diagramme (5 insgesamt)
 

@@ -13,7 +13,7 @@ Haushaltsstruktur, Langzeitleistungsbezug (LZB) und Bewegungsdynamik ("Drehtür-
   direkt aus den Excel-Rohdaten (wie schon Kapitel 6–8), nicht aus `eckwerte_long.csv`.
 
 ⚠️ **Wartezeit:** wie bei den Blättern 3.3/3.6/4.1/4.2 nur ein Datenblock mit **3 Monaten
-Wartezeit** → Zeitreihe für **Oktober 2024 – März 2026**. Der Berichtsmonat steht hier
+Wartezeit** → Zeitreihe für **Oktober 2024 – Juni 2026**. Der Berichtsmonat steht hier
 direkt als Datum in Zelle B32 (nicht als Text wie bei den anderen Blättern).
 
 ## Output
@@ -27,20 +27,20 @@ direkt als Datum in Zelle B32 (nicht als Text wie bei den anderen Blättern).
 2. **Setup & Parsing** — `parse_bezugsdauer(path)`: kombiniert feste Zellen aus allen drei
    Blättern (jeweils Spalte B, Berichtsmonat aus Zelle B32).
 3. **1. Datenüberblick und Plausibilitätsprüfung**
-   - **Befund:** 18 lückenlose Monate, Haushaltsgrößen-Klassen summieren sich exakt zur
+   - **Befund:** 21 lückenlose Monate, Haushaltsgrößen-Klassen summieren sich exakt zur
      BG-Gesamtzahl.
 4. **2. Struktur der Bedarfsgemeinschaften: Größe und Typ**
    - Gestapelte Fläche (Größe) + Liniendiagramm (Typ).
-   - **Befund:** Single-BG nehmen relativ zu (Anteil 57,0 % → 59,3 %), Alleinerziehende-
+   - **Befund:** Single-BG nehmen relativ zu (Anteil 57,0 % → 59,4 %), Alleinerziehende-
      und Partner-BG gehen zurück — zunehmend von Einpersonenhaushalten geprägter Bezug.
 5. **3. Langzeitleistungsbezug (LZB) vs. Langzeitarbeitslosigkeit (LZA)**
    - Zwei-Achsen-Chart: LZB absolut + Anteil an ELB, plus LZA zum Vergleich.
-   - **Befund:** LZB-Anteil steigt von 48,9 % auf 55,1 % — über die Hälfte aller ELB im
-     Langzeitbezug; LZA (aus diesem Blatt) steigt parallel von 461 auf 677.
+   - **Befund:** LZB-Anteil steigt von 48,9 % auf 56,3 % — über die Hälfte aller ELB im
+     Langzeitbezug; LZA (aus diesem Blatt) steigt parallel von 461 auf 709.
 6. **4. Bewegungsdynamik: der „Drehtür-Effekt“**
    - Liniendiagramm: Anteil Zugang mit Vorbezug + Drehtür-Quote.
-   - **Befund:** Anteil der Zugänge mit Vorbezug steigt deutlich (56,1 % → 73,4 %) — echte
-     Erstzugänge werden seltener. Drehtür-Quote schwankt stark (Ø 25,6 %) ohne klaren Trend.
+   - **Befund:** Anteil der Zugänge mit Vorbezug steigt deutlich (56,1 % → 70,9 %) — echte
+     Erstzugänge werden seltener. Drehtür-Quote schwankt stark (Ø 25,4 %) ohne klaren Trend.
 7. **5. Export** — Schreibt `bezugsdauer_sgb2.csv`.
 8. **6. Zusammenfassung (Markdown)** — fasst alle Befunde zusammen, ordnet sie in den
    Gesamtkontext der Verschärfung der Langzeitarbeitslosigkeit ein.
