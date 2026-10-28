@@ -16,6 +16,46 @@ PROCESSED_DIR = Path(__file__).resolve().parent.parent / "Data" / "processed"
 
 st.set_page_config(page_title="Arbeitsmarkt Regensburg (SGB II)", layout="wide")
 
+# --- Button "Nach oben" ----------------------------------------------------------
+# Erscheint erst, wenn die Seite nach unten gescrollt wurde.
+st.html(
+    """
+    <script>
+    if (!document.getElementById("nach-oben-button")) {
+        const button = document.createElement("button");
+        button.id = "nach-oben-button";
+        button.title = "Zum Seitenanfang";
+        button.setAttribute("aria-label", "Zum Seitenanfang");
+        button.textContent = "↑";
+        Object.assign(button.style, {
+            position: "fixed", right: "2rem", bottom: "2rem", zIndex: "999999",
+            width: "3rem", height: "3rem", borderRadius: "50%", border: "none",
+            background: "#3F7A72", color: "#fff", fontSize: "1.5rem", lineHeight: "1",
+            cursor: "pointer", boxShadow: "0 2px 8px rgba(0,0,0,0.25)",
+            opacity: "0", pointerEvents: "none", transition: "opacity 0.2s",
+        });
+        document.body.appendChild(button);
+
+        // Streamlit scrollt nicht das Fenster, sondern einen inneren Container.
+        let scrollContainer = null;
+        document.addEventListener("scroll", (event) => {
+            const ziel = event.target === document ? document.scrollingElement : event.target;
+            if (!ziel || ziel.closest?.('[data-testid="stSidebar"]')) return;
+            scrollContainer = ziel;
+            const sichtbar = ziel.scrollTop > 400;
+            button.style.opacity = sichtbar ? "1" : "0";
+            button.style.pointerEvents = sichtbar ? "auto" : "none";
+        }, true);
+
+        button.addEventListener("click", () => {
+            scrollContainer?.scrollTo({ top: 0, behavior: "smooth" });
+        });
+    }
+    </script>
+    """,
+    unsafe_allow_javascript=True,
+)
+
 
 @st.cache_data
 def load_data():
