@@ -567,7 +567,8 @@ with tab_rechtskreis:
         st.caption(
             "Der Jobcenter-Anteil an allen Arbeitslosen liegt stabil bei rund 40 % — "
             "die Mehrheit der Arbeitslosen (≈ 60 %) fällt in die Zuständigkeit der "
-            "Agentur für Arbeit, nicht des Jobcenters."
+            "Agentur für Arbeit, nicht des Jobcenters. Seit Mai 2026 sinkt der Anteil "
+            "leicht (zuletzt 38,6 %)."
         )
 
         st.markdown("#### Langzeitarbeitslose: SGB II vs. SGB III")
@@ -601,7 +602,7 @@ with tab_rechtskreis:
             "Rund 72 % aller Langzeitarbeitslosen in Regensburg fallen in die "
             "Zuständigkeit des Jobcenters — deutlich mehr als beim Bestand insgesamt "
             "(≈ 40 %). Die SGB-III-Langzeitarbeitslosigkeit wächst dabei sogar noch "
-            "stärker (+ 55 %) als die SGB-II-Zahl (+ 41 %, siehe Tab „📊 SGB II "
+            "stärker (+ 58 %) als die SGB-II-Zahl (+ 39 %, siehe Tab „📊 SGB II "
             "Übersicht“)."
         )
 
@@ -619,7 +620,7 @@ with tab_rechtskreis:
         st.caption(
             "Arbeitslosen- und Unterbeschäftigungsquote bestätigen dasselbe Bild: "
             "SGB-II-Anteil an der Arbeitslosenquote ≈ 40 %, an der "
-            "Unterbeschäftigungsquote ≈ 46 % (leicht rückläufig)."
+            "Unterbeschäftigungsquote ≈ 45 % (rückläufig, zuletzt 42,5 %)."
         )
 
 # =================================================================================
@@ -698,7 +699,7 @@ with tab_fluktuation:
         st.plotly_chart(fig, width="stretch")
         st.caption(
             "Die Netto-Fluktuation (Zugang − Abgang) erklärt die tatsächliche Bestandsänderung "
-            "nicht vollständig — im Schnitt liegt sie rund 21 Personen pro Monat darunter, "
+            "nicht vollständig — im Schnitt liegt sie rund 20 Personen pro Monat darunter, "
             "plausibel erklärbar durch Rechtskreiswechsel zwischen SGB II und SGB III, die "
             "sich im Bestand niederschlagen, aber nicht als eigene Zugangs-/Abgangskategorie "
             "erscheinen."
@@ -775,7 +776,7 @@ with tab_demografie:
             "Alle vier Bänder sind überschneidungsfrei und summieren sich zum Gesamtbestand "
             "(Fläche) — die Gruppe „50 Jahre und älter“ ist dafür in „50 bis unter 55“ und "
             "„55 und älter“ aufgeteilt. Ihr gemeinsamer Anteil an „50+“ zeigt: die Gruppe "
-            "„55 und älter“ wächst darin von 64,8 % auf 68,8 % — die Alterung innerhalb der "
+            "„55 und älter“ wächst darin von 64,8 % auf 71,4 % — die Alterung innerhalb der "
             "älteren Arbeitslosen nimmt zu."
         )
 
@@ -799,9 +800,10 @@ with tab_demografie:
         )
         st.plotly_chart(fig, width="stretch")
         st.caption(
-            "Leichte Verschiebung zu mehr Männern über den Beobachtungszeitraum — der "
-            "Männeranteil steigt von 53,1 % auf 54,5 %, der Bestandsanstieg der letzten "
-            "Monate geht überproportional auf Männer zurück."
+            "Weitgehend stabile Geschlechterverteilung — der Männeranteil liegt im "
+            "Januar 2025 bei 53,1 % und im September 2026 bei 53,6 %; die zwischenzeitliche "
+            "Verschiebung zu mehr Männern (54,5 % im Juni 2026) hat sich teilweise "
+            "zurückgebildet."
         )
 
         col_a, col_b = st.columns(2)
@@ -827,7 +829,7 @@ with tab_demografie:
             st.plotly_chart(fig, width="stretch")
             st.caption(
                 "Überraschend hoher, deutlich rückläufiger Anteil: von 51,7 % (Jan 2025) "
-                "auf 45,4 % (Jun 2026) — fast die Hälfte des SGB-II-Arbeitslosenbestands."
+                "auf 45,0 % (Sep 2026) — fast die Hälfte des SGB-II-Arbeitslosenbestands."
             )
 
         with col_b:
@@ -851,8 +853,8 @@ with tab_demografie:
             )
             st.plotly_chart(fig, width="stretch")
             st.caption(
-                "Kleinerer, leicht steigender Anteil: von 7,9 % (Jan 2025) auf 8,7 % "
-                "(Jun 2026)."
+                "Kleinerer, leicht steigender Anteil: von 7,9 % (Jan 2025) auf 8,8 % "
+                "(Sep 2026)."
             )
 
 # =================================================================================
@@ -888,8 +890,8 @@ with tab_erwerbstaetigkeit:
             )
         st.info(
             "⚠️ Das Tabellenblatt „3.3 Erwerbstätigkeit“ meldet nur Werte mit **3 Monaten "
-            "Wartezeit**. Die hier gezeigte Zeitreihe (Oktober 2024 – März 2026) liegt "
-            "daher 3 Monate früher als der übrige Berichtszeitraum (Januar 2025 – Juni "
+            "Wartezeit**. Die hier gezeigte Zeitreihe (Oktober 2024 – Juni 2026) liegt "
+            "daher 3 Monate früher als der übrige Berichtszeitraum (Januar 2025 – September "
             "2026) und wird **nicht** vom Zeitraum-Filter der Sidebar beeinflusst."
         )
 
@@ -914,7 +916,7 @@ with tab_erwerbstaetigkeit:
         st.plotly_chart(fig, width="stretch")
         st.caption(
             "Die Aufstockerquote (erwerbstätige ELB / alle ELB, hier selbst berechnet) ist "
-            "mit Ø 21,4 % bemerkenswert stabil — rund jede fünfte erwerbsfähige "
+            "mit Ø 21,2 % bemerkenswert stabil — rund jede fünfte erwerbsfähige "
             "leistungsberechtigte Person ist erwerbstätig, verdient aber nicht genug für "
             "den vollständigen Ausstieg aus dem Bürgergeld-Bezug."
         )
@@ -944,8 +946,8 @@ with tab_erwerbstaetigkeit:
                 "**Selbständig erwerbstätig** = eigenes Gewerbe/Freiberuflichkeit "
                 "(Betriebsgewinn statt Lohn). Beide Gruppen zusammen ergeben die "
                 "„erwerbstätige ELB“ aus der Grafik oben. Klar dominiert von abhängiger "
-                "Beschäftigung (93–94 %), selbständig Erwerbstätige bleiben eine stabile "
-                "Minderheit von rund 6–7 %."
+                "Beschäftigung (93–95 %), selbständig Erwerbstätige bleiben eine stabile "
+                "Minderheit von rund 6–9 %."
             )
 
         with col_b:
@@ -978,9 +980,9 @@ with tab_erwerbstaetigkeit:
                 "Kinder in der Bedarfsgemeinschaft) nicht aus, um ganz ohne Bürgergeld "
                 "auszukommen.\n\n"
                 "**Trend:** leichte Verschiebung zu höheren Einkommen — der Anteil „bis "
-                "Geringfügigkeitsgrenze“ sinkt von 43,4 % auf 38,1 % (jeweils bezogen auf "
+                "Geringfügigkeitsgrenze“ sinkt von 43,4 % auf 39,4 % (jeweils bezogen auf "
                 "alle abhängig Erwerbstätigen), während „im Übergangsbereich“ (48,0 % → "
-                "51,0 %) und „über dem Übergangsbereich“ (8,6 % → 10,9 %) steigen."
+                "50,5 %) und „über dem Übergangsbereich“ (8,6 % → 10,1 %) steigen."
             )
 
 # =================================================================================
@@ -1003,8 +1005,8 @@ with tab_bezugsdauer:
         )
         st.info(
             "⚠️ Die zugrunde liegenden Tabellenblätter melden nur Werte mit **3 Monaten "
-            "Wartezeit**. Die hier gezeigte Zeitreihe (Oktober 2024 – März 2026) liegt "
-            "daher 3 Monate früher als der übrige Berichtszeitraum (Januar 2025 – Juni "
+            "Wartezeit**. Die hier gezeigte Zeitreihe (Oktober 2024 – Juni 2026) liegt "
+            "daher 3 Monate früher als der übrige Berichtszeitraum (Januar 2025 – September "
             "2026) und wird **nicht** vom Zeitraum-Filter der Sidebar beeinflusst."
         )
 
@@ -1039,7 +1041,7 @@ with tab_bezugsdauer:
             st.plotly_chart(fig, width="stretch")
             st.caption("Nach BG-Typ.")
         st.caption(
-            "Single-Bedarfsgemeinschaften nehmen relativ zu (Anteil 57,0 % → 59,3 %), "
+            "Single-Bedarfsgemeinschaften nehmen relativ zu (Anteil 57,0 % → 59,4 %), "
             "während Alleinerziehende- und Partner-BG zurückgehen — der SGB-II-Bezug "
             "wird zunehmend von Einpersonenhaushalten geprägt."
         )
@@ -1066,7 +1068,7 @@ with tab_bezugsdauer:
         )
         st.plotly_chart(fig, width="stretch")
         st.caption(
-            "Der LZB-Anteil steigt deutlich von 48,9 % auf 55,1 % — über die Hälfte "
+            "Der LZB-Anteil steigt deutlich von 48,9 % auf 56,3 % — über die Hälfte "
             "aller ELB bezieht mittlerweile seit mindestens 21 der letzten 24 Monate "
             "Leistungen. Die (separat erfasste) Langzeitarbeitslosigkeit steigt im "
             "selben Zeitraum noch deutlicher — beide Kennzahlen zeigen unabhängig "
@@ -1083,9 +1085,9 @@ with tab_bezugsdauer:
         )
         st.plotly_chart(fig, width="stretch")
         st.caption(
-            "Der Anteil der Zugänge mit Vorbezug steigt deutlich (56,1 % → 73,4 %) — "
+            "Der Anteil der Zugänge mit Vorbezug steigt deutlich (56,1 % → 70,9 %) — "
             "echte Erstzugänge werden seltener. Die Drehtür-Quote (Anteil der Abgänge, "
-            "die binnen 3 Monaten zurückkehren) schwankt stark (Ø 25,6 %) ohne klaren "
+            "die binnen 3 Monaten zurückkehren) schwankt stark (Ø 25,4 %) ohne klaren "
             "Trend — im Schnitt kehrt etwa jede vierte Person innerhalb eines "
             "Vierteljahres zurück."
         )
@@ -1109,8 +1111,8 @@ with tab_finanzen:
         )
         st.info(
             "⚠️ Das Tabellenblatt „3.6 Zahlungsansprüche“ meldet nur Werte mit **3 Monaten "
-            "Wartezeit**. Die hier gezeigte Zeitreihe (Oktober 2024 – März 2026) liegt "
-            "daher 3 Monate früher als der übrige Berichtszeitraum (Januar 2025 – Juni "
+            "Wartezeit**. Die hier gezeigte Zeitreihe (Oktober 2024 – Juni 2026) liegt "
+            "daher 3 Monate früher als der übrige Berichtszeitraum (Januar 2025 – September "
             "2026) und wird **nicht** vom Zeitraum-Filter der Sidebar beeinflusst."
         )
 
@@ -1134,9 +1136,9 @@ with tab_finanzen:
         )
         st.plotly_chart(fig, width="stretch")
         st.caption(
-            "Das Gesamtvolumen ist über den Zeitraum praktisch stabil (3.451,5 → 3.473,0 "
+            "Das Gesamtvolumen ist über den Zeitraum praktisch stabil (3.451,5 → 3.443,1 "
             "Tsd. Euro), der Anspruch je Bedarfsgemeinschaft ist dagegen spürbar gestiegen "
-            "(1.251 € → 1.288 €) — weil die Zahl der Bedarfsgemeinschaften sinkt, das "
+            "(1.251 € → 1.299 €) — weil die Zahl der Bedarfsgemeinschaften sinkt, das "
             "Gesamtvolumen aber kaum."
         )
 
@@ -1165,7 +1167,7 @@ with tab_finanzen:
             "Gesamtvolumen. **Regelbedarf ELB** (Grundsicherung für erwerbsfähige "
             "Leistungsberechtigte) ist mit rund 40 % der größte Posten, gefolgt von "
             "**Kosten der Unterkunft** (~36 %, Miete/Heizung). Auffälligster Trend: "
-            "**Sozialversicherungsbeiträge** steigen deutlich (15,6 % → 18,3 % Anteil), "
+            "**Sozialversicherungsbeiträge** steigen deutlich (15,6 % → 18,0 % Anteil), "
             "während **Regelbedarf NEF** (v. a. Kinder in der Bedarfsgemeinschaft) sinkt "
             "(3,8 % → 2,8 %)."
         )
@@ -1192,8 +1194,8 @@ with tab_foerderung:
         st.info(
             "⚠️ Die Tabellenblätter „4.1 Förderung“ und „4.2 Förderung Strukturen“ melden "
             "nur Werte mit **3 Monaten Wartezeit**. Die hier gezeigte Zeitreihe (Oktober "
-            "2024 – März 2026) liegt daher 3 Monate früher als der übrige "
-            "Berichtszeitraum (Januar 2025 – Juni 2026) und wird **nicht** vom "
+            "2024 – Juni 2026) liegt daher 3 Monate früher als der übrige "
+            "Berichtszeitraum (Januar 2025 – September 2026) und wird **nicht** vom "
             "Zeitraum-Filter der Sidebar beeinflusst."
         )
 
@@ -1219,7 +1221,8 @@ with tab_foerderung:
         st.caption(
             "Eintritte = neu begonnene Förderfälle im Monat. Bestand = Personen, die "
             "aktuell an einer Maßnahme teilnehmen. Der Bestand stieg bis zu einem "
-            "Höchststand von 313 im April 2025 und ist seither wieder gesunken."
+            "Höchststand von 313 im April 2025, sank bis März 2026 auf 250 und steigt "
+            "seither wieder (Juni 2026: 291)."
         )
 
         st.markdown("#### Aktivierungsquote im Zeitverlauf")
@@ -1245,9 +1248,9 @@ with tab_foerderung:
         )
         st.plotly_chart(fig, width="stretch")
         st.caption(
-            "Beide Quoten sind in den Rohwerten rückläufig (AQ1: 13,3 % → 9,9 %; AQ2a: "
-            "6,0 % → 5,5 %) — nur ein kleiner Teil der SGB-II-Grundgesamtheit nimmt "
-            "aktuell an einer Fördermaßnahme teil."
+            "Beide Quoten waren bis März 2026 rückläufig (AQ1: 13,3 % → 9,9 %) und steigen "
+            "seither wieder (Juni 2026: AQ1 11,8 %, AQ2a 6,6 %) — nur ein kleiner Teil der "
+            "SGB-II-Grundgesamtheit nimmt aktuell an einer Fördermaßnahme teil."
         )
 
         st.markdown("#### Struktur des Bestands: Geschlecht und Vorgeschichte")
@@ -1266,7 +1269,7 @@ with tab_foerderung:
         st.plotly_chart(fig, width="stretch")
         st.caption(
             "Der Frauenanteil bleibt stabil bei rund 44 %. Auffälliger: Der Anteil "
-            "zuvor langzeitarbeitsloser Teilnehmender steigt deutlich (16,2 % → 23,6 %) "
+            "zuvor langzeitarbeitsloser Teilnehmender steigt deutlich (16,2 % → 25,1 %) "
             "— passend zur insgesamt steigenden Langzeitarbeitslosigkeit im Datensatz "
             "(siehe Tab „SGB II Übersicht“)."
         )
@@ -1308,7 +1311,7 @@ with tab_arbeitsstellen:
         st.plotly_chart(fig, width="stretch")
         st.caption(
             "Der Bestand gemeldeter Arbeitsstellen sinkt über den Beobachtungszeitraum "
-            "deutlich von 1.571 auf 1.192 Stellen (≈ −24 %) — ein zusätzliches, von den "
+            "deutlich von 1.571 auf 1.208 Stellen (≈ −23 %) — ein zusätzliches, von den "
             "Arbeitslosenzahlen unabhängiges Signal für eine sich eintrübende "
             "Arbeitsmarktlage."
         )
@@ -1333,8 +1336,9 @@ with tab_arbeitsstellen:
         st.plotly_chart(fig, width="stretch")
         st.caption(
             "Zu Jahresbeginn 2025 kamen auf 100 Arbeitslose noch rund 107 gemeldete "
-            "Stellen — mehr offene Stellen als Arbeitslose. Bis Juni 2026 fällt diese "
-            "Relation auf rund 80 und damit deutlich unter 100."
+            "Stellen — mehr offene Stellen als Arbeitslose. Bis September 2026 fällt diese "
+            "Relation auf rund 79 und damit deutlich unter 100 (seit Mai 2026 stabil bei "
+            "78–80)."
         )
 
         st.markdown(f"#### Struktur des Stellenbestands — {pd.Timestamp(gewaehlter_monat):%B %Y}")
@@ -1394,9 +1398,9 @@ with tab_unterbeschaeftigung:
         st.plotly_chart(fig, width="stretch")
         st.caption(
             "Die Kurzarbeiter-Komponente (Differenz zwischen den beiden oberen Linien) ist "
-            "verschwindend gering (Ø 2,6 Personen) — Kurzarbeit spielt im SGB-II-Kontext "
+            "verschwindend gering (Ø 2,4 Personen) — Kurzarbeit spielt im SGB-II-Kontext "
             "praktisch keine Rolle. Die Maßnahmen-Komponente (Differenz zur Arbeitslosigkeit "
-            "im weiteren Sinne) ist mit Ø 399 Personen deutlich substanzieller."
+            "im weiteren Sinne) ist mit Ø 388 Personen deutlich substanzieller."
         )
 
         st.markdown("#### SGB-II-Anteil im Vergleich")
@@ -1409,8 +1413,8 @@ with tab_unterbeschaeftigung:
             x=unterbeschaeftigung_view.index, y=anteil, mode="lines+markers",
             name="SGB-II-Anteil: Unterbeschäftigung (engere Sinne)", line=dict(color="#059669", width=2.5),
         ))
-        fig.add_hline(y=39.8, line_dash="dot", line_color="#2563eb", annotation_text="Ø Anteil am Bestand (≈ 39,8 %)")
-        fig.add_hline(y=72.3, line_dash="dot", line_color="#dc2626", annotation_text="Ø Anteil an LZA (≈ 72,3 %)")
+        fig.add_hline(y=39.7, line_dash="dot", line_color="#2563eb", annotation_text="Ø Anteil am Bestand (≈ 39,7 %)")
+        fig.add_hline(y=72.2, line_dash="dot", line_color="#dc2626", annotation_text="Ø Anteil an LZA (≈ 72,2 %)")
         fig.update_layout(
             yaxis_title="Anteil (%)", yaxis_ticksuffix="%", xaxis_title="Monat", height=420,
         )
@@ -1438,7 +1442,7 @@ with tab_rlb_elb_nef:
         st.caption(
             "Die Trichter-Grafik im Tab „📊 SGB II Übersicht“ zeigt RLB/ELB/NEF nur als "
             "Momentaufnahme des letzten Berichtsmonats. Dieser Tab zeigt dieselbe Struktur "
-            "als Zeitreihe über alle 18 Monate."
+            "als Zeitreihe über alle 21 Berichtsmonate."
         )
 
         st.markdown("#### RLB, ELB und NEF im Vergleich")
@@ -1458,8 +1462,8 @@ with tab_rlb_elb_nef:
         )
         st.plotly_chart(fig, width="stretch")
         st.caption(
-            "Alle drei Kennzahlen sind rückläufig — RLB um 6,9 %, ELB um 5,5 %, NEF (im "
-            "Wesentlichen Kinder in der Bedarfsgemeinschaft) mit 10,5 % am stärksten."
+            "Alle drei Kennzahlen sind rückläufig — RLB um 11,8 %, ELB um 10,1 %, NEF (im "
+            "Wesentlichen Kinder in der Bedarfsgemeinschaft) mit 16,0 % am stärksten."
         )
 
         st.markdown("#### Nicht leistungsberechtigte Haushaltsmitglieder (PERS − RLB)")
@@ -1483,7 +1487,7 @@ with tab_rlb_elb_nef:
         st.caption(
             "Gegenläufiger Trend: Während Bedarfsgemeinschaften, Personen in BG und RLB "
             "insgesamt sinken, steigt die Zahl der nicht leistungsberechtigten "
-            "Haushaltsmitglieder von 286 auf 309 Personen — ihr Anteil an allen Personen in "
+            "Haushaltsmitglieder von 286 auf 295 Personen — ihr Anteil an allen Personen in "
             "BG von 5,2 % auf 6,0 %."
         )
 
@@ -1504,7 +1508,7 @@ with tab_beschaeftigung:
             "⚠️ Dieser Tab hat ein eigenes Zeitfenster und reagiert **nicht** auf den "
             "Sidebar-Zeitraum-Filter: Die zugrunde liegenden Daten sind **quartalsweise** "
             "(nicht monatlich) mit 6 Monaten Wartezeit gemeldet und decken daher Juni 2024 – "
-            "Dezember 2025 ab, statt Januar 2025 – Juni 2026 wie die übrigen Tabs."
+            "März 2026 ab, statt Januar 2025 – September 2026 wie die übrigen Tabs."
         )
 
         st.markdown("#### Sozialversicherungspflichtige Beschäftigung: Arbeitsort vs. Wohnort")
@@ -1540,8 +1544,8 @@ with tab_beschaeftigung:
         )
         st.plotly_chart(fig, width="stretch")
         st.caption(
-            "Außergewöhnlich stabiler Auspendlerüberschuss von 33.739 bis 34.069 Personen "
-            "(Ø ≈ 33.929) über alle 7 verfügbaren Quartale — es pendeln durchgehend rund "
+            "Außergewöhnlich stabiler Auspendlerüberschuss von 33.557 bis 34.069 Personen "
+            "(Ø ≈ 33.882) über alle 8 verfügbaren Quartale — es pendeln durchgehend rund "
             "34.000 mehr Regensburger aus, als von auswärts einpendeln."
         )
 
@@ -1557,7 +1561,7 @@ with tab_beschaeftigung:
         )
         st.plotly_chart(fig, width="stretch")
         st.caption(
-            "Der Anteil geringfügiger Beschäftigung sinkt leicht (AO: 13,3 % → 13,0 %, WO: "
+            "Der Anteil geringfügiger Beschäftigung sinkt leicht (AO: 13,3 % → 12,9 %, WO: "
             "10,8 % → 10,5 %) — passend zur in Tab „💼 Erwerbstätigkeit“ beobachteten "
             "leichten Verschiebung zu höheren Einkommen bei den Aufstockern."
         )

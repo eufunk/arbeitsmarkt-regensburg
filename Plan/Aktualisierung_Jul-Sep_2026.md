@@ -107,11 +107,13 @@ Langzeitarbeitslose). Diese Monate liegen jetzt als Istwerte vor.
 ## Phase 4 – Dashboard (`Dashboard/app.py`)
 
 - Das Dashboard liest die CSVs dynamisch, Grafiken aktualisieren sich automatisch.
-- [ ] Feste Texte anpassen: „Januar 2025 – Juni 2026“, „18 Monate“, „bis Juni 2026 …“,
-      Wartezeit-Hinweis „bis Dezember 2025“ (Z. ~1196, 1336, 1441, 1507) sowie alle weiteren
-      Befundtexte mit Zahlen.
-- [ ] Lokal mit `streamlit run Dashboard/app.py` starten und alle Tabs kurz prüfen.
-- [ ] `Dashboard/README.md` prüfen.
+- [x] Feste Texte angepasst (34 Ersetzungen): Wartezeit-Hinweise (Okt 2024 – Jun 2026),
+      Beschäftigung (Jun 2024 – Mär 2026, 8 Quartale), alle Befund-Captions mit Zahlen,
+      Referenzlinien 39,7 % / 72,2 % im Tab Unterbeschäftigung. Inhaltlich geändert:
+      Förderung (Wiederanstieg seit April 2026), Geschlecht (Verschiebung teils zurückgebildet).
+- [x] Test mit `streamlit.testing.v1.AppTest`: keine Exceptions, 13 Tabs, 39 Charts;
+      Monatsauswahl steht standardmäßig auf September 2026, Zeitraum-Slider Jan 2025 – Sep 2026.
+- [x] `Dashboard/README.md` geprüft — enthält keine festen Zeiträume, keine Änderung nötig.
 
 ## Phase 5 – Markdown-Dokumentation
 
